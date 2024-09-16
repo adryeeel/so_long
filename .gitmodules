@@ -3,5 +3,5 @@
 	url = git@github.com:adryeeel/libft.git
 
 [submodule "libs/mlx"]
-	path = libs/mlx
+	path = libs/libmlx
 	url = git@github.com:42Paris/minilibx-linux.git
