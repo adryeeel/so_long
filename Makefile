@@ -19,17 +19,19 @@ LIBMLX_LINK = -L $(LIBMLX_DIR) -l $(patsubst lib%.a,%,$(LIBMLX_NAME))
 LIBS =	$(LIBFT_NAME) \
 				$(LIBMLX_NAME) \
 
-SRCS = main.c
-OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.c=.o))
+SRCS = so_long.c
+
+SRCS_DIR = srcs
+SRCS_OBJS = $(addprefix $(BUILD_DIR)/,$(SRCS:.c=.o))
 
 BUILD_DIR = build
 
 all: $(NAME)
 
-$(NAME): $(OBJS) | $(LIBS)
+$(NAME): $(SRCS_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
-$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 %.a:
