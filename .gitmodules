@@ -1,3 +1,7 @@
 [submodule "libs/libft"]
 	path = libs/libft
 	url = git@github.com:adryeeel/libft.git
+
+[submodule "libs/mlx"]
+	path = libs/mlx
+	url = git@github.com:42Paris/minilibx-linux.git
