@@ -49,7 +49,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(HOOK_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS)| $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
