@@ -85,13 +85,28 @@ GAME =	ft_game_free.c \
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
 
+# Game — Map sources
+
+MAP =	ft_wmap_read.c \
+		ft_map_setup.c \
+		ft_map_check.c \
+		ft_wmap_free.c \
+		ft_wmap_push.c \
+		ft_map_process.c \
+		ft_wmap_matrix.c \
+		ft_wmap_isrect.c \
+		ft_map_component.c \
+
+MAP_PATH = $(GAME_PATH)/map
+MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) $(GAME_PATH) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) $(GAME_PATH) $(MAP_PATH) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
@@ -117,6 +132,9 @@ $(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
