@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:34:24 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:41:28 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char **ft_cmap_read(char *map_path)
 	while (line)
 	{
 		ft_strtrim_nl(&line);
-		ft_wmap_push(&raw_map, line);
+		ft_cmap_push(&raw_map, line);
 		free(line);
 		line = ft_readl(map_fd);
 	}

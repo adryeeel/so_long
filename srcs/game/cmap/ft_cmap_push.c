@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 01:47:54 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:34:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:41:15 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool ft_cmap_push(char **raw_map[], char *line)
 	ft_copy(new_map, *raw_map, len);
 	new_map[len] = ft_strdup(line);
 
-	ft_wmap_free(*raw_map);
+	ft_cmap_free(*raw_map);
 	*raw_map = new_map;
 
 	return (true);
