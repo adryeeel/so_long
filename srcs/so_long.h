@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 21:44:17 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/22 21:44:55 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ typedef struct s_xenv
 /* Window Management */
 
 bool ft_win_setup(t_xenv x, t_game g);
+int mlx_close_hook(void *win_ptr, int (*funct)(), void *param);
 
 #endif
