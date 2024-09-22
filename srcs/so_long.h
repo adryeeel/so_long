@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:10:00 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:10:46 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef enum e_mapc
 	COLLECTIBLE,
 	UNKNOWN,
 } t_mapc;
+
+typedef struct s_map
+{
+	int **matrix;
+	size_t width;
+	size_t height;
+} t_map;
 
 typedef struct s_coord
 {
