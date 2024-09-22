@@ -76,13 +76,22 @@ XIMG =	ft_ximg_free.c \
 XIMG_PATH = $(WIN_PATH)/ximg
 XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
 
+# Game sources
+
+GAME =	ft_game_free.c \
+		ft_game_start.c \
+		ft_game_setup.c \
+
+GAME_PATH = $(MAIN_PATH)/game
+GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) $(GAME_PATH) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
@@ -105,6 +114,9 @@ $(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
