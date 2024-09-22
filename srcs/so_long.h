@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 23:23:12 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/22 23:48:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 
 #include "../libs/libmlx/mlx.h"
 #include "../libs/libft/libft.h"
+
+typedef struct s_game
+{
+	t_map map;
+	t_coord avatar;
+} t_game;
 
 typedef struct s_xenv
 {
