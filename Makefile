@@ -85,20 +85,27 @@ GAME =	ft_game_free.c \
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
 
-# Game — Map sources
+# Game — Raw map handling sources
 
-MAP =	ft_wmap_read.c \
+CMAP =	ft_cmap_free.c \
+		ft_cmap_push.c \
+		ft_cmap_read.c \
+		ft_cmap_matrix.c \
+		ft_cmap_isrect.c \
+
+CMAP_PATH = $(GAME_PATH)/cmap
+CMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(CMAP:.c=.o))
+
+# Game — Enum map handling sources
+
+EMAP =	ft_wmap_read.c \
 		ft_map_setup.c \
 		ft_map_check.c \
-		ft_wmap_free.c \
-		ft_wmap_push.c \
 		ft_map_process.c \
-		ft_wmap_matrix.c \
-		ft_wmap_isrect.c \
 		ft_map_component.c \
 
-MAP_PATH = $(GAME_PATH)/map
-MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
+EMAP_PATH = $(GAME_PATH)/emap
+EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
 
 # Build Rules
 
@@ -106,7 +113,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) $(GAME_PATH) $(MAP_PATH) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
@@ -134,7 +141,10 @@ $(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(EMAP_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
