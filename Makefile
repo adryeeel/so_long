@@ -67,13 +67,22 @@ XENV =	ft_xenv_free.c \
 XENV_PATH = $(WIN_PATH)/xenv
 XENV_OBJS = $(addprefix $(BUILD_DIR)/,$(XENV:.c=.o))
 
+# Window Management — Ximg sources
+
+XIMG =	ft_ximg_free.c \
+		ft_ximg_setup.c \
+		ft_ximgf_setup.c \
+
+XIMG_PATH = $(WIN_PATH)/ximg
+XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS)| $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
@@ -93,6 +102,9 @@ $(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
