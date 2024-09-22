@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/17 00:55:07 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/22 21:25:44 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,12 @@
 
 #include "../libs/libmlx/mlx.h"
 #include "../libs/libft/libft.h"
+
+typedef struct s_xenv
+{
+	void *window;
+	void *display;
+} t_xenv;
+
 
 #endif
