@@ -59,6 +59,14 @@ RENDER =	ft_render_bg.c \
 RENDER_PATH = $(WIN_PATH)/render
 RENDER_OBJS = $(addprefix $(BUILD_DIR)/,$(RENDER:.c=.o))
 
+# Window Management — Xenv sources
+
+XENV =	ft_xenv_free.c \
+		ft_xenv_setup.c \
+
+XENV_PATH = $(WIN_PATH)/xenv
+XENV_OBJS = $(addprefix $(BUILD_DIR)/,$(XENV:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
@@ -82,6 +90,9 @@ $(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
