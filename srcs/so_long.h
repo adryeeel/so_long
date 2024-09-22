@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 23:54:07 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:10:00 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 
 #include "../libs/libmlx/mlx.h"
 #include "../libs/libft/libft.h"
+
+typedef enum e_mapc
+{
+	WALL,
+	SPACE,
+	EXIT_POINT,
+	START_POINT,
+	COLLECTIBLE,
+	UNKNOWN,
+} t_mapc;
 
 typedef struct s_coord
 {
