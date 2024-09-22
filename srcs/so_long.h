@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:10:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:13:38 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,20 @@ bool ft_ximg_setup(void *display, t_ximg *ximg, int width, int height);
 void ft_game_free(t_game game);
 bool ft_game_start(char *map_path);
 bool ft_game_setup(t_game *g, char *map_path);
+
+/* Game — Raw Map Manipulation */
+
+void ft_wmap_free(char *raw_map[]);
+char **ft_wmap_read(char *map_path);
+bool ft_wmap_isrect(char *raw_map[]);
+int **ft_wmap_matrix(char *raw_map[]);
+bool ft_wmap_push(char **map[], char *line);
+
+/* Game — Enum Map Manipulation */
+
+bool ft_map_check(t_map *map);
+t_mapc ft_map_component(char comp);
+bool ft_map_setup(t_map *map, char *raw_map[]);
+bool ft_map_process(t_map *map, char *map_path);
 
 #endif
