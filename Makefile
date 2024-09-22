@@ -51,6 +51,14 @@ HOOK =	ft_hook_key.c \
 HOOK_PATH = $(WIN_PATH)/hook
 HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
+# Window Management — Render sources
+
+RENDER =	ft_render_bg.c \
+			ft_render_scene.c \
+
+RENDER_PATH = $(WIN_PATH)/render
+RENDER_OBJS = $(addprefix $(BUILD_DIR)/,$(RENDER:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
@@ -71,6 +79,9 @@ $(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
