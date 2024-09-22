@@ -43,6 +43,14 @@ WIN =	ft_win_setup.c \
 WIN_PATH = $(MAIN_PATH)/win
 WIN_OBJS = $(addprefix $(BUILD_DIR)/,$(WIN:.c=.o))
 
+# Window Management — Hook sources
+
+HOOK =	ft_hook_key.c \
+		ft_hook_close.c \
+
+HOOK_PATH = $(WIN_PATH)/hook
+HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
@@ -60,6 +68,9 @@ $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
 # Window Management Build
 
 $(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
