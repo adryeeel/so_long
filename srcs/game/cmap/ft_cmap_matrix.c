@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wmap_matrix.c                                   :+:      :+:    :+:   */
+/*   ft_cmap_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:52:32 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/21 14:18:34 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:17 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void ft_populate(int **matrix, char *raw_map[], size_t x, size_t y)
 	}
 }
 
-int **ft_wmap_matrix(char *raw_map[])
+int **ft_cmap_matrix(char *raw_map[])
 {
 	int **matrix;
 	size_t width;

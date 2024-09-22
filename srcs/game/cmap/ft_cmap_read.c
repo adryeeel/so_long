@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wmap_read.c                                     :+:      :+:    :+:   */
+/*   ft_cmap_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/21 14:17:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void ft_strtrim_nl(char **line)
 	*line = trimmed;
 }
 
-char **ft_wmap_read(char *map_path)
+char **ft_cmap_read(char *map_path)
 {
 	int map_fd;
 	char *line;

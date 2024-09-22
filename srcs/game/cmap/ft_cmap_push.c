@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wmap_push.c                                     :+:      :+:    :+:   */
+/*   ft_cmap_push.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 01:47:54 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/21 14:17:48 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool ft_copy(char *dst[], char *src[], size_t len)
 	return (true);
 }
 
-bool ft_wmap_push(char **raw_map[], char *line)
+bool ft_cmap_push(char **raw_map[], char *line)
 {
 	size_t len;
 	char **new_map;
