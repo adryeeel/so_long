@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_setup.c                                     :+:      :+:    :+:   */
+/*   ft_emap_setup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:06:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 15:50:26 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:41 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool ft_map_setup(t_map *map, char *raw_map[])
+bool ft_emap_setup(t_map *map, char *raw_map[])
 {
 	if (!map || !raw_map)
 		return (false);

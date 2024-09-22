@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_process.c                                   :+:      :+:    :+:   */
+/*   ft_emap_process.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:12:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 16:34:15 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:34:38 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool ft_map_process(t_map *map, char *map_path)
+bool ft_emap_process(t_map *map, char *map_path)
 {
 	char **raw_map;
 
