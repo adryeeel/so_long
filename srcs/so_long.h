@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 21:56:58 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/22 22:11:22 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ int mlx_close_hook(void *win_ptr, int (*funct)(), void *param);
 
 int ft_hook_close(void *param);
 int ft_hook_key(int key, void *param);
+
+/* Window Management — Rendering */
+
+bool ft_render_bg(void *display, t_ximg *scene);
+bool ft_render_scene(t_xenv x, t_game g, t_ximg *scene);
 
 #endif
