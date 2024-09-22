@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 23:48:35 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/22 23:54:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 
 #include "../libs/libmlx/mlx.h"
 #include "../libs/libft/libft.h"
+
+typedef struct s_coord
+{
+	int x;
+	int y;
+} t_coord;
 
 typedef struct s_game
 {
@@ -69,5 +75,11 @@ bool ft_xenv_setup(t_xenv *x);
 void ft_ximg_free(void *display, t_ximg ximg);
 bool ft_ximgf_setup(void *display, t_ximg *ximg, char *path);
 bool ft_ximg_setup(void *display, t_ximg *ximg, int width, int height);
+
+/* Game */
+
+void ft_game_free(t_game game);
+bool ft_game_start(char *map_path);
+bool ft_game_setup(t_game *g, char *map_path);
 
 #endif
