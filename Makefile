@@ -35,15 +35,34 @@ MAIN = so_long.c \
 MAIN_PATH = srcs
 MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
+# Window Management sources
+
+WIN =	ft_win_setup.c \
+		mlx_close_hook.c \
+
+WIN_PATH = $(MAIN_PATH)/win
+WIN_OBJS = $(addprefix $(BUILD_DIR)/,$(WIN:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
-$(NAME): $(MAIN_OBJS) | $(LIBS)
+# Program Build
+
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(HOOK_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
+
+# Main Build
 
 $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+# Window Management Build
+
+$(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Libraries Build
 
 $(LIBFT_PATH)/$(LIBFT):
 	@echo -n "Building $(CLR_YLW)$(notdir $@)$(CLR_STP)... "
