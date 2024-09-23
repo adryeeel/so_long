@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 01:56:12 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:58:59 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,11 @@ bool ft_cmap_push(char **map[], char *line);
 bool ft_emap_check(t_map *map);
 t_mapc ft_emap_component(char comp);
 bool ft_emap_setup(t_map *map, char *raw_map[]);
+
+/* Game — Map Matrix Manipulation */
+
+void ft_matrix_free(int **matrix);
+int **ft_matrix_alloc(size_t x, size_t y);
 
 /* Game — Avatar's Position */
 
