@@ -6,24 +6,24 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:06:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 01:59:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:57:36 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
 
-bool ft_emap_setup(t_map *map, char *raw_map[])
+t_error ft_emap_setup(t_map *map, char *raw_map[])
 {
-	if (!map || !raw_map)
-		return (false);
+	if (!raw_map)
+		return (ERR_MAP_READ);
 
 	map->matrix = ft_cmap_matrix(raw_map);
 
 	if (!map->matrix)
-		return (true);
+		return (ERR_MAP_MATRIX);
 
 	map->width = ft_strlen(raw_map[0]);
 	map->height = ft_strarr_length(raw_map);
 
-	return (true);
+	return (OK);
 }

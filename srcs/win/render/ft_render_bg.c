@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:10:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 17:14:15 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:22:08 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,16 @@ bool ft_fill_tile(t_ximg t, t_ximg *s, int sx, int sy)
 	return (true);
 }
 
-bool ft_render_bg(void *display, t_ximg *scene)
+t_error ft_render_bg(void *display, t_ximg *scene)
 {
 	int x;
 	int y;
 	t_ximg tex;
+	t_error err;
 
-	if (!ft_ximgf_setup(display, &tex, BG_IMG_PATH))
-		return (false);
+	err = ft_ximgf_setup(display, &tex, BG_IMG_PATH);
+	if (err)
+		return (err);
 
 	y = 0;
 	while (y < scene->height)
@@ -62,6 +64,5 @@ bool ft_render_bg(void *display, t_ximg *scene)
 	}
 
 	ft_ximg_free(display, tex);
-
-	return (true);
+	return (OK);
 }
