@@ -6,40 +6,44 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:12:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:45:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:37:33 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool ft_map_process(t_map *map, char *map_path)
+t_error ft_map_process(t_map *map, char *map_path)
 {
+	t_error err;
 	char **raw_map;
 
 	raw_map = ft_cmap_read(map_path);
 
-	if (!map || !raw_map)
-		return (false);
+	if (!raw_map)
+		return (ERR_MAP_READ);
 
-	if (!ft_cmap_isrect(raw_map))
+	err = ft_cmap_isrect(raw_map);
+	if (err)
 	{
 		ft_cmap_free(raw_map);
-		return (false);
+		return (err);
 	}
 
-	if (!ft_emap_setup(map, raw_map))
+	err = ft_emap_setup(map, raw_map);
+	if (err)
 	{
 		ft_cmap_free(raw_map);
-		return (false);
+		return (err);
 	}
 
 	ft_cmap_free(raw_map);
 
-	if (!ft_emap_check(map))
+	err = ft_emap_check(map);
+	if (err)
 	{
 		ft_matrix_free(map->matrix);
-		return (false);
+		return (err);
 	}
 
-	return (true);
+	return (OK);
 }
