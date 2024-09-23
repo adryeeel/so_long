@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 01:53:40 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:56:12 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ typedef struct s_ximg
 	char *buff;
 	char *path;
 } t_ximg;
+
+typedef struct s_param
+{
+	t_xenv *x;
+	t_game *g;
+} t_param;
 
 /* Window Management */
 
