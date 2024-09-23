@@ -112,6 +112,14 @@ EMAP =	ft_emap_check.c \
 EMAP_PATH = $(MAP_PATH)/emap
 EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
 
+# Game — Matrix
+
+MATRIX =	ft_matrix_free.c \
+			ft_matrix_alloc.c \
+
+MATRIX_PATH = $(GAME_PATH)/matrix
+MATRIX_OBJS = $(addprefix $(BUILD_DIR)/,$(MATRIX:.c=.o))
+
 # Game — Movement sources
 
 MOVE =	ft_move_up.c \
@@ -128,8 +136,8 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MOVE_OBJS) | $(LIBS)
-	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
+	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
 
@@ -165,6 +173,9 @@ $(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(EMAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MATRIX_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(MOVE_PATH)/%.c | $(BUILD_DIR)
