@@ -6,14 +6,13 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 14:11:31 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:18:44 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 #define GAME_H
 
-#include <stdio.h>
 #include <stdbool.h>
 
 typedef enum e_mapc
