@@ -6,32 +6,35 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 02:13:33 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 15:50:48 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:46:36 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-bool ft_game_start(char *map_path)
+t_error ft_game_start(char *map_path)
 {
 	t_xenv x;
 	t_game game;
+	t_error err;
 
-	if (!ft_xenv_setup(&x))
-		return (false);
-
-	if (!ft_game_setup(&game, map_path))
+	err = ft_game_setup(&game, map_path);
+	if (err)
+		return (err);
+	
+	err = ft_xenv_setup(&x);
+	if (err)
 	{
-		ft_xenv_free(x);
-		return (false);
+		ft_game_free(game);
+		return (err);
 	}
 
-	if (!ft_win_setup(x, game))
+	err = ft_win_setup(x, game);
+	if (err)
 	{
 		ft_xenv_free(x);
 		ft_game_free(game);
-		return (false);
+		return (err);
 	}
-
-	return (true);
+	return (OK);
 }
