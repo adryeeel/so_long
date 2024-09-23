@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:30:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/21 00:00:57 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:00:58 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int **ft_matrix_alloc(size_t x, size_t y)
 
 		if (!matrix[i])
 		{
-			// ! TODO: Check this free logic
 			ft_matrix_free(matrix);
 			return (NULL);
 		}
