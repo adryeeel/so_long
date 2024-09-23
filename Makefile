@@ -4,7 +4,7 @@ CLR_YLW = \033[0;33m
 CLR_STP = \033[m
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 BUILD_DIR = build
 
@@ -34,6 +34,31 @@ MAIN = so_long.c \
 
 MAIN_PATH = srcs
 MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
+
+# Error handling sources
+
+ERROR = ft_error_print.c \
+
+ERROR_PATH = $(MAIN_PATH)/error
+ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
+
+# Error print sources
+
+ERRORP =	ft_print_map.c \
+			ft_print_ximg.c \
+			ft_print_rendbg.c \
+			ft_print_rendscene.c \
+
+ERRORP_PATH = $(ERROR_PATH)/print
+ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
+
+# Error translate sources
+
+ERRORT =	ft_transl_rendbg.c \
+			ft_transl_rendscene.c \
+
+ERRORT_PATH = $(ERROR_PATH)/translate
+ERRORT_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORT:.c=.o))
 
 # Window Management sources
 
@@ -136,12 +161,23 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
 
 $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Error hanndling build
+
+$(BUILD_DIR)/%.o: $(ERROR_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(ERRORP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(ERRORT_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Window Management Build
