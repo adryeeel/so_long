@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:41:28 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:59:32 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../so_long.h"
 
 static void ft_strtrim_nl(char **line)
 {

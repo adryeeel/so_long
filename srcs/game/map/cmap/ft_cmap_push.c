@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 01:47:54 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:41:15 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:59:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../../../so_long.h"
 
 static bool ft_copy(char *dst[], char *src[], size_t len)
 {
