@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 01:28:28 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:53:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include "../libs/libft/libft.h"
 
 #define TILE_SIZE 32
+#define BG_IMG_PATH "assets/imgs/wall.xpm"
+#define AVATAR_IMG_PATH "assets/imgs/avatar.xpm"
 
 typedef enum e_mapc
 {
