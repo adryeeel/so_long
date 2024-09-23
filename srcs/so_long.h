@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 00:55:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:28:28 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 #include "../libs/libmlx/mlx.h"
 #include "../libs/libft/libft.h"
+
+#define TILE_SIZE 32
 
 typedef enum e_mapc
 {
@@ -116,5 +118,12 @@ bool ft_cmap_push(char **map[], char *line);
 bool ft_emap_check(t_map *map);
 t_mapc ft_emap_component(char comp);
 bool ft_emap_setup(t_map *map, char *raw_map[]);
+
+/* Game — Avatar's Position */
+
+void ft_move_up(t_game *game);
+void ft_move_down(t_game *game);
+void ft_move_left(t_game *game);
+void ft_move_right(t_game *game);
 
 #endif
