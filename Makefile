@@ -35,15 +35,79 @@ MAIN = so_long.c \
 MAIN_PATH = srcs
 MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
+# Window Management sources
+
+WIN =	ft_win_setup.c \
+		mlx_close_hook.c \
+
+WIN_PATH = $(MAIN_PATH)/win
+WIN_OBJS = $(addprefix $(BUILD_DIR)/,$(WIN:.c=.o))
+
+# Window Management — Hook sources
+
+HOOK =	ft_hook_key.c \
+		ft_hook_close.c \
+
+HOOK_PATH = $(WIN_PATH)/hook
+HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
+
+# Window Management — Render sources
+
+RENDER =	ft_render_bg.c \
+			ft_render_scene.c \
+
+RENDER_PATH = $(WIN_PATH)/render
+RENDER_OBJS = $(addprefix $(BUILD_DIR)/,$(RENDER:.c=.o))
+
+# Window Management — Xenv sources
+
+XENV =	ft_xenv_free.c \
+		ft_xenv_setup.c \
+
+XENV_PATH = $(WIN_PATH)/xenv
+XENV_OBJS = $(addprefix $(BUILD_DIR)/,$(XENV:.c=.o))
+
+# Window Management — Ximg sources
+
+XIMG =	ft_ximg_free.c \
+		ft_ximg_setup.c \
+		ft_ximgf_setup.c \
+
+XIMG_PATH = $(WIN_PATH)/ximg
+XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
-$(NAME): $(MAIN_OBJS) | $(LIBS)
+# Program Build
+
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
+
+# Main Build
 
 $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+# Window Management Build
+
+$(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Libraries Build
 
 $(LIBFT_PATH)/$(LIBFT):
 	@echo -n "Building $(CLR_YLW)$(notdir $@)$(CLR_STP)... "
