@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:31:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/21 14:54:40 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:00:55 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void ft_matrix_free(int **matrix)
 		return;
 
 	i = 0;
-
 	while (matrix[i])
 		free(matrix[i++]);
 	free(matrix);
