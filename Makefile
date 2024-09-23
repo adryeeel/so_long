@@ -76,13 +76,59 @@ XIMG =	ft_ximg_free.c \
 XIMG_PATH = $(WIN_PATH)/ximg
 XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
 
+# Game sources
+
+GAME =	ft_game_free.c \
+		ft_game_start.c \
+		ft_game_setup.c \
+
+GAME_PATH = $(MAIN_PATH)/game
+GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
+
+# Game — Map handling sources
+
+MAP =	ft_map_process.c \
+
+MAP_PATH = $(GAME_PATH)/map
+MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
+
+# Game — Raw map handling sources
+
+CMAP =	ft_cmap_free.c \
+		ft_cmap_push.c \
+		ft_cmap_read.c \
+		ft_cmap_matrix.c \
+		ft_cmap_isrect.c \
+
+CMAP_PATH = $(MAP_PATH)/cmap
+CMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(CMAP:.c=.o))
+
+# Game — Enum map handling sources
+
+EMAP =	ft_emap_check.c \
+		ft_emap_setup.c \
+		ft_emap_component.c \
+
+EMAP_PATH = $(MAP_PATH)/emap
+EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
+
+# Game — Movement sources
+
+MOVE =	ft_move_up.c \
+		ft_move_down.c \
+		ft_move_left.c \
+		ft_move_right.c \
+
+MOVE_PATH = $(GAME_PATH)/move
+MOVE_OBJS = $(addprefix $(BUILD_DIR)/,$(MOVE:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_PATH) $(XENV_PATH) $(XIMG_PATH) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(WIN_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MOVE_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBFT_LINK) $(LIBMLX_LINK) -o $@
 
 # Main Build
@@ -105,6 +151,23 @@ $(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Game Build
+
+$(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(EMAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MOVE_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build
