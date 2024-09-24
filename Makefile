@@ -117,13 +117,22 @@ MAP =	ft_map_process.c \
 MAP_PATH = $(GAME_PATH)/map
 MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 
+# Game — Map validation sources
+
+MAPC =	ft_check_ext.c \
+		ft_check_isreg.c \
+		ft_check_isrect.c \
+
+MAPC_PATH = $(MAP_PATH)/check
+MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
+
 # Game — Raw map handling sources
 
 CMAP =	ft_cmap_free.c \
 		ft_cmap_push.c \
 		ft_cmap_read.c \
+		ft_cmap_check.c \
 		ft_cmap_matrix.c \
-		ft_cmap_isrect.c \
 
 CMAP_PATH = $(MAP_PATH)/cmap
 CMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(CMAP:.c=.o))
@@ -161,7 +170,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -203,6 +212,9 @@ $(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MAPC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
