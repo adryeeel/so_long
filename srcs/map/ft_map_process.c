@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:12:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:41:43 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 00:08:10 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_error ft_emap_process(t_map *map, char *raw_map[])
 	if (err)
 		return (err);
 
-	err = ft_emap_check(map);
+	err = ft_emap_check(*map);
 	if (err)
 	{
 		ft_matrix_free(map->matrix);
