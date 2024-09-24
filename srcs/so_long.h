@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 14:13:25 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 00:09:54 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "../libs/libft/libft.h"
 
 #include "win/win.h"
+#include "map/map.h"
 #include "game/game.h"
 #include "error/error.h"
 
