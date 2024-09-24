@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:45:37 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:27:31 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
 t_error ft_check_ext(char *map_path)
 {

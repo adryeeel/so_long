@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:52:32 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 02:01:11 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
 static void ft_populate(int **matrix, char *raw_map[], size_t x, size_t y)
 {

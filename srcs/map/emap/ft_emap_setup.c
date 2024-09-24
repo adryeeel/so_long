@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:06:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 17:57:36 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
 t_error ft_emap_setup(t_map *map, char *raw_map[])
 {
