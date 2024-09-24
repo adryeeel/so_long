@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:28:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:56:18 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void ft_print_map(t_error err)
 	if (err == ERR_MAP_RECT)
 		ft_putendl_fd("Invalid map: Is not rectangular", STDERR_FILENO);
 
-	if (err == ERR_MAP_SYMM)
-		ft_putendl_fd("Invalid map: Rows are not symmetrical", STDERR_FILENO);
+	if (err == ERR_MAP_REG)
+		ft_putendl_fd("Invalid map: Rows are not uniform", STDERR_FILENO);
 
 	if (err == ERR_MAP_MATRIX)
 		perror("Failed to create the map's matrix");
