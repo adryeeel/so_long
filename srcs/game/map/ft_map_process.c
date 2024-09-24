@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:12:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 17:37:33 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:38:01 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ t_error ft_map_process(t_map *map, char *map_path)
 	t_error err;
 	char **raw_map;
 
-	raw_map = ft_cmap_read(map_path);
+	raw_map = NULL;
 
-	if (!raw_map)
-		return (ERR_MAP_READ);
+	err = ft_cmap_read(&raw_map, map_path);
+	if (err)
+		return (err);
 
 	err = ft_cmap_isrect(raw_map);
 	if (err)
