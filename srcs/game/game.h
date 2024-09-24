@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:16:41 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:23:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ t_error ft_map_process(t_map *map, char *map_path);
 /* Game — Raw Map Manipulation */
 
 void ft_cmap_free(char *raw_map[]);
-char **ft_cmap_read(char *map_path);
-t_error ft_cmap_isrect(char *raw_map[]);
 int **ft_cmap_matrix(char *raw_map[]);
-bool ft_cmap_push(char **map[], char *line);
+t_error ft_cmap_isrect(char *raw_map[]);
+bool ft_cmap_push(char **raw_map[], char *line);
+t_error ft_cmap_read(char **raw_map[], char *map_path);
 
 /* Game — Enum Map Manipulation */
 
