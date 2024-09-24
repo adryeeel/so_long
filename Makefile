@@ -114,7 +114,7 @@ GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
 
 MAP =	ft_map_process.c \
 
-MAP_PATH = $(GAME_PATH)/map
+MAP_PATH = $(MAIN_PATH)/map
 MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 
 # Game — Map validation sources
@@ -151,7 +151,7 @@ EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
 MATRIX =	ft_matrix_free.c \
 			ft_matrix_alloc.c \
 
-MATRIX_PATH = $(GAME_PATH)/matrix
+MATRIX_PATH = $(MAP_PATH)/matrix
 MATRIX_OBJS = $(addprefix $(BUILD_DIR)/,$(MATRIX:.c=.o))
 
 # Game — Movement sources
