@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:38:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:56:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_error
 	ERR_MAP_ALLOC,
 	ERR_MAP_EMPTY,
 	ERR_MAP_RECT,
-	ERR_MAP_SYMM,
+	ERR_MAP_REG,
 	ERR_MAP_MATRIX,
 	ERR_XIMG_DATA,
 	ERR_XIMG_PARAM,
