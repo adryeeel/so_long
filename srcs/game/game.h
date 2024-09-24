@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 15:06:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:27:50 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_error ft_map_process(t_map *map, char *map_path);
 
 /* Game — Map Validation */
 
-bool ft_check_ext(char *map_path);
+t_error ft_check_ext(char *map_path);
 bool ft_check_isreg(char *raw_map[]);
 bool ft_check_isrect(char *raw_map[]);
 
