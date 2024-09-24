@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:45:37 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:55:45 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:40:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ bool ft_check_isrect(char *raw_map[])
 	width = ft_strlen(raw_map[0]);
 	height = ft_strarr_length(raw_map);
 	if (height >= width)
-		return (ERR_MAP_RECT);
-	return (OK);
+		return (false);
+	return (true);
 }

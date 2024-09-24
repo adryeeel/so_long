@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:45:37 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:55:56 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:40:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ bool ft_check_isreg(char *raw_map[])
 	{
 		row = ft_strlen(raw_map[i]);
 		if (row != width)
-			return (ERR_MAP_REG);
+			return (false);
 		i++;
 	}
-	return (OK);
+	return (true);
 }
