@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 00:53:41 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:31:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void ft_error_print(t_error err)
 		ft_putendl_fd("Failed to create the game's window", STDERR_FILENO);
 
 	if (err >= ERR_MAP_EXT && err <= ERR_MAP_COLLECTIBLE)
-		ft_print_map(err);
+		ft_puterr_map(err);
 
 	if (err >= ERR_XIMG_DATA && err <= ERR_XIMG_FILEPATH)
-		ft_print_ximg(err);
+		ft_puterr_ximg(err);
 
 	if (err >= ERR_RENDSCENE_DATA && err <= ERR_RENDSCENE_CREATE)
-		ft_print_rendscene(err);
+		ft_puterr_rendscene(err);
 
 	if (err >= ERR_RENDBG_CREATE && err <= ERR_RENDBG_FILEPATH)
-		ft_print_rendbg(err);
+		ft_puterr_rendbg(err);
 }
