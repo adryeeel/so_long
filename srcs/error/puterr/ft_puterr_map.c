@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_map.c                                     :+:      :+:    :+:   */
+/*   ft_puterr_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 01:04:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:30:04 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void ft_puterr_map_format(t_error err)
 		ft_putendl_fd("Invalid map format: No collectibles", STDERR_FILENO);
 }
 
-void ft_print_map(t_error err)
+void ft_puterr_map(t_error err)
 {
 	if (err >= ERR_MAP_EXT && err <= ERR_MAP_MATRIX)
 		ft_puterr_map_setup(err);
