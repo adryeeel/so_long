@@ -49,7 +49,7 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_rendbg.c \
 			ft_puterr_rendscene.c \
 
-ERRORP_PATH = $(ERROR_PATH)/print
+ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
 
 # Error translate sources
