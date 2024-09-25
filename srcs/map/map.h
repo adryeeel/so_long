@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 00:12:43 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:01:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_flags
 	int exit;
 	int start;
 	int unknown;
-	int surronded;
 	int collectible;
 } t_flags;
 
@@ -48,6 +47,7 @@ t_error ft_map_process(t_map *map, char *map_path);
 
 /* Game — Map Validation */
 
+bool ft_check_surronded(t_map map);
 t_error ft_check_ext(char *map_path);
 bool ft_check_isreg(char *raw_map[]);
 bool ft_check_isrect(char *raw_map[]);
