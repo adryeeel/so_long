@@ -44,10 +44,10 @@ ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
 # Error print sources
 
-ERRORP =	ft_print_map.c \
-			ft_print_ximg.c \
-			ft_print_rendbg.c \
-			ft_print_rendscene.c \
+ERRORP =	ft_puterr_map.c \
+			ft_puterr_ximg.c \
+			ft_puterr_rendbg.c \
+			ft_puterr_rendscene.c \
 
 ERRORP_PATH = $(ERROR_PATH)/print
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
