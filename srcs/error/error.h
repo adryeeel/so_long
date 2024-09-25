@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 01:13:52 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:31:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ typedef enum e_error
 	ERR_RENDBG_FILEPATH,
 } t_error;
 
-void ft_print_map(t_error err);
-void ft_print_ximg(t_error err);
-void ft_print_rendbg(t_error err);
-void ft_print_rendscene(t_error err);
-
 void ft_error_print(t_error err);
+
+void ft_puterr_map(t_error err);
+void ft_puterr_ximg(t_error err);
+void ft_puterr_rendbg(t_error err);
+void ft_puterr_rendscene(t_error err);
+
 t_error ft_transl_rendbg(t_error err);
 t_error ft_transl_rendscene(t_error err);
 
