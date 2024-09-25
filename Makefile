@@ -122,6 +122,7 @@ MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 MAPC =	ft_check_ext.c \
 		ft_check_isreg.c \
 		ft_check_isrect.c \
+		ft_check_surronded.c \
 
 MAPC_PATH = $(MAP_PATH)/check
 MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
