@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 02:31:29 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:09:22 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ typedef enum e_error
 	ERR_MAP_UNKNOWN,
 	ERR_MAP_SURRONDED,
 	ERR_MAP_COLLECTIBLE,
+
+	/* Map Path Errors */
+	ERR_MAP_PATH,
+	ERR_MAP_PATH_EXIT,
+	ERR_MAP_PATH_COLL,
+	ERR_MAP_PATH_ALLOC,
 
 	/* X Images Errors */
 	ERR_XIMG_DATA,
