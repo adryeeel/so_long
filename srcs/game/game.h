@@ -6,22 +6,15 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 00:14:11 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 02:14:02 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 #define GAME_H
 
-#include <stdbool.h>
-#include "../map/map.h"
-#include "../error/error.h"
-
-typedef struct s_coord
-{
-	int x;
-	int y;
-} t_coord;
+typedef struct s_map t_map;
+typedef enum e_error t_error;
 
 typedef struct s_game
 {
