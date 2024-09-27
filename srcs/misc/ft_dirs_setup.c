@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_game_setup.c                                    :+:      :+:    :+:   */
+/*   ft_dirs_setup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:48:44 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/27 11:45:52 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/27 11:51:09 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_error ft_game_setup(t_game *g, char *map_path)
+int **ft_dirs_setup(void)
 {
-	t_map map;
-	t_error err;
-
-	g->avatar.x = 0;
-	g->avatar.y = 0;
-
-	err = ft_map_process(&map, map_path);
-	if (err)
-		return (err);
-
-	g->map = map;
-
-	return (OK);
+	int **directions;
+	
+	directions = ft_matrix_alloc(2, TOTAL_DIRECTIONS);
+	
+	directions[0][0] = -1;
+	directions[0][1] = 0;
+	
+	directions[1][0] = 1;
+	directions[1][1] = 0;
+	
+	directions[2][0] = 0;
+	directions[2][1] = -1;
+	
+	directions[3][0] = 0;
+	directions[3][1] = 1;
+	
+	return (directions);
 }

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ximg.c                                    :+:      :+:    :+:   */
+/*   ft_emap_component.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 20:15:17 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/20 17:48:45 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_print_ximg(t_error err)
+t_mapc ft_emap_component(char comp)
 {
-	if (err == ERR_XIMG_DATA)
-		ft_putendl_fd("Failed to create the X image: Faulty image buffer", STDERR_FILENO);
+	if (comp == '0')
+		return (SPACE);
 
-	if (err == ERR_XIMG_PARAM)
-		ft_putendl_fd("Failed to create the X image: Invalid parameters", STDERR_FILENO);
+	if (comp == '1')
+		return (WALL);
 
-	if (err == ERR_XIMG_CREATE)
-		ft_putendl_fd("Failed to create the X image", STDERR_FILENO);
+	if (comp == 'C')
+		return (COLLECTIBLE);
 
-	if (err == ERR_XIMG_FILEPATH)
-		perror("Failed to create the X image with XPM file");
+	if (comp == 'E')
+		return (EXIT_POINT);
+
+	if (comp == 'P')
+		return (START_POINT);
+
+	return (UNKNOWN);
 }

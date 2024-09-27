@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_game_setup.c                                    :+:      :+:    :+:   */
+/*   ft_emap_setup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:48:44 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/20 16:06:50 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-t_error ft_game_setup(t_game *g, char *map_path)
+t_error ft_emap_setup(t_map *map, char *raw_map[])
 {
-	t_map map;
-	t_error err;
+	if (!raw_map)
+		return (ERR_MAP_READ);
 
-	g->avatar.x = 0;
-	g->avatar.y = 0;
+	map->matrix = ft_cmap_matrix(raw_map);
 
-	err = ft_map_process(&map, map_path);
-	if (err)
-		return (err);
+	if (!map->matrix)
+		return (ERR_MAP_MATRIX);
 
-	g->map = map;
+	map->width = ft_strlen(raw_map[0]);
+	map->height = ft_strarr_length(raw_map);
 
 	return (OK);
 }

@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_game_setup.c                                    :+:      :+:    :+:   */
+/*   ft_emap_search.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:48:44 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/27 15:32:13 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/27 18:34:10 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-t_error ft_game_setup(t_game *g, char *map_path)
+t_coord ft_emap_search(t_map map, t_mapc comp)
 {
-	t_map map;
-	t_error err;
+	size_t x;
+	size_t y;
+	t_coord pos;
 
-	g->avatar.x = 0;
-	g->avatar.y = 0;
+	y = 0;
+	pos.x = 0;
+	pos.y = 0;
 
-	err = ft_map_process(&map, map_path);
-	if (err)
-		return (err);
-
-	g->map = map;
-
-	return (OK);
+	while (y < map.height)
+	{
+		x = 0;
+		while (x < map.width)
+		{
+			if (map.matrix[y][x] == (int)comp)
+				return (pos);
+			pos.x = ++x;
+		}
+		pos.y = ++y;
+	}
+	pos.x = -1;
+	pos.y = -1;
+	return (pos);
 }

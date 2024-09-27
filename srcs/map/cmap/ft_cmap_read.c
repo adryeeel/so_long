@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:34:51 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
 static void ft_strtrim_nl(char **line)
 {
@@ -43,7 +43,7 @@ t_error ft_cmap_read(char **raw_map[], char *map_path)
 	int map_fd;
 	char *line;
 	t_error err;
-	
+
 	map_fd = 0;
 	err = ft_read_setup(raw_map, &map_fd, map_path);
 	if (err)

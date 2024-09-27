@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_emap_component.c                                :+:      :+:    :+:   */
+/*   ft_check_isrect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 17:48:45 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 01:59:41 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/24 14:45:37 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
-t_mapc ft_emap_component(char comp)
+bool ft_check_isrect(char *raw_map[])
 {
-	if (comp == '0')
-		return (SPACE);
+	size_t width;
+	size_t height;
 
-	if (comp == '1')
-		return (WALL);
-
-	if (comp == 'C')
-		return (COLLECTIBLE);
-
-	if (comp == 'E')
-		return (EXIT_POINT);
-
-	if (comp == 'P')
-		return (START_POINT);
-
-	return (UNKNOWN);
+	width = ft_strlen(raw_map[0]);
+	height = ft_strarr_length(raw_map);
+	if (height >= width)
+		return (false);
+	return (true);
 }

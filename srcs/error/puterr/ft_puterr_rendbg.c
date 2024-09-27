@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_map.c                                     :+:      :+:    :+:   */
+/*   ft_puterr_rendbg.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:28:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/25 02:35:08 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_print_map(t_error err)
+void ft_puterr_rendbg(t_error err)
 {
-	if (err == ERR_MAP_READ)
-		perror("Failed to read the game's map");
+	ft_putendl_fd("Unable to render the game's background", STDERR_FILENO);
+	
+	if (err == ERR_RENDBG_CREATE)
+		ft_puterr_ximg(ERR_XIMG_CREATE);
 
-	if (err == ERR_MAP_ALLOC)
-		perror("Failed to alloc the game's map");
+	if (err == ERR_RENDBG_DATA)
+		ft_puterr_ximg(ERR_XIMG_DATA);
 
-	if (err == ERR_MAP_EMPTY)
-		ft_putendl_fd("Invalid map: Empty", STDERR_FILENO);
-
-	if (err == ERR_MAP_RECT)
-		ft_putendl_fd("Invalid map: Is not rectangular", STDERR_FILENO);
-
-	if (err == ERR_MAP_SYMM)
-		ft_putendl_fd("Invalid map: Rows are not symmetrical", STDERR_FILENO);
-
-	if (err == ERR_MAP_MATRIX)
-		perror("Failed to create the map's matrix");
+	if (err == ERR_RENDBG_FILEPATH)
+		ft_puterr_ximg(ERR_XIMG_FILEPATH);
 }

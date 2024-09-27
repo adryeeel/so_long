@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_game_setup.c                                    :+:      :+:    :+:   */
+/*   ft_puterr_rendscene.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 14:48:44 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/25 02:35:13 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../so_long.h"
 
-t_error ft_game_setup(t_game *g, char *map_path)
+void ft_puterr_rendscene(t_error err)
 {
-	t_map map;
-	t_error err;
+	ft_putendl_fd("Unable to render the game's scene", STDERR_FILENO);
+	
+	if (err == ERR_RENDSCENE_CREATE)
+		ft_puterr_ximg(ERR_XIMG_CREATE);
 
-	g->avatar.x = 0;
-	g->avatar.y = 0;
-
-	err = ft_map_process(&map, map_path);
-	if (err)
-		return (err);
-
-	g->map = map;
-
-	return (OK);
+	if (err == ERR_RENDSCENE_DATA)
+		ft_puterr_ximg(ERR_XIMG_DATA);
 }

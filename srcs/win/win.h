@@ -6,16 +6,15 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:29:37 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 02:12:57 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WIN_H
 #define WIN_H
 
-#include <stdbool.h>
-#include "../game/game.h"
-#include "../error/error.h"
+typedef enum e_error t_error;
+typedef struct s_game t_game;
 
 typedef struct s_xenv
 {

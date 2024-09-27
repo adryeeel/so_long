@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_rendbg.c                                  :+:      :+:    :+:   */
+/*   ft_matrix_alloc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 20:17:06 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/20 17:30:35 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/27 12:25:23 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_print_rendbg(t_error err)
+int **ft_matrix_alloc(size_t x, size_t y)
 {
-	ft_putendl_fd("Unable to render the game's background", STDERR_FILENO);
-	
-	if (err == ERR_RENDBG_CREATE)
-		ft_print_ximg(ERR_XIMG_CREATE);
+	size_t i;
+	int **matrix;
 
-	if (err == ERR_RENDBG_DATA)
-		ft_print_ximg(ERR_XIMG_DATA);
+	i = 0;
+	matrix = ft_calloc(y + 1, sizeof(int *));
 
-	if (err == ERR_RENDBG_FILEPATH)
-		ft_print_ximg(ERR_XIMG_FILEPATH);
+	if (!matrix)
+		return (NULL);
+
+	while (i < y)
+	{
+		matrix[i] = ft_calloc(x + 1, sizeof(int));
+		if (!matrix[i])
+		{
+			ft_matrix_free(matrix);
+			return (NULL);
+		}
+		matrix[i][x] = -1;
+		i++;
+	}
+	matrix[i] = NULL;
+	return (matrix);
 }

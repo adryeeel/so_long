@@ -44,12 +44,12 @@ ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
 # Error print sources
 
-ERRORP =	ft_print_map.c \
-			ft_print_ximg.c \
-			ft_print_rendbg.c \
-			ft_print_rendscene.c \
+ERRORP =	ft_puterr_map.c \
+			ft_puterr_ximg.c \
+			ft_puterr_rendbg.c \
+			ft_puterr_rendscene.c \
 
-ERRORP_PATH = $(ERROR_PATH)/print
+ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
 
 # Error translate sources
@@ -110,41 +110,6 @@ GAME =	ft_game_free.c \
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
 
-# Game — Map handling sources
-
-MAP =	ft_map_process.c \
-
-MAP_PATH = $(GAME_PATH)/map
-MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
-
-# Game — Raw map handling sources
-
-CMAP =	ft_cmap_free.c \
-		ft_cmap_push.c \
-		ft_cmap_read.c \
-		ft_cmap_matrix.c \
-		ft_cmap_isrect.c \
-
-CMAP_PATH = $(MAP_PATH)/cmap
-CMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(CMAP:.c=.o))
-
-# Game — Enum map handling sources
-
-EMAP =	ft_emap_check.c \
-		ft_emap_setup.c \
-		ft_emap_component.c \
-
-EMAP_PATH = $(MAP_PATH)/emap
-EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
-
-# Game — Matrix
-
-MATRIX =	ft_matrix_free.c \
-			ft_matrix_alloc.c \
-
-MATRIX_PATH = $(GAME_PATH)/matrix
-MATRIX_OBJS = $(addprefix $(BUILD_DIR)/,$(MATRIX:.c=.o))
-
 # Game — Movement sources
 
 MOVE =	ft_move_up.c \
@@ -155,13 +120,69 @@ MOVE =	ft_move_up.c \
 MOVE_PATH = $(GAME_PATH)/move
 MOVE_OBJS = $(addprefix $(BUILD_DIR)/,$(MOVE:.c=.o))
 
+# Game — Map handling sources
+
+MAP =	ft_map_process.c \
+
+MAP_PATH = $(MAIN_PATH)/map
+MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
+
+# Game — Map validation sources
+
+MAPC =	ft_check_ext.c \
+		ft_check_path.c \
+		ft_check_isreg.c \
+		ft_check_isrect.c \
+		ft_check_surronded.c \
+
+MAPC_PATH = $(MAP_PATH)/check
+MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
+
+# Game — Raw map handling sources
+
+CMAP =	ft_cmap_free.c \
+		ft_cmap_push.c \
+		ft_cmap_read.c \
+		ft_cmap_check.c \
+		ft_cmap_matrix.c \
+
+CMAP_PATH = $(MAP_PATH)/cmap
+CMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(CMAP:.c=.o))
+
+# Game — Enum map handling sources
+
+EMAP =	ft_emap_bfs.c \
+		ft_emap_check.c \
+		ft_emap_setup.c \
+		ft_emap_search.c \
+		ft_emap_component.c \
+
+EMAP_PATH = $(MAP_PATH)/emap
+EMAP_OBJS = $(addprefix $(BUILD_DIR)/,$(EMAP:.c=.o))
+
+# Matrix sources
+
+MATRIX =	ft_matrix_free.c \
+			ft_matrix_alloc.c \
+
+MATRIX_PATH = $(MAIN_PATH)/matrix
+MATRIX_OBJS = $(addprefix $(BUILD_DIR)/,$(MATRIX:.c=.o))
+
+# Miscellaneous sources
+
+MISC =	ft_dirs_setup.c \
+		ft_points_free.c \
+
+MISC_PATH = $(MAIN_PATH)/misc
+MISC_OBJS = $(addprefix $(BUILD_DIR)/,$(MISC:.c=.o))
+
 # Build Rules
 
 all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MATRIX_OBJS) $(MOVE_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(CMAP_OBJS) $(EMAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -169,7 +190,7 @@ $(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $
 $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Error hanndling build
+# Error handling build
 
 $(BUILD_DIR)/%.o: $(ERROR_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -202,7 +223,13 @@ $(BUILD_DIR)/%.o: $(XIMG_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(GAME_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(BUILD_DIR)/%.o: $(MOVE_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(MAPC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
@@ -211,10 +238,12 @@ $(BUILD_DIR)/%.o: $(CMAP_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(EMAP_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Helpers Build
+
 $(BUILD_DIR)/%.o: $(MATRIX_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(MOVE_PATH)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(MISC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Libraries Build

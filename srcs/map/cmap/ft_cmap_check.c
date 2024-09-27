@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_emap_check.c                                    :+:      :+:    :+:   */
+/*   ft_cmap_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 15:43:34 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 14:58:22 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/24 15:03:21 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../so_long.h"
+#include "../../so_long.h"
 
-t_error ft_emap_check(t_map *map)
+t_error ft_cmap_check(char *raw_map[])
 {
-	(void)map;
+	if (!ft_check_isrect(raw_map))
+		return (ERR_MAP_RECT);
+
+	if (!ft_check_isreg(raw_map))
+		return (ERR_MAP_REG);
+
 	return (OK);
 }

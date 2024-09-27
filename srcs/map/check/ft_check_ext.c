@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix_alloc.c                                  :+:      :+:    :+:   */
+/*   ft_check_ext.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 17:30:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:00:58 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/24 14:45:37 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int **ft_matrix_alloc(size_t x, size_t y)
+t_error ft_check_ext(char *map_path)
 {
-	size_t i;
-	int **matrix;
+	char *ext;
 
-	i = 0;
-	matrix = ft_calloc(y + 1, sizeof(int *));
+	if (map_path[ft_strlen(map_path) - 1] == '/')
+		return (ERR_MAP_ISDIR);
 
-	if (!matrix)
-		return (NULL);
+	ext = ft_strrchr(map_path, '.');
+	if (!ext)
+		return (ERR_MAP_EXT);
 
-	while (i < y)
-	{
-		matrix[i] = ft_calloc(x + 1, sizeof(int));
+	if (ft_strncmp(ext + 1, "ber", ft_strlen(ext)) != 0)
+		return (ERR_MAP_EXT);
 
-		if (!matrix[i])
-		{
-			ft_matrix_free(matrix);
-			return (NULL);
-		}
-		i++;
-	}
-
-	matrix[i] = NULL;
-	return (matrix);
+	return (OK);
 }

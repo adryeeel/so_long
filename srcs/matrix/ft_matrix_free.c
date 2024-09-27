@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:31:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:00:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:00:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 void ft_matrix_free(int **matrix)
 {
