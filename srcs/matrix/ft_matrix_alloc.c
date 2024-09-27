@@ -6,11 +6,11 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 17:30:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:00:58 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:25:23 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 int **ft_matrix_alloc(size_t x, size_t y)
 {
@@ -26,15 +26,14 @@ int **ft_matrix_alloc(size_t x, size_t y)
 	while (i < y)
 	{
 		matrix[i] = ft_calloc(x + 1, sizeof(int));
-
 		if (!matrix[i])
 		{
 			ft_matrix_free(matrix);
 			return (NULL);
 		}
+		matrix[i][x] = -1;
 		i++;
 	}
-
 	matrix[i] = NULL;
 	return (matrix);
 }
