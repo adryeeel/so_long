@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:43:34 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 02:13:35 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/27 02:19:26 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_flags ft_flags_parse(t_map map)
 
 t_error ft_emap_check(t_map map)
 {
+	t_error err;
 	t_flags flags;
 
 	flags = ft_flags_parse(map);
@@ -80,6 +81,10 @@ t_error ft_emap_check(t_map map)
 
 	if (!flags.collectible)
 		return (ERR_MAP_COLLECTIBLE);
+
+	err = ft_check_path(map);
+	if (err)
+		return (err);
 
 	return (OK);
 }
