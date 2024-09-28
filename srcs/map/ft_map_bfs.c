@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_emap_bfs.c                                      :+:      :+:    :+:   */
+/*   ft_map_bfs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:03:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 23:05:20 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:23:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 t_error ft_bfs_setup(t_map map, t_coord start, int ***visited, t_coord **sp)
 {
@@ -49,7 +49,7 @@ bool ft_bfs_isvalid(t_map map, t_coord pos, int **visited)
 	if (!visited[pos.y][pos.x])
 		ok++;
 
-	if (map.matrix[pos.y][pos.x] != WALL)
+	if (map.grid[pos.y][pos.x] != WALL)
 		ok++;
 
 	return (ok == 4);
@@ -88,7 +88,7 @@ t_error ft_bfs_edges(t_map map, t_queue *q, t_coord curr, int **visited)
 	return (OK);
 }
 
-t_error ft_emap_bfs(t_map map, t_coord start, t_coord end)
+t_error ft_map_bfs(t_map map, t_coord start, t_coord end)
 {
 	t_queue q;
 	t_error err;
