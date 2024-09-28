@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_emap_setup.c                                    :+:      :+:    :+:   */
+/*   ft_map_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:06:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:23:30 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-t_error ft_emap_setup(t_map *map, char *raw_map[])
+void ft_map_setup(t_map *map, char *grid[])
 {
-	if (!raw_map)
-		return (ERR_MAP_READ);
-
-	map->matrix = ft_cmap_matrix(raw_map);
-
-	if (!map->matrix)
-		return (ERR_MAP_MATRIX);
-
-	map->width = ft_strlen(raw_map[0]);
-	map->height = ft_strarr_length(raw_map);
-
-	return (OK);
+	map->grid = grid;
+	map->width = ft_strlen(grid[0]);
+	map->height = ft_strarr_length(grid);
 }
