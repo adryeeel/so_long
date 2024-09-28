@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmap_read.c                                     :+:      :+:    :+:   */
+/*   ft_map_read.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:26:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 static void ft_strtrim_nl(char **line)
 {
@@ -38,21 +38,21 @@ static t_error ft_read_setup(char **raw_map[], int *map_fd, char *map_path)
 	return (OK);
 }
 
-t_error ft_cmap_read(char **raw_map[], char *map_path)
+t_error ft_map_read(char **grid[], char *map_path)
 {
 	int map_fd;
 	char *line;
 	t_error err;
 
 	map_fd = 0;
-	err = ft_read_setup(raw_map, &map_fd, map_path);
+	err = ft_read_setup(grid, &map_fd, map_path);
 	if (err)
 		return (err);
 
 	line = ft_readl(map_fd);
 	if (!line)
 	{
-		free(*raw_map);
+		free(*grid);
 		close(map_fd);
 		return (ERR_MAP_EMPTY);
 	}
@@ -60,7 +60,7 @@ t_error ft_cmap_read(char **raw_map[], char *map_path)
 	while (line)
 	{
 		ft_strtrim_nl(&line);
-		ft_cmap_push(raw_map, line);
+		ft_map_push(grid, line);
 		free(line);
 		line = ft_readl(map_fd);
 	}
