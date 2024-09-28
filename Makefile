@@ -37,28 +37,22 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
 # Error handling sources
 
-ERROR = ft_error_print.c \
+ERROR =	ft_error_bg.c \
+		ft_error_print.c \
+		ft_error_scene.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
 # Error print sources
 
-ERRORP =	ft_puterr_map.c \
+ERRORP =	ft_puterr_bg.c \
+			ft_puterr_map.c \
 			ft_puterr_ximg.c \
-			ft_puterr_rendbg.c \
-			ft_puterr_rendscene.c \
+			ft_puterr_scene.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
-
-# Error translate sources
-
-ERRORT =	ft_transl_rendbg.c \
-			ft_transl_rendscene.c \
-
-ERRORT_PATH = $(ERROR_PATH)/translate
-ERRORT_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORT:.c=.o))
 
 # Window Management sources
 
@@ -162,7 +156,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS) $(ERRORT_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -176,9 +170,6 @@ $(BUILD_DIR)/%.o: $(ERROR_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(ERRORP_PATH)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR)/%.o: $(ERRORT_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Window Management Build
