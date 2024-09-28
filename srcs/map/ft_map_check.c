@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmap_free.c                                     :+:      :+:    :+:   */
+/*   ft_map_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 04:59:37 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/24 15:03:21 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/28 13:24:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_cmap_free(char *raw_map[])
+t_error ft_map_check(t_map map)
 {
-	size_t i;
+	t_error err;
 
-	i = 0;
-	while (raw_map[i])
-	{
-		free(raw_map[i]);
-		i++;
-	}
-	free(raw_map);
+	if (!ft_check_isrect(map))
+		return (ERR_MAP_RECT);
+
+	if (!ft_check_isreg(map))
+		return (ERR_MAP_REG);
+
+	if (!ft_check_surronded(map))
+		return (ERR_MAP_SURRONDED);
+
+	err = ft_check_format(map);
+	if (err)
+		return (err);
+
+	err = ft_check_path(map);
+	if (err)
+		return (err);
+
+	return (OK);
 }

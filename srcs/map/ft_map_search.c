@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmap_check.c                                    :+:      :+:    :+:   */
+/*   ft_map_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 15:03:21 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/27 15:32:13 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/28 04:23:27 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-t_error ft_cmap_check(char *raw_map[])
+t_coord ft_map_search(t_map map, t_mapc comp)
 {
-	if (!ft_check_isrect(raw_map))
-		return (ERR_MAP_RECT);
+	size_t x;
+	size_t y;
+	t_coord pos;
 
-	if (!ft_check_isreg(raw_map))
-		return (ERR_MAP_REG);
+	y = 0;
+	pos.x = 0;
+	pos.y = 0;
 
-	return (OK);
+	while (y < map.height)
+	{
+		x = 0;
+		while (x < map.width)
+		{
+			if (map.grid[y][x] == (int)comp)
+				return (pos);
+			pos.x = ++x;
+		}
+		pos.y = ++y;
+	}
+	pos.x = -1;
+	pos.y = -1;
+	return (pos);
 }
