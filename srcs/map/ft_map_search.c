@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_emap_search.c                                   :+:      :+:    :+:   */
+/*   ft_map_search.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:32:13 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 18:34:10 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:23:27 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-t_coord ft_emap_search(t_map map, t_mapc comp)
+t_coord ft_map_search(t_map map, t_mapc comp)
 {
 	size_t x;
 	size_t y;
@@ -27,7 +27,7 @@ t_coord ft_emap_search(t_map map, t_mapc comp)
 		x = 0;
 		while (x < map.width)
 		{
-			if (map.matrix[y][x] == (int)comp)
+			if (map.grid[y][x] == (int)comp)
 				return (pos);
 			pos.x = ++x;
 		}
