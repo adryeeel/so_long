@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:43:08 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/22 15:56:37 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:25:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void ft_game_free(t_game game)
 {
-	ft_matrix_free(game.map.matrix);
+	ft_map_free(game.map.grid);
 }
