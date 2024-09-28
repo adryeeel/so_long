@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 14:09:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:59:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void ft_error_print(t_error err)
 		ft_puterr_ximg(err);
 
 	if (err >= ERR_RENDSCENE_DATA && err <= ERR_RENDSCENE_CREATE)
-		ft_puterr_rendscene(err);
+		ft_puterr_scene(err);
 
-	if (err >= ERR_RENDBG_CREATE && err <= ERR_RENDBG_FILEPATH)
-		ft_puterr_rendbg(err);
+	if (err >= ERR_RENDBG_DATA && err <= ERR_RENDBG_FILEPATH)
+		ft_puterr_bg(err);
 }
