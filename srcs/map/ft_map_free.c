@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmap_free.c                                     :+:      :+:    :+:   */
+/*   ft_map_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 04:59:37 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:23:00 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_cmap_free(char *raw_map[])
+void ft_map_free(char *grid[])
 {
 	size_t i;
 
 	i = 0;
-	while (raw_map[i])
+	while (grid[i])
 	{
-		free(raw_map[i]);
+		free(grid[i]);
 		i++;
 	}
-	free(raw_map);
+	free(grid);
 }
