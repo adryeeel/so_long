@@ -146,18 +146,12 @@ MAPC =	ft_check_ext.c \
 MAPC_PATH = $(MAP_PATH)/check
 MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
 
-# Matrix sources
-
-MATRIX =	ft_matrix_free.c \
-			ft_matrix_alloc.c \
-
-MATRIX_PATH = $(MAIN_PATH)/matrix
-MATRIX_OBJS = $(addprefix $(BUILD_DIR)/,$(MATRIX:.c=.o))
-
 # Miscellaneous sources
 
 MISC =	ft_dirs_setup.c \
 		ft_points_free.c \
+		ft_matrix_free.c \
+		ft_matrix_alloc.c \
 
 MISC_PATH = $(MAIN_PATH)/misc
 MISC_OBJS = $(addprefix $(BUILD_DIR)/,$(MISC:.c=.o))
@@ -223,8 +217,6 @@ $(BUILD_DIR)/%.o: $(MAPC_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(MISC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(MATRIX_PATH)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
 # Libraries Build
 
 $(LIBFT_PATH)/$(LIBFT):
