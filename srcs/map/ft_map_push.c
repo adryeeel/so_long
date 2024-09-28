@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmap_push.c                                     :+:      :+:    :+:   */
+/*   ft_map_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 01:47:54 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/24 22:40:24 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 04:26:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
 static bool ft_copy(char *dst[], char *src[], size_t len)
 {
@@ -25,22 +25,22 @@ static bool ft_copy(char *dst[], char *src[], size_t len)
 	return (true);
 }
 
-bool ft_cmap_push(char **raw_map[], char *line)
+bool ft_map_push(char **grid[], char *line)
 {
 	size_t len;
 	char **new_map;
 
-	len = ft_strarr_length(*raw_map);
+	len = ft_strarr_length(*grid);
 	new_map = ft_calloc(len + 1 + NULL_BYTE, sizeof(char *));
 
 	if (!new_map)
 		return (false);
 
-	ft_copy(new_map, *raw_map, len);
+	ft_copy(new_map, *grid, len);
 	new_map[len] = ft_strdup(line);
 
-	ft_cmap_free(*raw_map);
-	*raw_map = new_map;
+	ft_map_free(*grid);
+	*grid = new_map;
 
 	return (true);
 }
