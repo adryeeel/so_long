@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 14:01:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:00:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ static void ft_puterr_map_setup(t_error err)
 
 	if (err == ERR_MAP_EMPTY)
 		ft_putendl_fd("Invalid map: Is empty", STDERR_FILENO);
-
-	if (err == ERR_MAP_MATRIX)
-		perror("Failed to create the map's matrix");
 }
 
 static void ft_puterr_map_format(t_error err)
@@ -71,7 +68,7 @@ static void ft_puterr_map_format(t_error err)
 
 void ft_puterr_map(t_error err)
 {
-	if (err >= ERR_MAP_EXT && err <= ERR_MAP_MATRIX)
+	if (err >= ERR_MAP_EXT && err <= ERR_MAP_ISDIR)
 		ft_puterr_map_setup(err);
 
 	if (err >= ERR_MAP_REG && err <= ERR_MAP_COLLECTIBLE)
