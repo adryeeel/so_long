@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:20:32 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 22:46:20 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 13:16:39 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void ft_enqueue_points(t_map map, t_queue *points)
 			point->x = x;
 			point->y = y;
 
-			if (map.matrix[y][x] == START_POINT ||
-				map.matrix[y][x] == EXIT_POINT ||
-				map.matrix[y][x] == COLLECTIBLE)
+			if (map.grid[y][x] == START_POINT ||
+				map.grid[y][x] == EXIT_POINT ||
+				map.grid[y][x] == COLLECTIBLE)
 			{
 				ft_enqueue(points, point);
 				continue;
@@ -58,23 +58,23 @@ t_error ft_check_path(t_map map)
 	t_queue points;
 
 	ft_enqueue_points(map, &points);
-	start = ft_emap_search(map, START_POINT);
+	start = ft_map_search(map, START_POINT);
 
 	while (points.length > 0)
 	{
 		pos = ft_dequeue(&points);
-		err = ft_emap_bfs(map, start, *pos);
+		err = ft_map_bfs(map, start, *pos);
 
 		if (err && err != ERR_MAP_PATH)
 			return (err);
 
-		if (err && map.matrix[pos->y][pos->x] == EXIT_POINT)
+		if (err && map.grid[pos->y][pos->x] == EXIT_POINT)
 		{
 			err = ERR_MAP_PATH_EXIT;
 			break;
 		}
 
-		if (err && map.matrix[pos->y][pos->x] == COLLECTIBLE)
+		if (err && map.grid[pos->y][pos->x] == COLLECTIBLE)
 		{
 			err = ERR_MAP_PATH_COLL;
 			break;
