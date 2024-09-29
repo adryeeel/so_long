@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 15:43:34 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 13:47:33 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 23:15:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_flags ft_flags_parse(t_map map)
 			if (row[j] == COLLECTIBLE)
 				flags.collectible++;
 
+			//! TODO: Fix for unknown characters
+			//! TODO: Skip map wall in bfs to speed up 
 			if (row[j] == UNKNOWN)
 				flags.unknown++;
 
