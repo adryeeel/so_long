@@ -1,66 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_bg.c                                     :+:      :+:    :+:   */
+/*   ft_render_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:10:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 15:22:08 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:25:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-bool ft_fill_tile(t_ximg t, t_ximg *s, int sx, int sy)
+t_error ft_render_space(void *display, t_map map, t_ximg *scene)
 {
-	int x;
-	int y;
-	size_t s_idx;
-	size_t t_idx;
-
-	y = 0;
-	while (y < t.height)
-	{
-		x = 0;
-		while (x < t.width)
-		{
-			t_idx = (y * t.size_line) + (x * (t.bpp / 8));
-			s_idx = ((sy + y) * s->size_line) + ((sx + x) * (s->bpp / 8));
-
-			s->buff[s_idx] = t.buff[t_idx];
-			s->buff[s_idx + 1] = t.buff[t_idx + 1];
-			s->buff[s_idx + 2] = t.buff[t_idx + 2];
-			s->buff[s_idx + 3] = t.buff[t_idx + 3];
-			x++;
-		}
-		y++;
-	}
-
-	return (true);
-}
-
-t_error ft_render_bg(void *display, t_ximg *scene)
-{
-	int x;
-	int y;
 	t_ximg tex;
 	t_error err;
+	t_coord coord;
 
 	err = ft_ximgf_setup(display, &tex, BG_IMG_PATH);
 	if (err)
 		return (err);
 
-	y = 0;
-	while (y < scene->height)
+	coord = ft_map_search_seq(map, SPACE);
+
+	while (coord.x >= 0)
 	{
-		x = 0;
-		while (x < scene->width)
-		{
-			ft_fill_tile(tex, scene, x, y);
-			x += TILE_SIZE;
-		}
-		y += TILE_SIZE;
+		ft_render_tile(scene, tex, (t_coord){
+			coord.x * TILE_SIZE, 
+			coord.y * TILE_SIZE
+		});
+		coord = ft_map_search_seq(map, SPACE);
 	}
 
 	ft_ximg_free(display, tex);
