@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_bg.c                                      :+:      :+:    :+:   */
+/*   ft_error_space.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:30:04 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:55:22 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:11:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_error ft_error_bg(t_error err)
+t_error ft_error_space(t_error err)
 {
 	if (err == ERR_XIMG_PARAM)
 		return (ERR_RENDBG_PARAM);
