@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 13:21:59 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 23:38:56 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void ft_map_setup(t_map *map, char *grid[]);
 bool ft_map_push(char **grid[], char *line);
 
 t_error ft_map_check(t_map map);
-t_coord ft_map_search(t_map map, t_mapc comp);
+t_coord ft_map_search_seq(t_map map, t_mapc comp);
 t_error ft_map_read(char **grid[], char *map_path);
 t_error ft_map_process(t_map *map, char *map_path);
 t_error ft_map_bfs(t_map map, t_coord start, t_coord end);
+t_coord ft_map_search(t_map map, t_mapc comp, t_coord start);
 
 #endif
