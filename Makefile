@@ -37,7 +37,8 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
 # Error handling sources
 
-ERROR =	ft_error_bg.c \
+ERROR =	ft_error_wall.c \
+		ft_error_space.c \
 		ft_error_print.c \
 		ft_error_scene.c \
 
@@ -46,9 +47,10 @@ ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
 # Error print sources
 
-ERRORP =	ft_puterr_bg.c \
-			ft_puterr_map.c \
+ERRORP =	ft_puterr_map.c \
+			ft_puterr_wall.c \
 			ft_puterr_ximg.c \
+			ft_puterr_space.c \
 			ft_puterr_scene.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
@@ -72,7 +74,9 @@ HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
 # Window Management — Render sources
 
-RENDER =	ft_render_bg.c \
+RENDER =	ft_render_tile.c \
+			ft_render_wall.c \
+			ft_render_space.c \
 			ft_render_scene.c \
 
 RENDER_PATH = $(WIN_PATH)/render
@@ -124,6 +128,7 @@ MAP =	ft_map_bfs.c \
 		ft_map_setup.c \
 		ft_map_search.c \
 		ft_map_process.c \
+		ft_map_search_seq.c \
 
 MAP_PATH = $(MAIN_PATH)/map
 MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
