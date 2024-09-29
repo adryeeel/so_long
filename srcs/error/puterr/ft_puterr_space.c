@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_bg.c                                     :+:      :+:    :+:   */
+/*   ft_puterr_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:28:38 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:14:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_bg(t_error err)
+void ft_puterr_space(t_error err)
 {
 	ft_putendl_fd("Unable to render the game's background", STDERR_FILENO);
 
