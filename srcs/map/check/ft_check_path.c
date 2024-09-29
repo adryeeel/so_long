@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:20:32 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 13:16:39 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 22:58:16 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_error ft_check_path(t_map map)
 	t_queue points;
 
 	ft_enqueue_points(map, &points);
-	start = ft_map_search(map, START_POINT);
+	start = ft_map_search(map, START_POINT, (t_coord){0, 0});
 
 	while (points.length > 0)
 	{
