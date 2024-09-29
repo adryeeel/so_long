@@ -6,32 +6,29 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:32:13 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 04:23:27 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/28 23:05:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_coord ft_map_search(t_map map, t_mapc comp)
+t_coord ft_map_search(t_map map, t_mapc comp, t_coord start)
 {
-	size_t x;
-	size_t y;
 	t_coord pos;
 
-	y = 0;
-	pos.x = 0;
-	pos.y = 0;
+	pos.x = start.x;
+	pos.y = start.y;
 
-	while (y < map.height)
+	while (map.grid[pos.y])
 	{
-		x = 0;
-		while (x < map.width)
+		while (map.grid[pos.y][pos.x])
 		{
-			if (map.grid[y][x] == (int)comp)
+			if (map.grid[pos.y][pos.x] == (int)comp)
 				return (pos);
-			pos.x = ++x;
+			pos.x++;
 		}
-		pos.y = ++y;
+		pos.x = 0;
+		pos.y++;
 	}
 	pos.x = -1;
 	pos.y = -1;
