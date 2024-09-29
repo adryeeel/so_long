@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:59:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:13:15 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,23 @@ typedef enum e_error
 	ERR_RENDBG_PARAM,
 	ERR_RENDBG_CREATE,
 	ERR_RENDBG_FILEPATH,
+
+	/* Wall Render Errors */
+	ERR_RENDWALL_DATA,
+	ERR_RENDWALL_PARAM,
+	ERR_RENDWALL_CREATE,
+	ERR_RENDWALL_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
-t_error ft_error_bg(t_error err);
+t_error ft_error_wall(t_error err);
+t_error ft_error_space(t_error err);
 t_error ft_error_scene(t_error err);
 
-void ft_puterr_bg(t_error err);
 void ft_puterr_map(t_error err);
+void ft_puterr_wall(t_error err);
 void ft_puterr_ximg(t_error err);
+void ft_puterr_space(t_error err);
 void ft_puterr_scene(t_error err);
 
 #endif
