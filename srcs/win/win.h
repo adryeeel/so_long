@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/29 02:02:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:21:57 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int ft_hook_key(int key, void *param);
 /* Window Management — Rendering */
 
 t_error ft_render_scene(t_xenv x, t_game g, t_ximg *scene);
-void ft_render_tile(t_ximg* dst, t_ximg tile, t_coord dst_p);
+void ft_render_tile(t_ximg *dst, t_ximg tile, t_coord dst_p);
 t_error ft_render_wall(void *display, t_map map, t_ximg *scene);
 t_error ft_render_space(void *display, t_map map, t_ximg *scene);
 
