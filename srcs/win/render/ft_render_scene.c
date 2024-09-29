@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:27:33 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:30:47 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/29 02:13:53 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,18 @@ t_error ft_render_scene(t_xenv x, t_game g, t_ximg *scene)
 	if (err)
 		return (ft_error_scene(err));
 
-	err = ft_render_bg(x.display, scene);
+	err = ft_render_space(x.display, g.map, scene);
 	if (err)
 	{
 		ft_ximg_free(x.display, *scene);
-		return (ft_error_bg(err));
+		return (ft_error_space(err));
+	}
+
+	err = ft_render_wall(x.display, g.map, scene);
+	if (err)
+	{
+		ft_ximg_free(x.display, *scene);
+		return (ft_error_wall(err));
 	}
 
 	mlx_put_image_to_window(x.display, x.window, scene->id, 0, 0);
