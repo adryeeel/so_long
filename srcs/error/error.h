@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/29 02:13:15 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/30 21:49:36 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,33 @@ typedef enum e_error
 	ERR_RENDWALL_PARAM,
 	ERR_RENDWALL_CREATE,
 	ERR_RENDWALL_FILEPATH,
+
+	/* Collectible Render Errors */
+	ERR_RENDCOLL_DATA,
+	ERR_RENDCOLL_PARAM,
+	ERR_RENDCOLL_CREATE,
+	ERR_RENDCOLL_FILEPATH,
+
+	/* Avatar Render Errors */
+	ERR_RENDAVATAR_DATA,
+	ERR_RENDAVATAR_PARAM,
+	ERR_RENDAVATAR_CREATE,
+	ERR_RENDAVATAR_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
 t_error ft_error_wall(t_error err);
+t_error ft_error_coll(t_error err);
 t_error ft_error_space(t_error err);
 t_error ft_error_scene(t_error err);
+t_error ft_error_avatar(t_error err);
 
 void ft_puterr_map(t_error err);
 void ft_puterr_wall(t_error err);
 void ft_puterr_ximg(t_error err);
+void ft_puterr_coll(t_error err);
 void ft_puterr_space(t_error err);
 void ft_puterr_scene(t_error err);
+void ft_puterror_avatar(t_error err);
 
 #endif
