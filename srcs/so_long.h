@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 23:27:41 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:39:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@
 #define BG_IMG_PATH "assets/imgs/bg.xpm"
 #define WALL_IMG_PATH "assets/imgs/wall.xpm"
 #define AVATAR_IMG_PATH "assets/imgs/avatar.xpm"
-
-/* Matrix Manipulation */
-
-void ft_matrix_free(int **matrix);
-int **ft_matrix_alloc(size_t x, size_t y);
+#define COLL_IMG_PATH "assets/imgs/collectible.xpm"
 
 /* Miscellaneous */
 
 int **ft_dirs_setup(void);
+void ft_matrix_free(int **matrix);
 void ft_points_free(t_queue points);
+int **ft_matrix_alloc(size_t x, size_t y);
 
 #endif
