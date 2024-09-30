@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/29 02:12:03 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/30 01:51:39 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,7 @@ void ft_error_print(t_error err)
 		
 	if (err >= ERR_RENDWALL_DATA && err <= ERR_RENDWALL_FILEPATH)
 		ft_puterr_wall(err);
+
+	if (err >= ERR_RENDCOLL_DATA && err <= ERR_RENDCOLL_FILEPATH)
+		ft_puterr_coll(err);
 }
