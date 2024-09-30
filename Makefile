@@ -38,9 +38,11 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 # Error handling sources
 
 ERROR =	ft_error_wall.c \
+		ft_error_coll.c \
 		ft_error_space.c \
 		ft_error_print.c \
 		ft_error_scene.c \
+		ft_error_avatar.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
@@ -50,8 +52,10 @@ ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 ERRORP =	ft_puterr_map.c \
 			ft_puterr_wall.c \
 			ft_puterr_ximg.c \
+			ft_puterr_coll.c \
 			ft_puterr_space.c \
 			ft_puterr_scene.c \
+			ft_puterr_avatar.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
@@ -67,6 +71,7 @@ WIN_OBJS = $(addprefix $(BUILD_DIR)/,$(WIN:.c=.o))
 # Window Management — Hook sources
 
 HOOK =	ft_hook_key.c \
+		ft_hook_loop.c \
 		ft_hook_close.c \
 
 HOOK_PATH = $(WIN_PATH)/hook
@@ -74,13 +79,15 @@ HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
 # Window Management — Render sources
 
-RENDER =	ft_render_tile.c \
-			ft_render_wall.c \
-			ft_render_space.c \
-			ft_render_scene.c \
+DRAW =	ft_draw_anim.c \
+		ft_draw_comp.c \
+		ft_draw_coll.c \
+		ft_draw_move.c \
+		ft_draw_static.c \
+		ft_draw_avatar.c \
 
-RENDER_PATH = $(WIN_PATH)/render
-RENDER_OBJS = $(addprefix $(BUILD_DIR)/,$(RENDER:.c=.o))
+DRAW_PATH = $(WIN_PATH)/draw
+DRAW_OBJS = $(addprefix $(BUILD_DIR)/,$(DRAW:.c=.o))
 
 # Window Management — Xenv sources
 
@@ -93,7 +100,9 @@ XENV_OBJS = $(addprefix $(BUILD_DIR)/,$(XENV:.c=.o))
 # Window Management — Ximg sources
 
 XIMG =	ft_ximg_free.c \
+		ft_ximg_copy.c \
 		ft_ximg_setup.c \
+		ft_ximg_frame.c \
 		ft_ximgf_setup.c \
 
 XIMG_PATH = $(WIN_PATH)/ximg
@@ -161,7 +170,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -185,7 +194,7 @@ $(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(DRAW_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)
