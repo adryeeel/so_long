@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/29 02:21:57 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/09/30 22:23:41 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 
 typedef enum e_error t_error;
 typedef struct s_game t_game;
-
-typedef struct s_xenv
-{
-	void *window;
-	void *display;
-} t_xenv;
 
 typedef struct s_ximg
 {
@@ -35,6 +29,14 @@ typedef struct s_ximg
 	char *path;
 } t_ximg;
 
+typedef struct s_xenv
+{
+	void *window;
+	void *display;
+	t_ximg coll;
+	t_ximg scene;
+} t_xenv;
+
 typedef struct s_param
 {
 	t_xenv *x;
@@ -43,30 +45,35 @@ typedef struct s_param
 
 /* Window Management */
 
-t_error ft_win_setup(t_xenv x, t_game g);
+t_error ft_win_setup(t_xenv *x, t_game g);
 int mlx_close_hook(void *win_ptr, int (*funct)(), void *param);
 
 /* Window Management — Hooks */
 
+int ft_hook_loop(void *param);
 int ft_hook_close(void *param);
 int ft_hook_key(int key, void *param);
 
 /* Window Management — Rendering */
 
-t_error ft_render_scene(t_xenv x, t_game g, t_ximg *scene);
-void ft_render_tile(t_ximg *dst, t_ximg tile, t_coord dst_p);
-t_error ft_render_wall(void *display, t_map map, t_ximg *scene);
-t_error ft_render_space(void *display, t_map map, t_ximg *scene);
+t_error ft_draw_anim(t_xenv x, t_game g);
+t_error ft_draw_static(t_xenv x, t_game g);
+t_error ft_draw_coll(t_xenv x, t_game g, size_t frame_n);
+t_error ft_draw_move(t_xenv x, t_map map, t_coord avatar);
+t_error ft_draw_avatar(t_xenv x, t_map map, t_coord avatar);
+t_error ft_draw_comp(t_xenv x, t_map map, t_mapc comp, char *tex_path);
 
 /* Window Management — Xenv */
 
 void ft_xenv_free(t_xenv x);
-t_error ft_xenv_setup(t_xenv *x);
+t_error ft_xenv_setup(t_xenv *x, t_map map);
 
 /* Window Management — Ximg */
 
 void ft_ximg_free(void *display, t_ximg ximg);
+void ft_ximg_copy(t_ximg *dst, t_ximg src, t_coord dst_p);
 t_error ft_ximgf_setup(void *display, t_ximg *ximg, char *path);
 t_error ft_ximg_setup(void *display, t_ximg *ximg, int width, int height);
+t_error ft_ximg_frame(t_xenv x, t_ximg frameset, t_ximg *frame, size_t frame_n);
 
 #endif
