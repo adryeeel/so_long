@@ -40,9 +40,11 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 ERROR =	ft_error_wall.c \
 		ft_error_coll.c \
 		ft_error_space.c \
+		ft_error_exit.c \
 		ft_error_print.c \
 		ft_error_scene.c \
 		ft_error_avatar.c \
+		ft_error_patrol.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
@@ -53,16 +55,21 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_wall.c \
 			ft_puterr_ximg.c \
 			ft_puterr_coll.c \
+			ft_puterr_exit.c \
 			ft_puterr_space.c \
 			ft_puterr_scene.c \
+			ft_puterr_patrol.c \
 			ft_puterr_avatar.c \
+			ft_puterr_format.c \
+			ft_puterr_pathway.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
 
 # Window Management sources
 
-WIN =	ft_win_setup.c \
+WIN =	ft_win_draw.c \
+		ft_win_setup.c \
 		mlx_close_hook.c \
 
 WIN_PATH = $(MAIN_PATH)/win
@@ -79,12 +86,11 @@ HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
 # Window Management — Render sources
 
-DRAW =	ft_draw_anim.c \
+DRAW =	ft_draw_at.c \
+		ft_draw_anim.c \
 		ft_draw_comp.c \
-		ft_draw_coll.c \
 		ft_draw_move.c \
-		ft_draw_static.c \
-		ft_draw_avatar.c \
+		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw
 DRAW_OBJS = $(addprefix $(BUILD_DIR)/,$(DRAW:.c=.o))
@@ -104,6 +110,8 @@ XIMG =	ft_ximg_free.c \
 		ft_ximg_setup.c \
 		ft_ximg_frame.c \
 		ft_ximgf_setup.c \
+		ft_ximg_sprite.c \
+		ft_ximg_fill_alpha.c \
 
 XIMG_PATH = $(WIN_PATH)/ximg
 XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
@@ -136,6 +144,7 @@ MAP =	ft_map_bfs.c \
 		ft_map_check.c \
 		ft_map_setup.c \
 		ft_map_search.c \
+		ft_map_iscomp.c \
 		ft_map_process.c \
 		ft_map_search_seq.c \
 
@@ -146,10 +155,10 @@ MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 
 MAPC =	ft_check_ext.c \
 		ft_check_path.c \
+		ft_check_comp.c \
 		ft_check_isreg.c \
-		ft_check_format.c \
 		ft_check_isrect.c \
-		ft_check_surronded.c \
+		ft_check_surrounded.c \
 
 MAPC_PATH = $(MAP_PATH)/check
 MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
