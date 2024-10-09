@@ -1,46 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hook_key.c                                      :+:      :+:    :+:   */
+/*   ft_hook_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:17:06 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/07 01:09:11 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/29 19:08:57 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/08 01:36:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/time.h>
 #include "../../so_long.h"
 
-#define XK_LATIN1
-#define XK_MISCELLANY
+#define FPS_16 64
 
-#include <X11/keysymdef.h>
+size_t ft_draw_time(void)
+{
+	struct timeval time;
 
-int ft_hook_key(int key, void *param)
+	gettimeofday(&time, NULL);
+
+	return (time.tv_sec * 1000) + (time.tv_usec / 1000);
+}
+
+int ft_hook_loop(void *param)
 {
 	t_xenv *x;
 	t_game *g;
+	t_error err;
+	size_t curr_time;
+	static size_t last_time;
 
 	x = ((t_param *)param)->x;
 	g = ((t_param *)param)->g;
+	curr_time = ft_draw_time();
 
-	if (key == XK_Escape)
+	if (curr_time - last_time < FPS_16)
+		return (OK);
+
+	err = ft_draw_anim(*x, g->map);
+	if (err)
+	{
+		ft_error_print(err);
 		mlx_loop_end(x->display);
+	}
 
-	if (key == XK_W || key == XK_w)
-		ft_move_up(g);
-
-	if (key == XK_A || key == XK_a)
-		ft_move_left(g);
-
-	if (key == XK_S || key == XK_s)
-		ft_move_down(g);
-
-	if (key == XK_D || key == XK_d)
-		ft_move_right(g);
-
-	ft_draw_move(*x, *g);
+	last_time = curr_time;
 	mlx_put_image_to_window(x->display, x->window, x->scene.id, 0, TILE_SIZE);
 
 	return (0);

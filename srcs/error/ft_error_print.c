@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:59:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:27:08 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_error_print(t_error err)
 		ft_putendl_fd("Invalid number of arguments", STDERR_FILENO);
 
 	if (err == ERR_XSRV_INIT)
-		ft_putendl_fd("Failed to connect to X Server", STDERR_FILENO);
+		ft_putendl_fd("Failed to connect to the X Server", STDERR_FILENO);
 
 	if (err == ERR_WIN_CREATE)
 		ft_putendl_fd("Failed to create the game's window", STDERR_FILENO);
@@ -33,7 +33,22 @@ void ft_error_print(t_error err)
 
 	if (err >= ERR_RENDSCENE_DATA && err <= ERR_RENDSCENE_CREATE)
 		ft_puterr_scene(err);
+		
+	if (err >= ERR_RENDPATROL_DATA && err <= ERR_RENDPATROL_FILEPATH)
+		ft_puterr_patrol(err);
+
+	if (err >= ERR_RENDAVATAR_DATA && err <= ERR_RENDAVATAR_FILEPATH)
+		ft_puterr_avatar(err);
 
 	if (err >= ERR_RENDBG_DATA && err <= ERR_RENDBG_FILEPATH)
-		ft_puterr_bg(err);
+		ft_puterr_space(err);
+		
+	if (err >= ERR_RENDWALL_DATA && err <= ERR_RENDWALL_FILEPATH)
+		ft_puterr_wall(err);
+
+	if (err >= ERR_RENDCOLL_DATA && err <= ERR_RENDCOLL_FILEPATH)
+		ft_puterr_coll(err);
+
+	if (err >= ERR_RENDEXIT_DATA && err <= ERR_RENDEXIT_FILEPATH)
+		ft_puterr_exit(err);
 }

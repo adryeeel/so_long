@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_puterr_space.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/29 02:14:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_right(t_game *game)
+void ft_puterr_space(t_error err)
 {
-	int x;
-	int y;
+	ft_putendl_fd("Unable to render the game's background", STDERR_FILENO);
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	if (err == ERR_RENDBG_PARAM)
+		ft_puterr_ximg(ERR_XIMG_PARAM);
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_RENDBG_CREATE)
+		ft_puterr_ximg(ERR_XIMG_CREATE);
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	if (err == ERR_RENDBG_DATA)
+		ft_puterr_ximg(ERR_XIMG_DATA);
 
-	game->avatar.x++;
+	if (err == ERR_RENDBG_FILEPATH)
+		ft_puterr_ximg(ERR_XIMG_FILEPATH);
 }

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_error_avatar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/28 18:29:49 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/30 14:40:27 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_move_right(t_game *game)
+t_error ft_error_avatar(t_error err)
 {
-	int x;
-	int y;
+	if (err == ERR_XIMG_PARAM)
+		return (ERR_RENDAVATAR_PARAM);
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	if (err == ERR_XIMG_CREATE)
+		return (ERR_RENDAVATAR_CREATE);
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_XIMG_DATA)
+		return (ERR_RENDAVATAR_DATA);
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	if (err == ERR_XIMG_FILEPATH)
+		return (ERR_RENDAVATAR_FILEPATH);
 
-	game->avatar.x++;
+	if (err)
+		return (err);
+
+	return (OK);
 }
+

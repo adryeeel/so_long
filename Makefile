@@ -37,26 +37,39 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
 # Error handling sources
 
-ERROR =	ft_error_bg.c \
+ERROR =	ft_error_wall.c \
+		ft_error_coll.c \
+		ft_error_space.c \
+		ft_error_exit.c \
 		ft_error_print.c \
 		ft_error_scene.c \
+		ft_error_avatar.c \
+		ft_error_patrol.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
 # Error print sources
 
-ERRORP =	ft_puterr_bg.c \
-			ft_puterr_map.c \
+ERRORP =	ft_puterr_map.c \
+			ft_puterr_wall.c \
 			ft_puterr_ximg.c \
+			ft_puterr_coll.c \
+			ft_puterr_exit.c \
+			ft_puterr_space.c \
 			ft_puterr_scene.c \
+			ft_puterr_patrol.c \
+			ft_puterr_avatar.c \
+			ft_puterr_format.c \
+			ft_puterr_pathway.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
 ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
 
 # Window Management sources
 
-WIN =	ft_win_setup.c \
+WIN =	ft_win_draw.c \
+		ft_win_setup.c \
 		mlx_close_hook.c \
 
 WIN_PATH = $(MAIN_PATH)/win
@@ -65,6 +78,7 @@ WIN_OBJS = $(addprefix $(BUILD_DIR)/,$(WIN:.c=.o))
 # Window Management — Hook sources
 
 HOOK =	ft_hook_key.c \
+		ft_hook_loop.c \
 		ft_hook_close.c \
 
 HOOK_PATH = $(WIN_PATH)/hook
@@ -72,11 +86,14 @@ HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
 # Window Management — Render sources
 
-RENDER =	ft_render_bg.c \
-			ft_render_scene.c \
+DRAW =	ft_draw_at.c \
+		ft_draw_anim.c \
+		ft_draw_comp.c \
+		ft_draw_move.c \
+		ft_draw_background.c \
 
-RENDER_PATH = $(WIN_PATH)/render
-RENDER_OBJS = $(addprefix $(BUILD_DIR)/,$(RENDER:.c=.o))
+DRAW_PATH = $(WIN_PATH)/draw
+DRAW_OBJS = $(addprefix $(BUILD_DIR)/,$(DRAW:.c=.o))
 
 # Window Management — Xenv sources
 
@@ -89,8 +106,12 @@ XENV_OBJS = $(addprefix $(BUILD_DIR)/,$(XENV:.c=.o))
 # Window Management — Ximg sources
 
 XIMG =	ft_ximg_free.c \
+		ft_ximg_copy.c \
 		ft_ximg_setup.c \
+		ft_ximg_frame.c \
 		ft_ximgf_setup.c \
+		ft_ximg_sprite.c \
+		ft_ximg_fill_alpha.c \
 
 XIMG_PATH = $(WIN_PATH)/ximg
 XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
@@ -123,7 +144,9 @@ MAP =	ft_map_bfs.c \
 		ft_map_check.c \
 		ft_map_setup.c \
 		ft_map_search.c \
+		ft_map_iscomp.c \
 		ft_map_process.c \
+		ft_map_search_seq.c \
 
 MAP_PATH = $(MAIN_PATH)/map
 MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
@@ -132,10 +155,10 @@ MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 
 MAPC =	ft_check_ext.c \
 		ft_check_path.c \
+		ft_check_comp.c \
 		ft_check_isreg.c \
-		ft_check_format.c \
 		ft_check_isrect.c \
-		ft_check_surronded.c \
+		ft_check_surrounded.c \
 
 MAPC_PATH = $(MAP_PATH)/check
 MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
@@ -156,7 +179,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(RENDER_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -180,7 +203,7 @@ $(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(RENDER_PATH)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(DRAW_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(XENV_PATH)/%.c | $(BUILD_DIR)

@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_scene.c                                  :+:      :+:    :+:   */
+/*   ft_win_draw.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 17:27:33 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 16:30:47 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/06 00:49:08 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/09 22:28:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-t_error ft_render_scene(t_xenv x, t_game g, t_ximg *scene)
+t_error ft_win_draw(t_xenv x, t_game g)
 {
-	int win_h;
-	int win_w;
 	t_error err;
 
-	win_w = g.map.width * TILE_SIZE;
-	win_h = g.map.height * TILE_SIZE;
-
-	err = ft_ximg_setup(x.display, scene, win_w, win_h);
+	err = ft_draw_comp(x, g, WALL);
 	if (err)
-		return (ft_error_scene(err));
+		return (ft_error_wall(err));
 
-	err = ft_render_bg(x.display, scene);
+	err = ft_draw_comp(x, g, SPACE);
 	if (err)
-	{
-		ft_ximg_free(x.display, *scene);
-		return (ft_error_bg(err));
-	}
+		return (ft_error_space(err));
 
-	mlx_put_image_to_window(x.display, x.window, scene->id, 0, 0);
+	err = ft_draw_comp(x, g, AVATAR);
+	if (err)
+		return (ft_error_avatar(err));
+
+	err = ft_draw_comp(x, g, EXIT_POINT);
+	if (err)
+		return (ft_error_exit(err));
 
 	return (OK);
 }

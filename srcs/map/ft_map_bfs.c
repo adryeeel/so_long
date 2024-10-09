@@ -6,13 +6,15 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:03:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 04:23:07 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:30:02 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_error ft_bfs_setup(t_map map, t_coord start, int ***visited, t_coord **sp)
+#define TOTAL_DIRECTIONS 4
+
+static t_error ft_bfs_setup(t_map map, t_coord start, int ***visited, t_coord **sp)
 {
 	*visited = ft_matrix_alloc(map.width, map.height);
 
@@ -35,7 +37,7 @@ t_error ft_bfs_setup(t_map map, t_coord start, int ***visited, t_coord **sp)
 	return (OK);
 }
 
-bool ft_bfs_isvalid(t_map map, t_coord pos, int **visited)
+static bool ft_bfs_isvalid(t_map map, t_coord pos, int **visited)
 {
 	size_t ok;
 
@@ -55,7 +57,7 @@ bool ft_bfs_isvalid(t_map map, t_coord pos, int **visited)
 	return (ok == 4);
 }
 
-t_error ft_bfs_edges(t_map map, t_queue *q, t_coord curr, int **visited)
+static t_error ft_bfs_edges(t_map map, t_queue *q, t_coord curr, int **visited)
 {
 	int i;
 	t_coord *pos;
@@ -92,19 +94,19 @@ t_error ft_map_bfs(t_map map, t_coord start, t_coord end)
 {
 	t_queue q;
 	t_error err;
+	t_coord *sp;
 	t_coord *pos;
-	t_coord *s_pos;
 	int **visited;
 
-	s_pos = NULL;
+	sp = NULL;
 	visited = NULL;
-	err = ft_bfs_setup(map, start, &visited, &s_pos);
+	err = ft_bfs_setup(map, start, &visited, &sp);
 
 	if (err)
 		return (err);
 
 	ft_queue_init(&q);
-	ft_enqueue(&q, s_pos);
+	ft_enqueue(&q, sp);
 
 	while (q.length > 0)
 	{

@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_map_iscomp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/07 23:50:27 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/07 23:52:55 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_move_right(t_game *game)
+bool ft_map_iscomp(t_mapc comp)
 {
-	int x;
-	int y;
+	if (comp == WALL)
+		return (true);
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	if (comp == SPACE)
+		return (true);
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (comp == PATROL)
+		return (true);
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	if (comp == COLLECTIBLE)
+		return (true);
 
-	game->avatar.x++;
+	if (comp == START_POINT)
+		return (true);
+
+	if (comp == EXIT_POINT)
+		return (true);
+
+	return (false);
 }

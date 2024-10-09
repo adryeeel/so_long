@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_error_space.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/09/28 16:30:04 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/09/29 02:11:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_move_right(t_game *game)
+t_error ft_error_space(t_error err)
 {
-	int x;
-	int y;
+	if (err == ERR_XIMG_PARAM)
+		return (ERR_RENDBG_PARAM);
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	if (err == ERR_XIMG_CREATE)
+		return (ERR_RENDBG_CREATE);
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_XIMG_DATA)
+		return (ERR_RENDBG_DATA);
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	if (err == ERR_XIMG_FILEPATH)
+		return (ERR_RENDBG_FILEPATH);
 
-	game->avatar.x++;
+	if (err)
+		return (err);
+
+	return (OK);
 }

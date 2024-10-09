@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_ximg_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/07 17:38:29 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/08 01:16:56 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_right(t_game *game)
+t_error ft_ximg_sprite(t_xenv x, t_ximg *tex, t_mapc comp)
 {
-	int x;
-	int y;
+	if (comp == SPACE)
+		return (ft_ximgf_setup(x.display, tex, SPACE_IMG_PATH));
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	if (comp == WALL)
+		return (ft_ximgf_setup(x.display, tex, WALL_IMG_PATH));
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (comp == AVATAR)
+		return (ft_ximgf_setup(x.display, tex, AVATAR_IMG_PATH));
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	if (comp == EXIT_POINT)
+		return (ft_ximgf_setup(x.display, tex, EXIT_IMG_PATH));
 
-	game->avatar.x++;
+	return (OK);
 }

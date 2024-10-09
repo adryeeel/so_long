@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_draw_background.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:33:33 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/07 17:05:18 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/09 21:01:23 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_right(t_game *game)
+t_error ft_draw_background(void *display, t_ximg *tex)
 {
-	int x;
-	int y;
+	t_error err;
+	t_ximg background;
 
-	y = game->avatar.y;
-	x = game->avatar.x + 1;
+	err = ft_ximgf_setup(display, &background, SPACE_IMG_PATH);
 
-	if (game->map.grid[y][x] == WALL)
-		return;
+	if (err)
+		return (err);
 
-	if (game->map.grid[y][x] == COLLECTIBLE)
-		game->map.grid[y][x] = SPACE;
+	ft_ximg_fill_alpha(tex, background, (t_coord){0, 0});
+	ft_ximg_free(display, background);
 
-	game->avatar.x++;
+	return (OK);
 }

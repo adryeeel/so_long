@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 01:14:20 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 03:35:23 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:46:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool ft_check_bottom(char *bottom_row)
 	return (true);
 }
 
-bool ft_check_surronded(t_map map)
+bool ft_check_surrounded(t_map map)
 {
 	size_t y;
 
