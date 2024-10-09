@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 23:38:56 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:49:44 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_mapc
 	UNKNOWN = 0,
 	WALL = '1',
 	SPACE = '0',
+	PATROL = 'L',
 	EXIT_POINT = 'E',
 	START_POINT = 'P',
 	COLLECTIBLE = 'C',
@@ -38,6 +39,7 @@ typedef struct s_flags
 {
 	int exit;
 	int start;
+	int patrol;
 	int unknown;
 	int collectible;
 } t_flags;
@@ -54,13 +56,14 @@ typedef struct s_map
 bool ft_check_isreg(t_map map);
 bool ft_check_isrect(t_map map);
 t_error ft_check_path(t_map map);
-t_error ft_check_format(t_map map);
-bool ft_check_surronded(t_map map);
+t_error ft_check_comp(t_map map);
+bool ft_check_surrounded(t_map map);
 t_error ft_check_ext(char *map_path);
 
 /* Game — Map Manipulation */
 
 void ft_map_free(char *grid[]);
+bool ft_map_iscomp(t_mapc comp);
 void ft_map_setup(t_map *map, char *grid[]);
 bool ft_map_push(char **grid[], char *line);
 
