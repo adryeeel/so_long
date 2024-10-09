@@ -6,74 +6,32 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/28 17:00:31 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:12:39 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-static void ft_puterr_map_path(t_error err)
+void ft_puterr_map(t_error err)
 {
-	if (err == ERR_MAP_PATH_ALLOC)
-		perror("Failed to alloc during map path checking");
+	if (err >= ERR_MAP_REG && err <= ERR_MAP_COLLECTIBLE)
+		ft_puterr_format(err);
 
-	if (err == ERR_MAP_PATH_EXIT)
-		ft_putendl_fd("Invalid map path: Exit point is not reachable", STDERR_FILENO);
-
-	if (err == ERR_MAP_PATH_COLL)
-		ft_putendl_fd("Invalid map path: Collectible is not reachable", STDERR_FILENO);
-}
-
-static void ft_puterr_map_setup(t_error err)
-{
-	if (err == ERR_MAP_EXT)
-		ft_putendl_fd("Invalid map: Bad file extension", STDERR_FILENO);
+	if (err >= ERR_MAP_PATH_EXIT && err <= ERR_MAP_PATH_ALLOC)
+		ft_puterr_pathway(err);
 
 	if (err == ERR_MAP_READ)
-		perror("Failed to read the map");
+		perror("Failed to read the map's file");
 
 	if (err == ERR_MAP_ALLOC)
-		perror("Failed to alloc the map");
+		perror("Failed to allocate the map's grid");
+
+	if (err == ERR_MAP_EMPTY)
+		ft_putendl_fd("Invalid map: Is empty", STDERR_FILENO);
 
 	if (err == ERR_MAP_ISDIR)
 		ft_putendl_fd("Invalid map: Is directory", STDERR_FILENO);
 
-	if (err == ERR_MAP_EMPTY)
-		ft_putendl_fd("Invalid map: Is empty", STDERR_FILENO);
-}
-
-static void ft_puterr_map_format(t_error err)
-{
-	if (err == ERR_MAP_REG)
-		ft_putendl_fd("Invalid map format: Rows are not uniform", STDERR_FILENO);
-
-	if (err == ERR_MAP_RECT)
-		ft_putendl_fd("Invalid map format: Is not rectangular", STDERR_FILENO);
-
-	if (err == ERR_MAP_EXIT)
-		ft_putendl_fd("Invalid map format: Bad exit points", STDERR_FILENO);
-
-	if (err == ERR_MAP_START)
-		ft_putendl_fd("Invalid map format: Bad start points", STDERR_FILENO);
-
-	if (err == ERR_MAP_UNKNOWN)
-		ft_putendl_fd("Invalid map format: Unknown components", STDERR_FILENO);
-
-	if (err == ERR_MAP_SURRONDED)
-		ft_putendl_fd("Invalid map format: Is not surronded by walls", STDERR_FILENO);
-
-	if (err == ERR_MAP_COLLECTIBLE)
-		ft_putendl_fd("Invalid map format: No collectibles", STDERR_FILENO);
-}
-
-void ft_puterr_map(t_error err)
-{
-	if (err >= ERR_MAP_EXT && err <= ERR_MAP_ISDIR)
-		ft_puterr_map_setup(err);
-
-	if (err >= ERR_MAP_REG && err <= ERR_MAP_COLLECTIBLE)
-		ft_puterr_map_format(err);
-
-	if (err >= ERR_MAP_PATH_EXIT && err <= ERR_MAP_PATH_ALLOC)
-		ft_puterr_map_path(err);
+	if (err == ERR_MAP_EXT)
+		ft_putendl_fd("Invalid map: Bad file extension", STDERR_FILENO);
 }
