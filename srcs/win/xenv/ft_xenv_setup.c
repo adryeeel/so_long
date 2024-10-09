@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 21:09:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:51:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ t_error ft_xenv_setup(t_xenv *x, t_map map)
 	{
 		ft_xenv_free(*x);
 		return (ft_error_coll(err));
+	}
+
+	err = ft_ximgf_setup(x->display, &(x->patrol), PATROL_IMG_PATH);
+	if (err)
+	{
+		ft_xenv_free(*x);
+		return (ft_error_patrol(err));
 	}
 
 	return (OK);
