@@ -6,36 +6,45 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 22:17:27 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/08 00:21:20 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-t_error ft_draw_move(t_xenv x, t_map map, t_coord avatar)
+static t_error ft_clear_tile(t_xenv x, t_coord coord)
 {
-	t_ximg bg;
+	t_ximg tex;
+	t_error err;
+
+	err = ft_ximgf_setup(x.display, &tex, SPACE_IMG_PATH);
+
+	if (err)
+		return (err);
+
+	ft_draw_at(&x.scene, tex, coord);
+	ft_ximg_free(x.display, tex);
+
+	return (OK);
+}
+
+t_error ft_draw_move(t_xenv x, t_game g)
+{
 	t_error err;
 	static t_coord last_pos;
 
-	if (last_pos.x == avatar.x && last_pos.y == avatar.y)
+	if (last_pos.x == g.avatar.x && last_pos.y == g.avatar.y)
 		return (OK);
 
-	if (!last_pos.x && !last_pos.y)
-		last_pos = avatar;
+	if (!last_pos.x)
+		last_pos = g.avatar;
 
-	err = ft_ximgf_setup(x.display, &bg, BG_IMG_PATH);
+	ft_clear_tile(x, last_pos);
+
+	err = ft_draw_comp(x, g, AVATAR);
 	if (err)
-		return (ft_error_space(err));
+		return (err);
 
-	ft_ximg_copy(&x.scene, bg, (t_coord){
-		last_pos.x * TILE_SIZE, 
-		last_pos.y * TILE_SIZE
-	});
-
-	ft_draw_avatar(x, map, avatar);
-
-	ft_ximg_free(x.display, bg);
-	last_pos = avatar;
+	last_pos = g.avatar;
 	return (OK);
 }
