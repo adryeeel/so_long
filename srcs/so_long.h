@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 14:39:07 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:28:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@
 #include "game/game.h"
 #include "win/win.h"
 
-#define TILE_SIZE 32
-#define TOTAL_DIRECTIONS 4
+#define AVATAR START_POINT
 
-#define BG_IMG_PATH "assets/imgs/bg.xpm"
+#define TILE_SIZE 32
+
+#define EXIT_IMG_PATH "assets/imgs/exit.xpm"
 #define WALL_IMG_PATH "assets/imgs/wall.xpm"
+#define SPACE_IMG_PATH "assets/imgs/space.xpm"
+#define PATROL_IMG_PATH "assets/imgs/patrol.xpm"
 #define AVATAR_IMG_PATH "assets/imgs/avatar.xpm"
 #define COLL_IMG_PATH "assets/imgs/collectible.xpm"
 
