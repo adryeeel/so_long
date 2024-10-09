@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 22:20:08 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/23 19:32:23 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:09:43 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ t_error ft_ximg_setup(void *display, t_ximg *ximg, int width, int height)
 	ximg->buff = mlx_get_data_addr(ximg->id, &ximg->bpp, &ximg->size_line, &ximg->endian);
 
 	if (!ximg->buff)
-	{
-		mlx_destroy_image(display, ximg->id);
 		return (ERR_XIMG_DATA);
-	}
 
 	return (OK);
 }
