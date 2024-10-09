@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 21:49:36 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:48:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_error
 	ERR_MAP_RECT,
 	ERR_MAP_START,
 	ERR_MAP_UNKNOWN,
-	ERR_MAP_SURRONDED,
+	ERR_MAP_SURROUNDED,
 	ERR_MAP_COLLECTIBLE,
 
 	/* Map Path Errors */
@@ -79,21 +79,48 @@ typedef enum e_error
 	ERR_RENDAVATAR_PARAM,
 	ERR_RENDAVATAR_CREATE,
 	ERR_RENDAVATAR_FILEPATH,
+
+	/* Exit Point Render Errors */
+	ERR_RENDEXIT_DATA,
+	ERR_RENDEXIT_PARAM,
+	ERR_RENDEXIT_CREATE,
+	ERR_RENDEXIT_FILEPATH,
+
+	/* Exit Point Render Errors */
+	ERR_RENDPATROL_DATA,
+	ERR_RENDPATROL_PARAM,
+	ERR_RENDPATROL_CREATE,
+	ERR_RENDPATROL_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
+
+/* Map Render Errors */
+
 t_error ft_error_wall(t_error err);
 t_error ft_error_coll(t_error err);
+t_error ft_error_exit(t_error err);
 t_error ft_error_space(t_error err);
 t_error ft_error_scene(t_error err);
 t_error ft_error_avatar(t_error err);
+t_error ft_error_patrol(t_error err);
 
-void ft_puterr_map(t_error err);
+/* Display Map Render Errors */
+
 void ft_puterr_wall(t_error err);
-void ft_puterr_ximg(t_error err);
 void ft_puterr_coll(t_error err);
+void ft_puterr_exit(t_error err);
 void ft_puterr_space(t_error err);
 void ft_puterr_scene(t_error err);
-void ft_puterror_avatar(t_error err);
+void ft_puterr_avatar(t_error err);
+void ft_puterr_patrol(t_error err);
+
+/* Display Map Validation Errors */
+
+void ft_puterr_map(t_error err);
+void ft_puterr_format(t_error err);
+void ft_puterr_pathway(t_error err);
+
+void ft_puterr_ximg(t_error err);
 
 #endif
