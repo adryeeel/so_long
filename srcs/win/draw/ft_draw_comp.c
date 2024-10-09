@@ -6,31 +6,58 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 00:29:52 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 21:01:49 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-t_error ft_draw_comp(t_xenv x, t_map map, t_mapc comp, char *tex_path)
+static void ft_draw_seq(t_xenv x, t_map map, t_ximg tex, t_mapc comp)
 {
-	t_ximg tex;
-	t_error err;
 	t_coord coord;
-
-	err = ft_ximgf_setup(x.display, &tex, tex_path);
-	if (err)
-		return (err);
 
 	coord = ft_map_search_seq(map, comp);
 
 	while (coord.x >= 0)
 	{
-		ft_ximg_copy(&x.scene, tex, (t_coord){
-			coord.x * TILE_SIZE, 
-			coord.y * TILE_SIZE
-		});
+		ft_draw_at(&x.scene, tex, coord);
 		coord = ft_map_search_seq(map, comp);
+	}
+}
+
+static void ft_draw_single(t_xenv x, t_game g, t_ximg tex, t_mapc comp)
+{
+	t_coord coord;
+
+	if (comp == AVATAR)
+		coord = g.avatar;
+	else
+		coord = ft_map_search(g.map, comp, (t_coord){0, 0});
+
+	ft_draw_at(&x.scene, tex, coord);
+}
+
+t_error ft_draw_comp(t_xenv x, t_game g, t_mapc comp)
+{
+	t_ximg tex;
+	t_error err;
+
+	err = ft_ximg_sprite(x, &tex, comp);
+	if (err)
+		return (err);
+
+	if (comp == SPACE || comp == WALL)
+		ft_draw_seq(x, g.map, tex, comp);
+
+	else if (comp == COLLECTIBLE || comp == PATROL)
+	{
+		ft_draw_background(x.display, &tex);
+		ft_draw_seq(x, g.map, tex, comp);
+	}
+	else
+	{
+		ft_draw_background(x.display, &tex);
+		ft_draw_single(x, g, tex, comp);
 	}
 
 	ft_ximg_free(x.display, tex);
