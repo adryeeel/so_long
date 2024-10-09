@@ -6,11 +6,13 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:45:52 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 11:51:09 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/09 22:29:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+#define TOTAL_DIRECTIONS 4
 
 int **ft_dirs_setup(void)
 {
