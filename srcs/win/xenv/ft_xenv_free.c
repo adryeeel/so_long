@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 23:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 16:40:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:43:12 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void ft_xenv_free(t_xenv x)
 
 	if (x.window)
 		mlx_destroy_window(x.display, x.window);
+
+	ft_sprite_free(x);
 
 	mlx_destroy_display(x.display);
 	free(x.display);
