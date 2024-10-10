@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 14:48:18 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:22:04 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void ft_move_left(t_game *g)
 
 	y = g->avatar.y;
 	x = g->avatar.x - 1;
+	g->avatar.orient = LEFT;
 
 	if (g->map.grid[y][x] == WALL)
 		return;
