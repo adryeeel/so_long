@@ -6,11 +6,26 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 16:44:34 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:04:05 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
+
+static t_error ft_clear_tile(t_xenv x, t_coord coord)
+{
+	t_ximg tex;
+	t_error err;
+
+	err = ft_ximgf_setup(x.display, &tex, SPACE_IMG_PATH);
+	if (err)
+		return (err);
+
+	ft_draw_at(&x.scene, tex, coord);
+	ft_ximg_free(x.display, tex);
+
+	return (OK);
+}
 
 t_error ft_draw_move(t_xenv x, t_game g)
 {
@@ -26,7 +41,7 @@ t_error ft_draw_move(t_xenv x, t_game g)
 		last_pos.y = g.avatar.y;
 	}
 
-	ft_draw_at(&x.scene, x.space, last_pos);
+	ft_clear_tile(x, last_pos);
 
 	err = ft_draw_comp(x, g, AVATAR);
 	if (err)

@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 16:40:01 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:01:57 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ static t_error ft_sprite_setup(t_xenv *x, t_map map)
 	err = ft_ximgf_setup(x->display, &(x->patrol), PATROL_IMG_PATH);
 	if (err)
 		return (ft_error_patrol(err));
-
-	err = ft_ximgf_setup(x->display, &(x->space), SPACE_IMG_PATH);
-	if (err)
-		return (ft_error_space(err));
 
 	return (OK);
 }
