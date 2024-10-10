@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/27 02:14:02 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:41:01 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,20 @@
 typedef struct s_map t_map;
 typedef enum e_error t_error;
 
+#define LEFT 1
+#define RIGHT 0
+
+typedef struct s_avatar
+{
+	int x;
+	int y;
+	bool orient;
+} t_avatar;
+
 typedef struct s_game
 {
 	t_map map;
-	t_coord avatar;
+	t_avatar avatar;
 } t_game;
 
 /* Game */
@@ -28,7 +38,7 @@ void ft_game_free(t_game game);
 t_error ft_game_start(char *map_path);
 t_error ft_game_setup(t_game *g, char *map_path);
 
-/* Game — Avatar's Position */
+/* Game — Avatar's Movement */
 
 void ft_move_up(t_game *game);
 void ft_move_down(t_game *game);
