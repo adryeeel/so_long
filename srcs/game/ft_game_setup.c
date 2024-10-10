@@ -6,11 +6,22 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 21:59:17 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:21:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static void ft_avatar_setup(t_avatar *av, t_map map)
+{
+	t_coord pos;
+
+	pos = ft_map_search(map, START_POINT, (t_coord){0, 0});
+
+	av->x = pos.x;
+	av->y = pos.y;
+	av->orient = RIGHT;
+}
 
 t_error ft_game_setup(t_game *g, char *map_path)
 {
@@ -22,7 +33,7 @@ t_error ft_game_setup(t_game *g, char *map_path)
 		return (err);
 
 	g->map = map;
-	g->avatar = ft_map_search(map, START_POINT, (t_coord){0, 0});
+	ft_avatar_setup(&g->avatar, map);
 
 	return (OK);
 }

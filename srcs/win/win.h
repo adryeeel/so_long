@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 21:01:33 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:27:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ t_error ft_xenv_setup(t_xenv *x, t_map map);
 
 void ft_ximg_free(void *display, t_ximg ximg);
 void ft_ximg_copy(t_ximg *dst, t_ximg src, t_coord dst_p);
-t_error ft_ximg_sprite(t_xenv x, t_ximg *tex, t_mapc comp);
 void ft_ximg_fill_alpha(t_ximg *dst, t_ximg src, t_coord dst_p);
 t_error ft_ximgf_setup(void *display, t_ximg *ximg, char *path);
+t_error ft_ximg_sprite(t_xenv x, bool orient, t_ximg *tex, t_mapc comp);
 t_error ft_ximg_setup(void *display, t_ximg *ximg, int width, int height);
 t_error ft_ximg_frame(void *display, t_ximg frameset, t_ximg *frame, size_t n);
 
