@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 21:01:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:47:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ static void ft_draw_single(t_xenv x, t_game g, t_ximg tex, t_mapc comp)
 	t_coord coord;
 
 	if (comp == AVATAR)
-		coord = g.avatar;
+	{
+		coord.x = g.avatar.x; 
+		coord.y = g.avatar.y; 
+	}
 	else
 		coord = ft_map_search(g.map, comp, (t_coord){0, 0});
 
