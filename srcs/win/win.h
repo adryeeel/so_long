@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 15:27:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:40:58 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_xenv
 {
 	t_ximg coll;
 	t_ximg scene;
+	t_ximg space;
 	t_ximg patrol;
 
 	void *window;
