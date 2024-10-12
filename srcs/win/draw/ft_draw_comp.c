@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 15:27:30 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:04:46 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ t_error ft_draw_comp(t_xenv x, t_game g, t_mapc comp)
 		return (err);
 
 	if (comp == SPACE || comp == WALL)
+	{
 		ft_draw_seq(x, g.map, tex, comp);
+		ft_ximg_free(x.display, tex);
+		return (OK);
+	}
 
-	else if (comp == COLLECTIBLE || comp == PATROL)
-	{
-		ft_draw_background(x.display, &tex);
+	ft_draw_background(x.display, &tex);
+
+	if (comp == COLLECTIBLE || comp == PATROL)
 		ft_draw_seq(x, g.map, tex, comp);
-	}
 	else
-	{
-		ft_draw_background(x.display, &tex);
 		ft_draw_single(x, g, tex, comp);
-	}
 
 	ft_ximg_free(x.display, tex);
 	return (OK);

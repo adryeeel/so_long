@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 14:51:58 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/10 17:04:05 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static t_error ft_clear_tile(t_xenv x, t_coord coord)
 	t_error err;
 
 	err = ft_ximgf_setup(x.display, &tex, SPACE_IMG_PATH);
-
 	if (err)
 		return (err);
 
