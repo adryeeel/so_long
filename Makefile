@@ -43,6 +43,7 @@ ERROR =	ft_error_wall.c \
 		ft_error_exit.c \
 		ft_error_print.c \
 		ft_error_scene.c \
+		ft_error_death.c \
 		ft_error_avatar.c \
 		ft_error_patrol.c \
 
@@ -58,6 +59,7 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_exit.c \
 			ft_puterr_space.c \
 			ft_puterr_scene.c \
+			ft_puterr_death.c \
 			ft_puterr_patrol.c \
 			ft_puterr_avatar.c \
 			ft_puterr_format.c \
