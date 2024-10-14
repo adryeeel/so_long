@@ -26,7 +26,7 @@ LIBS =	$(LIBFT_PATH)/$(LIBFT) \
 		$(LIBMLX_PATH)/$(LIBMLX) \
 
 LIBS_PATH = libs
-LIBS_LINK = $(LIBFT_LINK) $(LIBMLX_LINK) -l Xext -l X11
+LIBS_LINK = $(LIBFT_LINK) $(LIBMLX_LINK) -l Xext -l X11 -l m
 
 # Main Sources
 
@@ -43,6 +43,7 @@ ERROR =	ft_error_wall.c \
 		ft_error_exit.c \
 		ft_error_print.c \
 		ft_error_scene.c \
+		ft_error_death.c \
 		ft_error_avatar.c \
 		ft_error_patrol.c \
 
@@ -58,6 +59,7 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_exit.c \
 			ft_puterr_space.c \
 			ft_puterr_scene.c \
+			ft_puterr_death.c \
 			ft_puterr_patrol.c \
 			ft_puterr_avatar.c \
 			ft_puterr_format.c \
@@ -90,6 +92,8 @@ DRAW =	ft_draw_at.c \
 		ft_draw_anim.c \
 		ft_draw_comp.c \
 		ft_draw_move.c \
+		ft_draw_frame.c \
+		ft_draw_death.c \
 		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw

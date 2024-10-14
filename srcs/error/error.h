@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 21:48:31 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/13 00:15:17 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ typedef enum e_error
 	ERR_RENDPATROL_PARAM,
 	ERR_RENDPATROL_CREATE,
 	ERR_RENDPATROL_FILEPATH,
+
+	/* Avatar Death Render Errors */
+	ERR_RENDEATH_DATA,
+	ERR_RENDEATH_PARAM,
+	ERR_RENDEATH_CREATE,
+	ERR_RENDEATH_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
@@ -100,6 +106,7 @@ void ft_error_print(t_error err);
 t_error ft_error_wall(t_error err);
 t_error ft_error_coll(t_error err);
 t_error ft_error_exit(t_error err);
+t_error ft_error_death(t_error err);
 t_error ft_error_space(t_error err);
 t_error ft_error_scene(t_error err);
 t_error ft_error_avatar(t_error err);
@@ -112,6 +119,7 @@ void ft_puterr_coll(t_error err);
 void ft_puterr_exit(t_error err);
 void ft_puterr_space(t_error err);
 void ft_puterr_scene(t_error err);
+void ft_puterr_death(t_error err);
 void ft_puterr_avatar(t_error err);
 void ft_puterr_patrol(t_error err);
 

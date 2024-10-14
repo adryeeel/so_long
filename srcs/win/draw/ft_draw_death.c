@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_right.c                                    :+:      :+:    :+:   */
+/*   ft_draw_death.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/14 16:53:58 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/13 22:23:16 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/14 17:29:10 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_right(t_game *g)
+t_error ft_draw_death(t_xenv x, t_game g)
 {
-	int x;
-	int y;
+	t_ximg tex;
+	t_error err;
 
-	y = g->avatar.y;
-	x = g->avatar.x + 1;
-	g->avatar.orient = RIGHT;
+	mlx_key_hook(x.window, NULL, NULL);
 
-	if (g->map.grid[y][x] == WALL)
-		return;
+	err = ft_ximgf_setup(x.display, &tex, DEATH_IMG_PATH);
+	if (err)
+		return (err);
 
-	if (g->map.grid[y][x] == PATROL)
-	{
-		g->avatar.died = true;
-		return;
-	}
+	ft_draw_background(x.display, &tex);
 
-	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = SPACE;
+	ft_ximg_copy(&x.scene, tex, (t_coord){
+		g.avatar.x * TILE_SIZE,
+		g.avatar.y * TILE_SIZE,
+	});
 
-	g->avatar.x++;
+	ft_ximg_free(x.display, tex);
+	return (OK);
 }

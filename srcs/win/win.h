@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 17:01:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:36:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ int ft_hook_key(int key, void *param);
 
 t_error ft_draw_move(t_xenv x, t_game g);
 t_error ft_draw_anim(t_xenv x, t_map map);
+t_error ft_draw_death(t_xenv x, t_game g);
 t_error ft_draw_comp(t_xenv x, t_game g, t_mapc comp);
-
 t_error ft_draw_background(void *display, t_ximg *tex);
 void ft_draw_at(t_ximg *dst, t_ximg src, t_coord coord);
+t_error ft_draw_frame(t_xenv x, t_map map, t_mapc comp, size_t frame_n);
 
 /* Window Management — X Environment */
 

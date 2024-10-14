@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 14:48:27 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:54:02 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void ft_move_up(t_game *g)
 
 	if (g->map.grid[y][x] == WALL)
 		return;
+
+	if (g->map.grid[y][x] == PATROL)
+	{
+		g->avatar.died = true;
+		return;
+	}
 
 	if (g->map.grid[y][x] == COLLECTIBLE)
 		g->map.grid[y][x] = SPACE;

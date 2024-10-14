@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:08:57 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/08 01:36:29 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:36:08 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #define FPS_16 64
 
-size_t ft_draw_time(void)
+static size_t ft_draw_time(void)
 {
 	struct timeval time;
 

@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 14:41:01 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:52:08 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_avatar
 {
 	int x;
 	int y;
+	bool died;
 	bool orient;
 } t_avatar;
 
