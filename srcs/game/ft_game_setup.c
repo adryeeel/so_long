@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/10 15:21:29 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:52:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void ft_avatar_setup(t_avatar *av, t_map map)
 
 	av->x = pos.x;
 	av->y = pos.y;
+	av->died = false;
 	av->orient = RIGHT;
 }
 
