@@ -26,7 +26,7 @@ LIBS =	$(LIBFT_PATH)/$(LIBFT) \
 		$(LIBMLX_PATH)/$(LIBMLX) \
 
 LIBS_PATH = libs
-LIBS_LINK = $(LIBFT_LINK) $(LIBMLX_LINK) -l Xext -l X11
+LIBS_LINK = $(LIBFT_LINK) $(LIBMLX_LINK) -l Xext -l X11 -l m
 
 # Main Sources
 
@@ -92,6 +92,8 @@ DRAW =	ft_draw_at.c \
 		ft_draw_anim.c \
 		ft_draw_comp.c \
 		ft_draw_move.c \
+		ft_draw_frame.c \
+		ft_draw_death.c \
 		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw
