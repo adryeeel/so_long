@@ -46,6 +46,7 @@ ERROR =	ft_error_wall.c \
 		ft_error_death.c \
 		ft_error_avatar.c \
 		ft_error_patrol.c \
+		ft_error_counter.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
@@ -63,6 +64,7 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_patrol.c \
 			ft_puterr_avatar.c \
 			ft_puterr_format.c \
+			ft_puterr_counter.c \
 			ft_puterr_pathway.c \
 
 ERRORP_PATH = $(ERROR_PATH)/puterr
@@ -94,6 +96,7 @@ DRAW =	ft_draw_at.c \
 		ft_draw_move.c \
 		ft_draw_frame.c \
 		ft_draw_death.c \
+		ft_draw_counter.c \
 		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw
