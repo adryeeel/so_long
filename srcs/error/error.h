@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/13 00:15:17 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:58:58 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ typedef enum e_error
 	ERR_RENDEATH_PARAM,
 	ERR_RENDEATH_CREATE,
 	ERR_RENDEATH_FILEPATH,
+	
+	/* Counter Number Render Errors */
+	ERR_RENDCOUNT_DATA,
+	ERR_RENDCOUNT_PARAM,
+	ERR_RENDCOUNT_CREATE,
+	ERR_RENDCOUNT_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
@@ -111,6 +117,7 @@ t_error ft_error_space(t_error err);
 t_error ft_error_scene(t_error err);
 t_error ft_error_avatar(t_error err);
 t_error ft_error_patrol(t_error err);
+t_error ft_error_counter(t_error err);
 
 /* Display Map Render Errors */
 
@@ -122,6 +129,7 @@ void ft_puterr_scene(t_error err);
 void ft_puterr_death(t_error err);
 void ft_puterr_avatar(t_error err);
 void ft_puterr_patrol(t_error err);
+void ft_puterr_counter(t_error err);
 
 /* Display Map Validation Errors */
 
