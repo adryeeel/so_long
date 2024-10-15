@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:23:16 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/14 17:29:10 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 16:02:01 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_error ft_draw_death(t_xenv x, t_game g)
 
 	err = ft_ximgf_setup(x.display, &tex, DEATH_IMG_PATH);
 	if (err)
-		return (err);
+		return (ft_error_death(err));
 
 	ft_draw_background(x.display, &tex);
 
