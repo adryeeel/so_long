@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:43:09 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/16 00:52:51 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void ft_move_left(t_game *g)
 {
 	int x;
 	int y;
+
+	if (g->avatar.died)
+		return;
 
 	y = g->avatar.y;
 	x = g->avatar.x - 1;
