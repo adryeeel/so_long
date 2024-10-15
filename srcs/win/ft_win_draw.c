@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 00:49:08 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 22:28:06 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:52:30 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 t_error ft_win_draw(t_xenv x, t_game g)
 {
 	t_error err;
+
+	err = ft_draw_counter(x, g);
+	if (err)
+		return (err);
 
 	err = ft_draw_comp(x, g, WALL);
 	if (err)
