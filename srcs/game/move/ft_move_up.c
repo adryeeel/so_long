@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/14 16:54:02 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:43:02 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void ft_move_up(t_game *g)
 	if (g->map.grid[y][x] == COLLECTIBLE)
 		g->map.grid[y][x] = SPACE;
 
+	g->moves++;
 	g->avatar.y--;
 }

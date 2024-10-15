@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_left.c                                     :+:      :+:    :+:   */
+/*   ft_puterr_counter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:43:09 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/15 01:39:56 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/15 15:57:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_left(t_game *g)
+void ft_puterr_counter(t_error err)
 {
-	int x;
-	int y;
+	ft_putendl_fd("Unable to render the move counter", STDERR_FILENO);
 
-	y = g->avatar.y;
-	x = g->avatar.x - 1;
-	g->avatar.orient = LEFT;
+	if (err == ERR_RENDCOUNT_PARAM)
+		ft_puterr_ximg(ERR_XIMG_PARAM);
 
-	if (g->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_RENDCOUNT_CREATE)
+		ft_puterr_ximg(ERR_XIMG_CREATE);
 
-	if (g->map.grid[y][x] == PATROL)
-	{
-		g->avatar.died = true;
-		return;
-	}
+	if (err == ERR_RENDCOUNT_DATA)
+		ft_puterr_ximg(ERR_XIMG_DATA);
 
-	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = SPACE;
-
-	g->moves++;
-	g->avatar.x--;
+	if (err == ERR_RENDCOUNT_FILEPATH)
+		ft_puterr_ximg(ERR_XIMG_FILEPATH);
 }

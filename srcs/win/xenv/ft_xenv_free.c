@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 23:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/14 17:38:15 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 02:05:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ static void ft_sprite_free(t_xenv x)
 
 	if (x.coll.id)
 		ft_ximg_free(x.display, x.coll);
+
+	if (x.number.id)
+		ft_ximg_free(x.display, x.number);
 }
 
 void ft_xenv_free(t_xenv x)

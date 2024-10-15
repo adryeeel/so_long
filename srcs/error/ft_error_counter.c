@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_left.c                                     :+:      :+:    :+:   */
+/*   ft_error_counter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:43:09 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/15 01:38:40 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/15 15:57:38 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_move_left(t_game *g)
+t_error ft_error_counter(t_error err)
 {
-	int x;
-	int y;
+	if (err == ERR_XIMG_PARAM)
+		return (ERR_RENDCOUNT_PARAM);
 
-	y = g->avatar.y;
-	x = g->avatar.x - 1;
-	g->avatar.orient = LEFT;
+	if (err == ERR_XIMG_CREATE)
+		return (ERR_RENDCOUNT_CREATE);
 
-	if (g->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_XIMG_DATA)
+		return (ERR_RENDCOUNT_DATA);
 
-	if (g->map.grid[y][x] == PATROL)
-	{
-		g->avatar.died = true;
-		return;
-	}
+	if (err == ERR_XIMG_FILEPATH)
+		return (ERR_RENDCOUNT_FILEPATH);
 
-	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = SPACE;
+	if (err)
+		return (err);
 
-	g->moves++;
-	g->avatar.x--;
+	return (OK);
 }
