@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 01:42:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:47:14 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:55:04 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_error ft_draw_text(t_xenv x, t_ximg *counter)
 	t_ximg text;
 	t_error err;
 
-	err = ft_ximgf_setup(x.display, &text, TEXT_IMG_PATH);
+	err = ft_ximgf_setup(x.display, &text, COUNTER_IMG_PATH);
 	if (err)
 		return (err);
 
@@ -39,9 +39,9 @@ static t_error ft_draw_number(t_xenv x, t_ximg *counter, size_t moves)
 	t_error err;
 	size_t digit;
 	t_ximg number;
-	size_t draw_pxl;
+	size_t draw_offset;
 
-	draw_pxl = counter->width - (DIGIT_SPACING + DIGIT_WIDTH) - 11;
+	draw_offset = counter->width - (DIGIT_SPACING + DIGIT_WIDTH) - 11;
 
 	if (moves == 0)
 	{
@@ -49,7 +49,7 @@ static t_error ft_draw_number(t_xenv x, t_ximg *counter, size_t moves)
 		if (err)
 			return (err);
 
-		ft_ximg_copy(counter, number, (t_coord){draw_pxl, 0});
+		ft_ximg_copy(counter, number, (t_coord){draw_offset, 0});
 		ft_ximg_free(x.display, number);
 	}
 
@@ -61,10 +61,10 @@ static t_error ft_draw_number(t_xenv x, t_ximg *counter, size_t moves)
 		if (err)
 			return (err);
 
-		ft_ximg_copy(counter, number, (t_coord){draw_pxl, 0});
+		ft_ximg_copy(counter, number, (t_coord){draw_offset, 0});
 
 		moves /= DECIMAL;
-		draw_pxl -= (DIGIT_WIDTH + DIGIT_SPACING);
+		draw_offset -= (DIGIT_WIDTH + DIGIT_SPACING);
 
 		ft_ximg_free(x.display, number);
 	}

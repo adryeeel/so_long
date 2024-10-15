@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 01:37:53 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:53:29 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #define SPACE_IMG_PATH "assets/imgs/space.xpm"
 #define PATROL_IMG_PATH "assets/imgs/patrol.xpm"
 #define AVATAR_IMG_PATH "assets/imgs/avatar.xpm"
-#define TEXT_IMG_PATH "assets/imgs/move-text.xpm"
+#define COUNTER_IMG_PATH "assets/imgs/move-text.xpm"
 #define COLL_IMG_PATH "assets/imgs/collectible.xpm"
 #define NUMBER_IMG_PATH "assets/imgs/number-text.xpm"
 #define DEATH_IMG_PATH "assets/imgs/avatar-death.xpm"
