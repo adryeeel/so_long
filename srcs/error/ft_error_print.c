@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/13 00:15:02 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:58:46 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,7 @@ void ft_error_print(t_error err)
 
 	if (err >= ERR_RENDEATH_DATA && err <= ERR_RENDEATH_FILEPATH)
 		ft_puterr_death(err);
+
+	if (err >= ERR_RENDCOUNT_DATA && err <= ERR_RENDCOUNT_FILEPATH)
+		ft_puterr_counter(err);
 }
