@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:17:06 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/07 01:09:11 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:51:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int ft_hook_key(int key, void *param)
 {
 	t_xenv *x;
 	t_game *g;
+	t_error err;
 
 	x = ((t_param *)param)->x;
 	g = ((t_param *)param)->g;
@@ -40,7 +41,13 @@ int ft_hook_key(int key, void *param)
 	if (key == XK_D || key == XK_d)
 		ft_move_right(g);
 
-	ft_draw_move(*x, *g);
+	err = ft_draw_move(*x, *g);
+	if (err)
+	{
+		ft_error_print(err);
+		mlx_loop_end(x->display);
+	}
+	
 	mlx_put_image_to_window(x->display, x->window, x->scene.id, 0, TILE_SIZE);
 
 	return (0);
