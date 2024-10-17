@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 13:48:04 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:19:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define GAME_H
 
 typedef struct s_map t_map;
+typedef struct s_xenv t_xenv;
 typedef enum e_error t_error;
 
 #define LEFT 1
@@ -38,6 +39,7 @@ typedef struct s_game
 
 void ft_game_free(t_game game);
 t_error ft_game_start(char *map_path);
+void ft_game_restart(t_xenv x, t_game *g);
 t_error ft_game_setup(t_game *g, char *map_path);
 
 /* Game — Avatar's Movement */
