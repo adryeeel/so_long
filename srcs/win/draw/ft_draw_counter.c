@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 01:42:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 17:55:04 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:55:30 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_error ft_draw_counter(t_xenv x, t_game g)
 	if (err)
 		return (err);
 
-	mlx_put_image_to_window(x.display, x.window, counter.id, 0, 0);
+	ft_ximg_copy(&x.scene, counter, (t_coord){0, 0});
 
 	ft_ximg_free(x.display, counter);
 	return (OK);
