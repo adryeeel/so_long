@@ -6,14 +6,14 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 16:03:12 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:32:43 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
 #define WIN_WH map.width * TILE_SIZE
-#define WIN_HT map.height * TILE_SIZE
+#define WIN_HT (map.height + 1) * TILE_SIZE
 
 static t_error ft_sprite_setup(t_xenv *x, t_map map)
 {
