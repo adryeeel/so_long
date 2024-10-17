@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:08:57 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/14 17:36:08 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:34:41 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int ft_hook_loop(void *param)
 	if (curr_time - last_time < FPS_16)
 		return (OK);
 
-	err = ft_draw_anim(*x, g->map);
+	err = ft_draw_anim(*x, *g);
 	if (err)
 	{
 		ft_error_print(err);
@@ -47,7 +47,7 @@ int ft_hook_loop(void *param)
 	}
 
 	last_time = curr_time;
-	mlx_put_image_to_window(x->display, x->window, x->scene.id, 0, TILE_SIZE);
+	mlx_put_image_to_window(x->display, x->window, x->scene.id, 0, 0);
 
 	return (0);
 }
