@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 17:05:20 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:23:34 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int ft_hook_key(int key, void *param);
 /* Window Management — Drawing */
 
 bool ft_draw_fadeout(t_xenv x);
-void ft_draw_gameover(t_xenv x);
 t_error ft_draw_move(t_xenv x, t_game g);
-t_error ft_draw_anim(t_xenv x, t_game g);
 t_error ft_draw_death(t_xenv x, t_game g);
+t_error ft_draw_anim(t_xenv x, t_game *g);
+void ft_draw_gameover(t_xenv x, t_game *g);
 t_error ft_draw_counter(t_xenv x, t_game g);
 t_error ft_draw_comp(t_xenv x, t_game g, t_mapc comp);
 t_error ft_draw_background(void *display, t_ximg *tex);
