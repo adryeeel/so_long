@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 17:02:45 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:23:38 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_move_down(t_game *g)
 	}
 
 	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = SPACE;
+		g->map.grid[y][x] = COLLECTED;
 
 	g->avatar.y++;
 }
