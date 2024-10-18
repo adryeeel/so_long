@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:31:29 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 18:37:22 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:30:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static bool ft_delay(size_t frames)
 	return (false);
 }
 
-void ft_draw_gameover(t_xenv x, t_game *g)
+void ft_draw_gameover(t_xenv *x, t_game *g)
 {
 	if (ft_delay(MS_500))
 		return;
 
-	if (ft_draw_fadeout(x))
+	if (ft_draw_fadeout(*x))
 		return;
 
 	ft_game_restart(x, g);
