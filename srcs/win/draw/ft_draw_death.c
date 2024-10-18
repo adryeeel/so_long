@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:23:16 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 17:37:18 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:27:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ t_error ft_draw_death(t_xenv x, t_game g)
 {
 	t_ximg tex;
 	t_error err;
-	static bool was_drawn;
-
-	if (was_drawn)
-		return (OK);
-	was_drawn = true;
 
 	err = ft_ximgf_setup(x.display, &tex, DEATH_IMG_PATH);
 	if (err)
