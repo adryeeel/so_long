@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 01:42:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 17:55:30 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:45:27 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ t_error ft_draw_counter(t_xenv x, t_game g)
 	t_error err;
 	size_t digits;
 	t_ximg counter;
+	static size_t last_moves;
+
+	if (last_moves && last_moves == g.moves)
+		return (OK);
 
 	digits = ft_nbrlen(g.moves, DECIMAL);
 
@@ -94,6 +98,7 @@ t_error ft_draw_counter(t_xenv x, t_game g)
 
 	ft_ximg_copy(&x.scene, counter, (t_coord){0, 0});
 
+	last_moves = g.moves;
 	ft_ximg_free(x.display, counter);
 	return (OK);
 }
