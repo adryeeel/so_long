@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 22:49:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:58:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_mapc
 	PATROL = 'L',
 	EXIT_POINT = 'E',
 	START_POINT = 'P',
+	COLLECTED = 'c',
 	COLLECTIBLE = 'C',
 } t_mapc;
 
