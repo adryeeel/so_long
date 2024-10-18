@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:00:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 18:35:30 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:49:57 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ bool ft_draw_fadeout(t_xenv x)
 	static int dim_amount;
 
 	if (dim_amount >= 15)
+	{
+		dim_amount = 0;
 		return (false);
+	}
 
 	y = -1;
 	while (++y < x.scene.height)
