@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 16:02:56 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:35:25 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,18 @@ t_error ft_draw_move(t_xenv x, t_game g)
 	t_error err;
 	static t_coord last_pos;
 
-	err = ft_draw_counter(x, g);
-	if (err)
-		return (ft_error_counter(err));
+	if (x.fade)
+		return (OK);
 
 	if (g.avatar.died)
 		return (ft_draw_death(x, g));
 
 	if (last_pos.x == g.avatar.x && last_pos.y == g.avatar.y)
 		return (OK);
+
+	err = ft_draw_counter(x, g);
+	if (err)
+		return (ft_error_counter(err));
 
 	if (!last_pos.x)
 	{
