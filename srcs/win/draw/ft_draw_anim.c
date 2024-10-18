@@ -6,13 +6,13 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 00:39:11 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/17 18:23:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:31:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-t_error ft_draw_anim(t_xenv x, t_game *g)
+t_error ft_draw_anim(t_xenv *x, t_game *g)
 {
 	t_error err;
 	static size_t frame_n;
@@ -22,15 +22,16 @@ t_error ft_draw_anim(t_xenv x, t_game *g)
 
 	if (g->avatar.died)
 	{
+		x->fade = true;
 		ft_draw_gameover(x, g);
 		return (OK);
 	}
 
-	err = ft_draw_frame(x, g->map, PATROL, frame_n);
+	err = ft_draw_frame(*x, g->map, PATROL, frame_n);
 	if (err)
 		return (ft_error_patrol(err));
 
-	err = ft_draw_frame(x, g->map, COLLECTIBLE, frame_n);
+	err = ft_draw_frame(*x, g->map, COLLECTIBLE, frame_n);
 	if (err)
 		return (ft_error_coll(err));
 
