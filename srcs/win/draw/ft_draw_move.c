@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 18:56:17 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:12:14 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ t_error ft_draw_move(t_xenv x, t_game g)
 {
 	t_error err;
 	static t_coord last_pos;
-
-	if (x.fade)
-		return (OK);
 
 	err = ft_draw_counter(x, g);
 	if (err)
