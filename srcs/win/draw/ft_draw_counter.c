@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 01:42:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 16:45:27 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:23:42 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_error ft_draw_text(t_xenv x, t_ximg *counter)
 	t_ximg text;
 	t_error err;
 
-	err = ft_ximgf_setup(x.display, &text, COUNTER_IMG_PATH);
+	err = ft_ximgf_setup(x.display, &text, MOVES_IMG_PATH);
 	if (err)
 		return (err);
 
