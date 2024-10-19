@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:00:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 12:49:57 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:26:19 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,10 @@ static void ft_pixel_dim(unsigned char *pixel, int percent)
 	pixel[2] *= ((100 - percent) / 100.0);
 }
 
-bool ft_draw_fadeout(t_xenv x)
+void ft_draw_fadeout(t_xenv x)
 {
 	int y;
 	int z;
-	static int dim_amount;
-
-	if (dim_amount >= 15)
-	{
-		dim_amount = 0;
-		return (false);
-	}
 
 	y = -1;
 	while (++y < x.scene.height)
@@ -65,7 +58,4 @@ bool ft_draw_fadeout(t_xenv x)
 			ft_pixel_dim((unsigned char *)x.scene.buff + OFFSET, 24);
 		}
 	}
-
-	dim_amount++;
-	return (true);
 }
