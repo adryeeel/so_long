@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 01:42:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 17:55:04 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:23:42 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_error ft_draw_text(t_xenv x, t_ximg *counter)
 	t_ximg text;
 	t_error err;
 
-	err = ft_ximgf_setup(x.display, &text, COUNTER_IMG_PATH);
+	err = ft_ximgf_setup(x.display, &text, MOVES_IMG_PATH);
 	if (err)
 		return (err);
 
@@ -77,6 +77,10 @@ t_error ft_draw_counter(t_xenv x, t_game g)
 	t_error err;
 	size_t digits;
 	t_ximg counter;
+	static size_t last_moves;
+
+	if (last_moves && last_moves == g.moves)
+		return (OK);
 
 	digits = ft_nbrlen(g.moves, DECIMAL);
 
@@ -92,8 +96,9 @@ t_error ft_draw_counter(t_xenv x, t_game g)
 	if (err)
 		return (err);
 
-	mlx_put_image_to_window(x.display, x.window, counter.id, 0, 0);
+	ft_ximg_copy(&x.scene, counter, (t_coord){0, 0});
 
+	last_moves = g.moves;
 	ft_ximg_free(x.display, counter);
 	return (OK);
 }

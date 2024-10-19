@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_left.c                                     :+:      :+:    :+:   */
+/*   ft_map_restart.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 18:59:05 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/19 17:04:34 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/19 17:19:12 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-void ft_move_left(t_game *g)
+static void ft_reset_coll(t_map *map)
 {
-	int x;
-	int y;
+	size_t x;
+	size_t y;
 
-	if (g->avatar.died)
-		return;
-
-	y = g->avatar.y;
-	x = g->avatar.x - 1;
-	g->avatar.orient = LEFT;
-
-	if (g->map.grid[y][x] == WALL)
-		return;
-
-	g->moves++;
-
-	if (g->map.grid[y][x] == PATROL)
+	y = -1;
+	while (++y < map->height)
 	{
-		g->avatar.died = true;
-		return;
+		x = -1;
+		while (++x < map->width)
+		{
+			if (map->grid[y][x] == COLLECTED)
+				map->grid[y][x] = COLLECTIBLE;
+		}
 	}
+}
 
-	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = COLLECTED;
-
-	g->avatar.x--;
+void ft_map_restart(t_map *map)
+{
+	ft_reset_coll(map);
 }

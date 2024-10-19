@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:22:23 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:58:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:16:03 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void ft_error_print(t_error err)
 
 	if (err >= ERR_RENDSCENE_DATA && err <= ERR_RENDSCENE_CREATE)
 		ft_puterr_scene(err);
-		
+
 	if (err >= ERR_RENDPATROL_DATA && err <= ERR_RENDPATROL_FILEPATH)
 		ft_puterr_patrol(err);
 
@@ -42,7 +42,7 @@ void ft_error_print(t_error err)
 
 	if (err >= ERR_RENDBG_DATA && err <= ERR_RENDBG_FILEPATH)
 		ft_puterr_space(err);
-		
+
 	if (err >= ERR_RENDWALL_DATA && err <= ERR_RENDWALL_FILEPATH)
 		ft_puterr_wall(err);
 
@@ -57,4 +57,15 @@ void ft_error_print(t_error err)
 
 	if (err >= ERR_RENDCOUNT_DATA && err <= ERR_RENDCOUNT_FILEPATH)
 		ft_puterr_counter(err);
+
+	if (err >= ERR_RENDGOVER_DATA && err <= ERR_RENDGOVER_FILEPATH)
+		ft_puterr_gover(err);
 }
+
+/** 
+ * ! Refactor this code to string-based errors: "render/gover/filepath"
+ * ! Implement a t_error for const char *
+ * ! Refactor enum to strings macros
+ * ! Or just give up from so many error cases :/
+*/
+

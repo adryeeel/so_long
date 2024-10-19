@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:23:16 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/16 00:52:09 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:27:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ t_error ft_draw_death(t_xenv x, t_game g)
 
 	ft_draw_background(x.display, &tex);
 
-	ft_ximg_copy(&x.scene, tex, (t_coord){
-		g.avatar.x * TILE_SIZE,
-		g.avatar.y * TILE_SIZE,
-	});
+	ft_draw_at(&x.scene, tex, (t_coord){g.avatar.x, g.avatar.y});
 
 	ft_ximg_free(x.display, tex);
 	return (OK);

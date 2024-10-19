@@ -43,6 +43,7 @@ ERROR =	ft_error_wall.c \
 		ft_error_exit.c \
 		ft_error_print.c \
 		ft_error_scene.c \
+		ft_error_gover.c \
 		ft_error_death.c \
 		ft_error_avatar.c \
 		ft_error_patrol.c \
@@ -59,6 +60,7 @@ ERRORP =	ft_puterr_map.c \
 			ft_puterr_coll.c \
 			ft_puterr_exit.c \
 			ft_puterr_space.c \
+			ft_puterr_gover.c \
 			ft_puterr_scene.c \
 			ft_puterr_death.c \
 			ft_puterr_patrol.c \
@@ -88,6 +90,14 @@ HOOK =	ft_hook_key.c \
 HOOK_PATH = $(WIN_PATH)/hook
 HOOK_OBJS = $(addprefix $(BUILD_DIR)/,$(HOOK:.c=.o))
 
+# Window Management — Key sources
+
+KEY =	ft_key_exit.c \
+		ft_key_move.c \
+
+KEY_PATH = $(WIN_PATH)/key
+KEY_OBJS = $(addprefix $(BUILD_DIR)/,$(KEY:.c=.o))
+
 # Window Management — Render sources
 
 DRAW =	ft_draw_at.c \
@@ -97,6 +107,8 @@ DRAW =	ft_draw_at.c \
 		ft_draw_frame.c \
 		ft_draw_death.c \
 		ft_draw_counter.c \
+		ft_draw_fadeout.c \
+		ft_draw_gameover.c \
 		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw
@@ -128,6 +140,7 @@ XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
 GAME =	ft_game_free.c \
 		ft_game_start.c \
 		ft_game_setup.c \
+		ft_game_restart.c \
 
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
@@ -153,6 +166,7 @@ MAP =	ft_map_bfs.c \
 		ft_map_search.c \
 		ft_map_iscomp.c \
 		ft_map_process.c \
+		ft_map_restart.c \
 		ft_map_search_seq.c \
 
 MAP_PATH = $(MAIN_PATH)/map
@@ -186,7 +200,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(KEY_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -208,6 +222,9 @@ $(BUILD_DIR)/%.o: $(WIN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(HOOK_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(KEY_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(DRAW_PATH)/%.c | $(BUILD_DIR)

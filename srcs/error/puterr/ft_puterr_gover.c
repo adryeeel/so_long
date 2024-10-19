@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_move_left.c                                     :+:      :+:    :+:   */
+/*   ft_puterr_gover.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 18:59:05 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/19 17:33:45 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/19 17:34:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_move_left(t_game *g)
+void ft_puterr_gover(t_error err)
 {
-	int x;
-	int y;
+	ft_putendl_fd("Unable to render the game over screen", STDERR_FILENO);
 
-	if (g->avatar.died)
-		return;
+	if (err == ERR_RENDGOVER_PARAM)
+		ft_puterr_ximg(ERR_XIMG_PARAM);
 
-	y = g->avatar.y;
-	x = g->avatar.x - 1;
-	g->avatar.orient = LEFT;
+	if (err == ERR_RENDGOVER_CREATE)
+		ft_puterr_ximg(ERR_XIMG_CREATE);
 
-	if (g->map.grid[y][x] == WALL)
-		return;
+	if (err == ERR_RENDGOVER_DATA)
+		ft_puterr_ximg(ERR_XIMG_DATA);
 
-	g->moves++;
-
-	if (g->map.grid[y][x] == PATROL)
-	{
-		g->avatar.died = true;
-		return;
-	}
-
-	if (g->map.grid[y][x] == COLLECTIBLE)
-		g->map.grid[y][x] = COLLECTED;
-
-	g->avatar.x--;
+	if (err == ERR_RENDGOVER_FILEPATH)
+		ft_puterr_ximg(ERR_XIMG_FILEPATH);
 }

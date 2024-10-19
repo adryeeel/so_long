@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 22:49:44 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:18:03 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_mapc
 	PATROL = 'L',
 	EXIT_POINT = 'E',
 	START_POINT = 'P',
+	COLLECTED = 'c',
 	COLLECTIBLE = 'C',
 } t_mapc;
 
@@ -67,6 +68,7 @@ bool ft_map_iscomp(t_mapc comp);
 void ft_map_setup(t_map *map, char *grid[]);
 bool ft_map_push(char **grid[], char *line);
 
+void ft_map_restart(t_map *map);
 t_error ft_map_check(t_map map);
 t_coord ft_map_search_seq(t_map map, t_mapc comp);
 t_error ft_map_read(char **grid[], char *map_path);
