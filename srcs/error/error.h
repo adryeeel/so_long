@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 15:58:58 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:34:55 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ typedef enum e_error
 	ERR_RENDCOUNT_PARAM,
 	ERR_RENDCOUNT_CREATE,
 	ERR_RENDCOUNT_FILEPATH,
+
+	/* Game Over Text Render Errors */
+	ERR_RENDGOVER_DATA,
+	ERR_RENDGOVER_PARAM,
+	ERR_RENDGOVER_CREATE,
+	ERR_RENDGOVER_FILEPATH,
 } t_error;
 
 void ft_error_print(t_error err);
@@ -114,6 +120,7 @@ t_error ft_error_coll(t_error err);
 t_error ft_error_exit(t_error err);
 t_error ft_error_death(t_error err);
 t_error ft_error_space(t_error err);
+t_error ft_error_gover(t_error err);
 t_error ft_error_scene(t_error err);
 t_error ft_error_avatar(t_error err);
 t_error ft_error_patrol(t_error err);
@@ -125,6 +132,7 @@ void ft_puterr_wall(t_error err);
 void ft_puterr_coll(t_error err);
 void ft_puterr_exit(t_error err);
 void ft_puterr_space(t_error err);
+void ft_puterr_gover(t_error err);
 void ft_puterr_scene(t_error err);
 void ft_puterr_death(t_error err);
 void ft_puterr_avatar(t_error err);
