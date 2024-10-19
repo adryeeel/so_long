@@ -6,12 +6,15 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 14:30:08 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:27:15 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WIN_H
 #define WIN_H
+
+#define ALLOW_MOVE true
+#define UNALLOW_MOVE false
 
 typedef enum e_error t_error;
 typedef struct s_game t_game;
@@ -31,12 +34,12 @@ typedef struct s_ximg
 
 typedef struct s_xenv
 {
-	bool fade;
-
 	t_ximg coll;
 	t_ximg scene;
 	t_ximg patrol;
 	t_ximg number;
+
+	bool allow_move;
 
 	void *window;
 	void *display;
@@ -60,14 +63,19 @@ int ft_hook_loop(void *param);
 int ft_hook_close(void *param);
 int ft_hook_key(int key, void *param);
 
+/* Window Management — Keys */
+
+void ft_key_exit(t_xenv x, int key);
+void ft_key_move(t_xenv x, t_game *g, int key);
+
 /* Window Management — Drawing */
 
-bool ft_draw_fadeout(t_xenv x);
+void ft_draw_fadeout(t_xenv x);
 t_error ft_draw_move(t_xenv x, t_game g);
 t_error ft_draw_death(t_xenv x, t_game g);
 t_error ft_draw_anim(t_xenv *x, t_game *g);
-void ft_draw_gameover(t_xenv *x, t_game *g);
 t_error ft_draw_counter(t_xenv x, t_game g);
+t_error ft_draw_gameover(t_xenv *x, t_game *g);
 t_error ft_draw_comp(t_xenv x, t_game g, t_mapc comp);
 t_error ft_draw_background(void *display, t_ximg *tex);
 void ft_draw_at(t_ximg *dst, t_ximg src, t_coord coord);
