@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 14:25:28 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:19:58 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_error ft_xenv_setup(t_xenv *x, t_map map)
 
 	x->window = NULL;
 	x->display = mlx_init();
-	x->fade = false;
+	x->allow_move = true;
 
 	if (!x->display)
 		return (ERR_XSRV_INIT);
