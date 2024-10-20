@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:13:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:15:47 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:57:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool ft_check_won(t_map map)
 	while (++y < map.height)
 	{
 		x = 0;
-		while (++x < map.height)
+		while (++x < map.width)
 		{
 			if (map.grid[y][x] == COLLECTIBLE)
 				return (false);
