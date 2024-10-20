@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 14:30:25 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:44:51 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_avatar
 
 typedef struct s_game
 {
+	bool won;
 	t_map map;
 	size_t moves;
 	t_avatar avatar;
