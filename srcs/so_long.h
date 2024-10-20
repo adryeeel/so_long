@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 15:12:20 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:25:53 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #define TILE_SIZE 32
 #define AVATAR START_POINT
 
+#define GAME_WON "assets/imgs/you-won.xpm"
+#define GAME_OVER "assets/imgs/game-over.xpm"
 #define EXIT_IMG_PATH "assets/imgs/exit.xpm"
 #define WALL_IMG_PATH "assets/imgs/wall.xpm"
 #define SPACE_IMG_PATH "assets/imgs/space.xpm"

@@ -106,7 +106,7 @@ DRAW =	ft_draw_at.c \
 		ft_draw_move.c \
 		ft_draw_frame.c \
 		ft_draw_death.c \
-		ft_draw_gover.c \
+		ft_draw_final.c \
 		ft_draw_counter.c \
 		ft_draw_fadeout.c \
 		ft_draw_background.c \
