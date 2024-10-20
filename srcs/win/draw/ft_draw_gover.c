@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_gameover.c                                 :+:      :+:    :+:   */
+/*   ft_draw_gover.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:31:29 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 00:32:37 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 17:55:26 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool ft_delay(int frames)
 	return (true);
 }
 
-t_error ft_draw_gameover(t_xenv *x, t_game *g)
+t_error ft_draw_gover(t_xenv *x, t_game *g)
 {
 	t_error err;
 	static int state;
