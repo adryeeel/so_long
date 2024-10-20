@@ -175,6 +175,7 @@ MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 # Game — Map validation sources
 
 MAPC =	ft_check_ext.c \
+		ft_check_won.c \
 		ft_check_path.c \
 		ft_check_comp.c \
 		ft_check_isreg.c \

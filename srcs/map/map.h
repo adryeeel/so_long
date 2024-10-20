@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 17:18:03 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:16:21 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_map
 
 /* Game — Map Validation */
 
+bool ft_check_won(t_map map);
 bool ft_check_isreg(t_map map);
 bool ft_check_isrect(t_map map);
 t_error ft_check_path(t_map map);
