@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 00:39:11 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:30:52 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:52:36 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ t_error ft_draw_anim(t_xenv *x, t_game *g)
 	if (frame_n >= 12)
 		frame_n = 0;
 
-	if (g->avatar.died)
-	{
+	if (g->won || g->avatar.died)
 		x->allow_move = false;
+
+	if (g->won)
+		return (ft_draw_final(x, g, GAME_WON));
+
+	if (g->avatar.died)
 		return (ft_draw_final(x, g, GAME_OVER));
-	}
 
 	err = ft_draw_frame(*x, g->map, PATROL, frame_n);
 	if (err)
