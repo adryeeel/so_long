@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:23:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:31:16 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:40:56 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_error ft_draw_final(t_xenv *x, t_game *g, char *screen_text)
 	{
 		err = ft_draw_text(*x, screen_text);
 		if (err)
-			return (err);
+			return (ft_error_gover(err)); // ! Generalize for won sprite error
 
 		if (ft_delay(24))
 			return (OK);
