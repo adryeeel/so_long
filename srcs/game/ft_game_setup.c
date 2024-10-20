@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/15 13:48:40 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:45:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_error ft_game_setup(t_game *g, char *map_path)
 
 	g->map = map;
 	g->moves = 0;
+	g->won = false;
 	ft_avatar_setup(&g->avatar, map);
 
 	return (OK);
