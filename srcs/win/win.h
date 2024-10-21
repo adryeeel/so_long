@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:29:32 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:46:23 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define ALLOW_MOVE true
 #define UNALLOW_MOVE false
 
-typedef enum e_error t_error;
+typedef char *t_error;
 typedef struct s_game t_game;
 
 typedef struct s_ximg

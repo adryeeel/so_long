@@ -6,16 +6,16 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:44:51 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:45:54 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 #define GAME_H
 
+typedef char *t_error;
 typedef struct s_map t_map;
 typedef struct s_xenv t_xenv;
-typedef enum e_error t_error;
 
 #define LEFT 1
 #define RIGHT 0

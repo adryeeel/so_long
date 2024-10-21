@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 17:34:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:42:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,135 +16,111 @@
 #include <errno.h>
 #include <stdio.h>
 
-typedef enum e_error
-{
-	OK,
-	ERR_BAD_ARGS,
-	ERR_XSRV_INIT,
-	ERR_WIN_CREATE,
+typedef char *t_error;
 
-	/* Map Setup Errors */
-	ERR_MAP_EXT,
-	ERR_MAP_READ,
-	ERR_MAP_ALLOC,
-	ERR_MAP_EMPTY,
-	ERR_MAP_ISDIR,
+#define OK NULL
 
-	/* Map Format Errors */
-	ERR_MAP_REG,
-	ERR_MAP_EXIT,
-	ERR_MAP_RECT,
-	ERR_MAP_START,
-	ERR_MAP_UNKNOWN,
-	ERR_MAP_SURROUNDED,
-	ERR_MAP_COLLECTIBLE,
+/* Bad arguments number */
+#define ERR_ARGS				"args"
 
-	/* Map Path Errors */
-	ERR_MAP_PATH,
-	ERR_MAP_PATH_EXIT,
-	ERR_MAP_PATH_COLL,
-	ERR_MAP_PATH_ALLOC,
+/* Xorg Setup Errors */
+#define ERR_XSRV_WIN			"xsrv_win"
+#define ERR_XSRV_INIT			"xsrv_init"
 
-	/* X Images Errors */
-	ERR_XIMG_DATA,
-	ERR_XIMG_PARAM,
-	ERR_XIMG_CREATE,
-	ERR_XIMG_FILEPATH,
+/* X Image Errors */
+#define ERR_XIMG_DATA			"ximg_data"
+#define ERR_XIMG_PARAM			"ximg_param"
+#define ERR_XIMG_CREATE			"ximg_create"
+#define ERR_XIMG_FILEPATH		"ximg_filepath"
 
-	/* Scene Render Errors */
-	ERR_RENDSCENE_DATA,
-	ERR_RENDSCENE_PARAM,
-	ERR_RENDSCENE_CREATE,
+/* Map Setup Errors */
+#define ERR_MAP_EXT				"map_setup_ext"
+#define ERR_MAP_READ			"map_setup_read"
+#define ERR_MAP_ALLOC			"map_setup_alloc"
+#define ERR_MAP_EMPTY			"map_setup_empty"
+#define ERR_MAP_ISDIR			"map_setup_isdir"
 
-	/* Background Render Errors */
-	ERR_RENDBG_DATA,
-	ERR_RENDBG_PARAM,
-	ERR_RENDBG_CREATE,
-	ERR_RENDBG_FILEPATH,
+/* Map Path Errors */
+#define ERR_MAP_PATH			"map_path"
+#define ERR_MAP_PATH_EXIT		"map_path_exit"
+#define ERR_MAP_PATH_COLL		"map_path_coll"
+#define ERR_MAP_PATH_ALLOC		"map_path_alloc"
 
-	/* Wall Render Errors */
-	ERR_RENDWALL_DATA,
-	ERR_RENDWALL_PARAM,
-	ERR_RENDWALL_CREATE,
-	ERR_RENDWALL_FILEPATH,
+/* Map Format Errors */
+#define ERR_MAP_REG				"map_format_reg"
+#define ERR_MAP_EXIT			"map_format_exit"
+#define ERR_MAP_RECT			"map_format_rect"
+#define ERR_MAP_START			"map_format_start"
+#define ERR_MAP_UNKNOWN			"map_format_unknown"
+#define ERR_MAP_SURROUNDED		"map_format_surrounded"
+#define ERR_MAP_COLLECTIBLE		"map_format_collectible"
 
-	/* Collectible Render Errors */
-	ERR_RENDCOLL_DATA,
-	ERR_RENDCOLL_PARAM,
-	ERR_RENDCOLL_CREATE,
-	ERR_RENDCOLL_FILEPATH,
+/* Scene Render Errors */
+#define ERR_RENDSCENE_DATA		"rend_scene_data"
+#define ERR_RENDSCENE_PARAM		"rend_scene_param"
+#define ERR_RENDSCENE_CREATE	"rend_scene_create"
 
-	/* Avatar Render Errors */
-	ERR_RENDAVATAR_DATA,
-	ERR_RENDAVATAR_PARAM,
-	ERR_RENDAVATAR_CREATE,
-	ERR_RENDAVATAR_FILEPATH,
+/* Background Render Errors */
+#define ERR_RENDBG_DATA			"rend_bg_data"
+#define ERR_RENDBG_PARAM		"rend_bg_param"
+#define ERR_RENDBG_CREATE		"rend_bg_create"
+#define ERR_RENDBG_FILEPATH		"rend_bg_filepath"
 
-	/* Exit Point Render Errors */
-	ERR_RENDEXIT_DATA,
-	ERR_RENDEXIT_PARAM,
-	ERR_RENDEXIT_CREATE,
-	ERR_RENDEXIT_FILEPATH,
+/* Wall Render Errors */
+#define ERR_RENDWALL_DATA		"rend_wall_data"
+#define ERR_RENDWALL_PARAM		"rend_wall_param"
+#define ERR_RENDWALL_CREATE		"rend_wall_create"
+#define ERR_RENDWALL_FILEPATH	"rend_wall_filepath"
 
-	/* Exit Point Render Errors */
-	ERR_RENDPATROL_DATA,
-	ERR_RENDPATROL_PARAM,
-	ERR_RENDPATROL_CREATE,
-	ERR_RENDPATROL_FILEPATH,
+/* Collectible Render Errors */
+#define ERR_RENDCOLL_DATA		"rend_coll_data"
+#define ERR_RENDCOLL_PARAM		"rend_coll_param"
+#define ERR_RENDCOLL_CREATE		"rend_coll_create"
+#define ERR_RENDCOLL_FILEPATH	"rend_coll_filepath"
 
-	/* Avatar Death Render Errors */
-	ERR_RENDEATH_DATA,
-	ERR_RENDEATH_PARAM,
-	ERR_RENDEATH_CREATE,
-	ERR_RENDEATH_FILEPATH,
-	
-	/* Counter Number Render Errors */
-	ERR_RENDCOUNT_DATA,
-	ERR_RENDCOUNT_PARAM,
-	ERR_RENDCOUNT_CREATE,
-	ERR_RENDCOUNT_FILEPATH,
+/* Avatar Render Errors */
+#define ERR_RENDAVATAR_DATA		"rend_avatar_data"
+#define ERR_RENDAVATAR_PARAM	"rend_avatar_param"
+#define ERR_RENDAVATAR_CREATE	"rend_avatar_create"
+#define ERR_RENDAVATAR_FILEPATH	"rend_avatar_filepath"
 
-	/* Game Over Text Render Errors */
-	ERR_RENDGOVER_DATA,
-	ERR_RENDGOVER_PARAM,
-	ERR_RENDGOVER_CREATE,
-	ERR_RENDGOVER_FILEPATH,
-} t_error;
+/* Avatar Death Render Errors */
+#define ERR_RENDEATH_DATA		"rend_death_data"
+#define ERR_RENDEATH_PARAM		"rend_death_param"
+#define ERR_RENDEATH_CREATE		"rend_death_create"
+#define ERR_RENDEATH_FILEPATH	"rend_death_filepath"
+
+/* Exit Point Render Errors */
+#define ERR_RENDEXIT_DATA		"rend_exit_data"
+#define ERR_RENDEXIT_PARAM		"rend_exit_param"
+#define ERR_RENDEXIT_CREATE		"rend_exit_create"
+#define ERR_RENDEXIT_FILEPATH	"rend_exit_filepath"
+
+/* Enemy Patrol Render Errors */
+#define ERR_RENDPATROL_DATA		"rend_patrol_data"
+#define ERR_RENDPATROL_PARAM	"rend_patrol_param"
+#define ERR_RENDPATROL_CREATE	"rend_patrol_create"
+#define ERR_RENDPATROL_FILEPATH	"rend_patrol_filepath"
+
+/* Counter Number Render Errors */
+#define ERR_RENDCOUNT_DATA		"rend_count_data"
+#define ERR_RENDCOUNT_PARAM		"rend_count_param"
+#define ERR_RENDCOUNT_CREATE	"rend_count_create"
+#define ERR_RENDCOUNT_FILEPATH	"rend_count_filepath"
+
+/* Game Over Render Errors */
+#define ERR_RENDGOVER_DATA 		"rend_gover_data"
+#define ERR_RENDGOVER_PARAM 	"rend_gover_param"
+#define ERR_RENDGOVER_CREATE 	"rend_gover_create"
+#define ERR_RENDGOVER_FILEPATH 	"rend_gover_filepath"
+
+/* Game Won Render Errors */
+#define ERR_RENDGWON_DATA 		"rend_gwon_data"
+#define ERR_RENDGWON_PARAM 		"rend_gwon_param"
+#define ERR_RENDGWON_CREATE 	"rend_gwon_create"
+#define ERR_RENDGWON_FILEPATH 	"rend_gwon_lepath"
 
 void ft_error_print(t_error err);
-
-/* Map Render Errors */
-
-t_error ft_error_wall(t_error err);
-t_error ft_error_coll(t_error err);
-t_error ft_error_exit(t_error err);
-t_error ft_error_death(t_error err);
-t_error ft_error_space(t_error err);
-t_error ft_error_gover(t_error err);
-t_error ft_error_scene(t_error err);
-t_error ft_error_avatar(t_error err);
-t_error ft_error_patrol(t_error err);
-t_error ft_error_counter(t_error err);
-
-/* Display Map Render Errors */
-
-void ft_puterr_wall(t_error err);
-void ft_puterr_coll(t_error err);
-void ft_puterr_exit(t_error err);
-void ft_puterr_space(t_error err);
-void ft_puterr_gover(t_error err);
-void ft_puterr_scene(t_error err);
-void ft_puterr_death(t_error err);
-void ft_puterr_avatar(t_error err);
-void ft_puterr_patrol(t_error err);
-void ft_puterr_counter(t_error err);
-
-/* Display Map Validation Errors */
-
-void ft_puterr_map(t_error err);
-void ft_puterr_format(t_error err);
-void ft_puterr_pathway(t_error err);
-
-void ft_puterr_ximg(t_error err);
+void ft_error_generate(t_error err);
 
 #endif
