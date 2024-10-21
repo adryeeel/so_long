@@ -106,9 +106,9 @@ DRAW =	ft_draw_at.c \
 		ft_draw_move.c \
 		ft_draw_frame.c \
 		ft_draw_death.c \
+		ft_draw_final.c \
 		ft_draw_counter.c \
 		ft_draw_fadeout.c \
-		ft_draw_gameover.c \
 		ft_draw_background.c \
 
 DRAW_PATH = $(WIN_PATH)/draw
@@ -175,6 +175,7 @@ MAP_OBJS = $(addprefix $(BUILD_DIR)/,$(MAP:.c=.o))
 # Game — Map validation sources
 
 MAPC =	ft_check_ext.c \
+		ft_check_won.c \
 		ft_check_path.c \
 		ft_check_comp.c \
 		ft_check_isreg.c \

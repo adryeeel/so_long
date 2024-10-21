@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 18:09:45 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 00:22:26 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:51:15 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void ft_game_restart(t_xenv *x, t_game *g)
 	start = ft_map_search(g->map, AVATAR, (t_coord){1, 1});
 	
 	g->moves = 0;
+	g->won = false;
 	g->avatar.x = start.x;
 	g->avatar.y = start.y;
 	g->avatar.died = false;

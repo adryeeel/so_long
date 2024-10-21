@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hook_key.c                                      :+:      :+:    :+:   */
+/*   ft_check_won.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 20:17:06 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 23:20:17 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/20 18:13:17 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/20 18:57:35 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-#define XK_LATIN1
-#define XK_MISCELLANY
-
-#include <X11/keysymdef.h>
-
-int ft_hook_key(int key, void *param)
+bool ft_check_won(t_map map)
 {
-	t_xenv *x;
-	t_game *g;
+	size_t x;
+	size_t y;
 
-	if (key == XK_Return)
-		return (0);
-
-	x = ((t_param *)param)->x;
-	g = ((t_param *)param)->g;
-
-	if (x->allow_move)
+	y = 0;
+	while (++y < map.height)
 	{
-		ft_key_move(*x, g, key);
-		return (0);
+		x = 0;
+		while (++x < map.width)
+		{
+			if (map.grid[y][x] == COLLECTIBLE)
+				return (false);
+		}
 	}
-
-	ft_key_exit(*x, key);
-	return (0);
+	return (true);
 }
