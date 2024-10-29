@@ -5,34 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:57:12 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/21 19:07:59 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/25 01:10:34 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/28 02:22:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static bool ft_strarr_init(t_error err, t_strarr *strings)
+char *ft_error_generate(t_strarr keywords)
 {
-	strings->data = ft_split(err, '_');
+	char *message;
+	char *err_type;
+	char *err_what;
+	char *err_cause;
 
-	if (!strings->data)
-		return (false);
+	message = ft_calloc(NULL_BYTE, sizeof(char));
+	if (!message)
+		return (NULL);
 
-	strings->length = ft_strarr_length(strings->data);
-	return (true);
-}
+	err_type = keywords.data[0];
+	err_what = keywords.data[1];
 
-static void ft_error_render(t_strarr strings)
-{
-	// Unable to render game's [word]
-	//
-}
+	ft_generate_type(&message, err_type);
+	ft_generate_what(&message, err_what);
 
-void ft_error_generate(t_error err)
-{
-	t_strarr strings;
+	if (keywords.length > 2)
+	{
+		err_cause = keywords.data[2];
+		ft_generate_cause(&message, err_cause);
+	}
 
-	if (!ft_strarr_init(err, &strings))
-		return;
+	return (message);
 }
