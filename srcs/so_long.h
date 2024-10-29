@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:25:53 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:12:41 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@
 #define TILE_SIZE 32
 #define AVATAR START_POINT
 
-#define GAME_WON "assets/imgs/you-won.xpm"
-#define GAME_OVER "assets/imgs/game-over.xpm"
-#define EXIT_IMG_PATH "assets/imgs/exit.xpm"
-#define WALL_IMG_PATH "assets/imgs/wall.xpm"
-#define SPACE_IMG_PATH "assets/imgs/space.xpm"
-#define MOVES_IMG_PATH "assets/imgs/moves.xpm"
-#define PATROL_IMG_PATH "assets/imgs/patrol.xpm"
-#define AVATAR_IMG_PATH "assets/imgs/avatar.xpm"
-#define NUMBER_IMG_PATH "assets/imgs/number.xpm"
-#define GOVER_IMG_PATH "assets/imgs/game-over.xpm"
-#define COLL_IMG_PATH "assets/imgs/collectible.xpm"
-#define DEATH_IMG_PATH "assets/imgs/avatar-death.xpm"
-#define LAVATAR_IMG_PATH "assets/imgs/avatar-left.xpm"
+#define GAME_WON			"assets/imgs/you-won.xpm"
+#define GAME_OVER			"assets/imgs/game-over.xpm"
+#define EXIT_IMG_PATH		"assets/imgs/exit.xpm"
+#define WALL_IMG_PATH		"assets/imgs/wall.xpm"
+#define SPACE_IMG_PATH		"assets/imgs/space.xpm"
+#define MOVES_IMG_PATH		"assets/imgs/moves.xpm"
+#define PATROL_IMG_PATH		"assets/imgs/patrol.xpm"
+#define AVATAR_IMG_PATH		"assets/imgs/avatar.xpm"
+#define NUMBER_IMG_PATH		"assets/imgs/number.xpm"
+#define COLL_IMG_PATH		"assets/imgs/collectible.xpm"
+#define DEATH_IMG_PATH		"assets/imgs/avatar-death.xpm"
+#define LAVATAR_IMG_PATH	"assets/imgs/avatar-left.xpm"
 
 /* Miscellaneous */
 
 int **ft_dirs_setup(void);
 void ft_matrix_free(int **matrix);
-void ft_points_free(t_queue points);
+char ft_str_filter(unsigned int index, char c);
 int **ft_matrix_alloc(size_t x, size_t y);
+void ft_points_free(t_queue points, t_coord *pos);
 
 #endif
