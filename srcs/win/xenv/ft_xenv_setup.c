@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 17:19:58 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/26 00:25:49 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ static t_error ft_sprite_setup(t_xenv *x, t_map map)
 
 	err = ft_ximg_setup(x->display, &(x->scene), WIN_WH, WIN_HT);
 	if (err)
-		return (ft_error_scene(err));
+		return (ft_error(err, ERR_RENDSCENE));
 
 	err = ft_ximgf_setup(x->display, &(x->coll), COLL_IMG_PATH);
 	if (err)
-		return (ft_error_coll(err));
+		return (ft_error(err, ERR_RENDCOLL));
 
 	err = ft_ximgf_setup(x->display, &(x->patrol), PATROL_IMG_PATH);
 	if (err)
-		return (ft_error_patrol(err));
+		return (ft_error(err, ERR_RENDPATROL));
 
 	err = ft_ximgf_setup(x->display, &(x->number), NUMBER_IMG_PATH);
 	if (err)
-		return (ft_error_counter(err));
+		return (ft_error(err, ERR_RENDCOUNT));
 
 	return (OK);
 }
@@ -43,8 +43,13 @@ t_error ft_xenv_setup(t_xenv *x, t_map map)
 	t_error err;
 
 	x->window = NULL;
-	x->display = mlx_init();
 	x->allow_move = true;
+	x->display = mlx_init();
+
+	x->coll.id = NULL;
+	x->scene.id = NULL;
+	x->number.id = NULL;
+	x->patrol.id = NULL;
 
 	if (!x->display)
 		return (ERR_XSRV_INIT);
