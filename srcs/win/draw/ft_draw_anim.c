@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 00:39:11 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:52:36 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:17:26 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ t_error ft_draw_anim(t_xenv *x, t_game *g)
 
 	err = ft_draw_frame(*x, g->map, PATROL, frame_n);
 	if (err)
-		return (ft_error_patrol(err));
+		return (ft_error(err, ERR_RENDPATROL));
 
 	err = ft_draw_frame(*x, g->map, COLLECTIBLE, frame_n);
 	if (err)
-		return (ft_error_coll(err));
+		return (ft_error(err, ERR_RENDCOLL));
 
 	frame_n++;
 	return (OK);
