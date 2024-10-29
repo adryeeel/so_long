@@ -189,6 +189,7 @@ MISC =	ft_dirs_setup.c \
 		ft_points_free.c \
 		ft_matrix_free.c \
 		ft_matrix_alloc.c \
+		ft_error_draw_final.c \
 
 MISC_PATH = $(MAIN_PATH)/misc
 MISC_OBJS = $(addprefix $(BUILD_DIR)/,$(MISC:.c=.o))
