@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:23:17 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/24 00:10:06 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:39:09 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define FADE_OUT 0
 #define RESTART 1
-#define GOVER_TEXT 2
+#define SCREEN_TEXT 2
 
 static bool ft_delay(int frames)
 {
@@ -49,7 +49,7 @@ static t_error ft_draw_text(t_xenv x, char *text_path)
 	return (OK);
 }
 
-t_error ft_draw_final(t_xenv *x, t_game *g, char *screen_text)
+t_error ft_draw_final(t_xenv *x, t_game *g, char *text_path)
 {
 	t_error err;
 	static int state;
@@ -62,13 +62,13 @@ t_error ft_draw_final(t_xenv *x, t_game *g, char *screen_text)
 			return (OK);
 	}
 
-	state = GOVER_TEXT;
+	state = SCREEN_TEXT;
 
-	if (state == GOVER_TEXT)
+	if (state == SCREEN_TEXT)
 	{
-		err = ft_draw_text(*x, screen_text);
+		err = ft_draw_text(*x, text_path);
 		if (err)
-			return (ft_error(err, ERR_RENDGOVER)); // ! Generalize for won sprite error
+			return (ft_error_draw_final(err, text_path));
 
 		if (ft_delay(24))
 			return (OK);
