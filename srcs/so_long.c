@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:11:40 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/21 18:50:46 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:19:10 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main(int argc, char const *argv[])
 {
 	t_error err;
-	char *map_path;
 
 	if (argc != 2)
 	{
@@ -23,9 +22,7 @@ int main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	map_path = (char *)argv[1];
-
-	err = ft_game_start(map_path);
+	err = ft_game_start((char *)argv[1]);
 	if (err)
 	{
 		ft_error_print(err);
