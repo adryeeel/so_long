@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:08:57 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/18 14:29:42 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/26 00:29:16 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int ft_hook_loop(void *param)
 	curr_time = ft_draw_time();
 
 	if (curr_time - last_time < FPS_16)
-		return (OK);
+		return (0);
 
 	err = ft_draw_anim(x, g);
 	if (err)
