@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 18:16:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:46:06 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef enum e_error t_error;
+typedef char *t_error;
 
 typedef struct s_coord
 {

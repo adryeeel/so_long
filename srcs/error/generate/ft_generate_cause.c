@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_ximg.c                                   :+:      :+:    :+:   */
+/*   ft_generate_cause.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/25 02:31:39 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/25 14:19:35 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/29 19:16:54 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_ximg(t_error err)
+void ft_generate_cause(char **message, char *err_cause)
 {
-	if (err == ERR_XIMG_DATA)
-		ft_putendl_fd("Failed to create the X image: Faulty image buffer", STDERR_FILENO);
+	if (ft_strchr(err_cause, '-'))
+		return (ft_generate_multi(message, err_cause), (void)0);
 
-	if (err == ERR_XIMG_PARAM)
-		ft_putendl_fd("Failed to create the X image: Invalid parameters", STDERR_FILENO);
+	if (ft_error_is_ximg(err_cause))
+		ft_generate_ximg(message, err_cause);
 
-	if (err == ERR_XIMG_CREATE)
-		ft_putendl_fd("Failed to create the X image", STDERR_FILENO);
-
-	if (err == ERR_XIMG_FILEPATH)
-		perror("Failed to create the X image with XPM file");
+	if (ft_error_is_map(err_cause))
+		ft_generate_map(message, err_cause);
 }

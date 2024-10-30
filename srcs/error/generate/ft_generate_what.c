@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_gover.c                                  :+:      :+:    :+:   */
+/*   ft_generate_what.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 17:33:45 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 17:34:21 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/25 14:20:24 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/28 00:48:47 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_gover(t_error err)
+static void ft_generate_single(char **message, char *err_what)
 {
-	ft_putendl_fd("Unable to render the game over screen", STDERR_FILENO);
+	char *join;
 
-	if (err == ERR_RENDGOVER_PARAM)
-		ft_puterr_ximg(ERR_XIMG_PARAM);
+	join = ft_strjoin(*message, err_what);
+	free(*message);
+	*message = join;
+}
 
-	if (err == ERR_RENDGOVER_CREATE)
-		ft_puterr_ximg(ERR_XIMG_CREATE);
+void ft_generate_what(char **message, char *err_what)
+{
+	if (ft_strchr(err_what, '-'))
+		return (ft_generate_multi(message, err_what), (void)0);
 
-	if (err == ERR_RENDGOVER_DATA)
-		ft_puterr_ximg(ERR_XIMG_DATA);
-
-	if (err == ERR_RENDGOVER_FILEPATH)
-		ft_puterr_ximg(ERR_XIMG_FILEPATH);
+	ft_generate_single(message, err_what);
 }

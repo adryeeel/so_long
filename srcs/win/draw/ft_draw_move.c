@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 21:11:47 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/21 00:04:36 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/24 00:15:33 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static t_error ft_update_avatar(t_xenv x, t_game g, t_coord last_pos)
 
 	err = ft_clear_tile(x, last_pos);
 	if (err)
-		return (ft_error_space(err));
+		return (ft_error(err, ERR_RENDSPACE));
 
 	err = ft_draw_comp(x, g, AVATAR);
 	if (err)
-		return (ft_error_avatar(err));
+		return (ft_error(err, ERR_RENDAVATAR));
 
 	return (OK);
 }
@@ -69,7 +69,7 @@ t_error ft_draw_move(t_xenv x, t_game g)
 
 	err = ft_draw_counter(x, g);
 	if (err)
-		return (err);
+		return (ft_error(err, ERR_RENDCOUNT));
 
 	if (ft_reset_pos(g, &last_pos))
 		return (OK);

@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 00:03:09 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/09 22:30:02 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/28 01:02:25 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ static t_error ft_bfs_setup(t_map map, t_coord start, int ***visited, t_coord **
 	*sp = ft_calloc(1, sizeof(t_coord));
 
 	if (!*sp)
-	{
-		ft_matrix_free(*visited);
-		return (ERR_MAP_PATH_ALLOC);
-	}
+		return (ft_matrix_free(*visited), ERR_MAP_PATH_ALLOC);
 
 	(*sp)->x = start.x;
 	(*sp)->y = start.y;
@@ -70,10 +67,7 @@ static t_error ft_bfs_edges(t_map map, t_queue *q, t_coord curr, int **visited)
 		pos = ft_calloc(1, sizeof(t_coord));
 
 		if (!pos)
-		{
-			ft_points_free(*q);
-			return (ERR_MAP_PATH_ALLOC);
-		}
+			return (ft_matrix_free(directions), ERR_MAP_PATH_ALLOC);
 
 		pos->x = curr.x + directions[i][0];
 		pos->y = curr.y + directions[i][1];
@@ -86,6 +80,7 @@ static t_error ft_bfs_edges(t_map map, t_queue *q, t_coord curr, int **visited)
 		}
 		free(pos);
 	}
+
 	ft_matrix_free(directions);
 	return (OK);
 }
@@ -100,8 +95,8 @@ t_error ft_map_bfs(t_map map, t_coord start, t_coord end)
 
 	sp = NULL;
 	visited = NULL;
-	err = ft_bfs_setup(map, start, &visited, &sp);
 
+	err = ft_bfs_setup(map, start, &visited, &sp);
 	if (err)
 		return (err);
 
@@ -113,18 +108,18 @@ t_error ft_map_bfs(t_map map, t_coord start, t_coord end)
 		pos = ft_dequeue(&q);
 
 		if (pos->x == end.x && pos->y == end.y)
-		{
-			free(pos);
-			err = OK;
-			break;
-		}
+			return (ft_points_free(q, pos), ft_matrix_free(visited), OK);
+
 		err = ft_bfs_edges(map, &q, *pos, visited);
-		free(pos);
 		if (err)
 			break;
+
 		err = ERR_MAP_PATH;
+		ft_free((void **)&pos);
 	}
-	ft_points_free(q);
+
+	ft_points_free(q, pos);
 	ft_matrix_free(visited);
+
 	return (err);
 }

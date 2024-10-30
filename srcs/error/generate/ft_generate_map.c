@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_exit.c                                   :+:      :+:    :+:   */
+/*   ft_generate_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/06 01:13:01 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/06 01:13:46 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/29 19:05:46 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/29 19:32:47 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_exit(t_error err)
+#define MAP_READ	"read"
+#define MAP_ALLOC	"alloc"
+
+void ft_generate_map(char **message, char *err_cause)
 {
-	ft_putendl_fd("Unable to render the game's exit point", STDERR_FILENO);
+	char *err_msg;
 
-	if (err == ERR_RENDEXIT_PARAM)
-		ft_puterr_ximg(ERR_XIMG_PARAM);
+	if (ft_error_is(err_cause, MAP_READ))
+		err_msg = ft_strdup("Failed to read map file");
 
-	if (err == ERR_RENDEXIT_CREATE)
-		ft_puterr_ximg(ERR_XIMG_CREATE);
+	if (ft_error_is(err_cause, MAP_ALLOC))
+		err_msg = ft_strdup("Failed to allocate map's grid");
 
-	if (err == ERR_RENDEXIT_DATA)
-		ft_puterr_ximg(ERR_XIMG_DATA);
+	ft_generate_errno(&err_msg);
 
-	if (err == ERR_RENDEXIT_FILEPATH)
-		ft_puterr_ximg(ERR_XIMG_FILEPATH);
+	free(*message);
+	*message = err_msg;
 }
-

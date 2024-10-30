@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_gover.c                                   :+:      :+:    :+:   */
+/*   ft_error_draw_final.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 17:32:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/19 17:33:03 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/29 20:37:00 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/29 20:42:04 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_error ft_error_gover(t_error err)
+t_error ft_error_draw_final(t_error err, char *text_path)
 {
-	if (err == ERR_XIMG_PARAM)
-		return (ERR_RENDGOVER_PARAM);
+	if (!ft_strncmp(text_path, GOVER_IMG_PATH, ft_strlen(text_path)))
+		return (ft_error(err, ERR_RENDGOVER));
 
-	if (err == ERR_XIMG_CREATE)
-		return (ERR_RENDGOVER_CREATE);
-
-	if (err == ERR_XIMG_DATA)
-		return (ERR_RENDGOVER_DATA);
-
-	if (err == ERR_XIMG_FILEPATH)
-		return (ERR_RENDGOVER_FILEPATH);
-
-	if (err)
-		return (err);
+	if (!ft_strncmp(text_path, GWON_IMG_PATH, ft_strlen(text_path)))
+		return (ft_error(err, ERR_RENDGWON));
 
 	return (OK);
 }

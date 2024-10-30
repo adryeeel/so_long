@@ -4,7 +4,7 @@ CLR_YLW = \033[0;33m
 CLR_STP = \033[m
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 BUILD_DIR = build
 
@@ -37,40 +37,37 @@ MAIN_OBJS = $(addprefix $(BUILD_DIR)/,$(MAIN:.c=.o))
 
 # Error handling sources
 
-ERROR =	ft_error_wall.c \
-		ft_error_coll.c \
-		ft_error_space.c \
-		ft_error_exit.c \
+ERROR =	ft_error.c \
+		ft_error_is.c \
+		ft_error_free.c \
 		ft_error_print.c \
-		ft_error_scene.c \
-		ft_error_gover.c \
-		ft_error_death.c \
-		ft_error_avatar.c \
-		ft_error_patrol.c \
-		ft_error_counter.c \
+		ft_error_message.c \
+		ft_error_generate.c \
 
 ERROR_PATH = $(MAIN_PATH)/error
 ERROR_OBJS = $(addprefix $(BUILD_DIR)/,$(ERROR:.c=.o))
 
-# Error print sources
+# Error Generator sources
 
-ERRORP =	ft_puterr_map.c \
-			ft_puterr_wall.c \
-			ft_puterr_ximg.c \
-			ft_puterr_coll.c \
-			ft_puterr_exit.c \
-			ft_puterr_space.c \
-			ft_puterr_gover.c \
-			ft_puterr_scene.c \
-			ft_puterr_death.c \
-			ft_puterr_patrol.c \
-			ft_puterr_avatar.c \
-			ft_puterr_format.c \
-			ft_puterr_counter.c \
-			ft_puterr_pathway.c \
+EGEN =	ft_generate_map.c \
+		ft_generate_type.c \
+		ft_generate_what.c \
+		ft_generate_ximg.c \
+		ft_generate_multi.c \
+		ft_generate_errno.c \
+		ft_generate_cause.c \
 
-ERRORP_PATH = $(ERROR_PATH)/puterr
-ERRORP_OBJS = $(addprefix $(BUILD_DIR)/,$(ERRORP:.c=.o))
+EGEN_PATH = $(ERROR_PATH)/generate
+EGEN_OBJS = $(addprefix $(BUILD_DIR)/,$(EGEN:.c=.o))
+
+# Error Checking Sources
+
+ECHECK =	ft_error_is.c \
+			ft_error_is_map.c \
+			ft_error_is_ximg.c \
+
+ECHECK_PATH = $(ERROR_PATH)/check
+ECHECK_OBJS = $(addprefix $(BUILD_DIR)/,$(ECHECK:.c=.o))
 
 # Window Management sources
 
@@ -188,12 +185,24 @@ MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
 # Miscellaneous sources
 
 MISC =	ft_dirs_setup.c \
+		ft_str_filter.c \
 		ft_points_free.c \
 		ft_matrix_free.c \
 		ft_matrix_alloc.c \
+		ft_error_draw_final.c \
 
 MISC_PATH = $(MAIN_PATH)/misc
 MISC_OBJS = $(addprefix $(BUILD_DIR)/,$(MISC:.c=.o))
+
+# Debug Make Flag
+ifeq ($(debug), 1)
+    CFLAGS += -g
+endif
+
+# Leak Make Flag
+ifeq ($(leaks), 1)
+    CFLAGS += -fsanitize=address
+endif
 
 # Build Rules
 
@@ -201,7 +210,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(ERRORP_OBJS)  $(WIN_OBJS) $(HOOK_OBJS) $(KEY_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(EGEN_OBJS) $(ECHECK_OBJS) $(WIN_OBJS) $(HOOK_OBJS) $(KEY_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -214,8 +223,12 @@ $(BUILD_DIR)/%.o: $(MAIN_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(ERROR_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: $(ERRORP_PATH)/%.c | $(BUILD_DIR)
+$(BUILD_DIR)/%.o: $(EGEN_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: $(ECHECK_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 
 # Window Management Build
 
@@ -271,6 +284,12 @@ $(LIBMLX_PATH)/$(LIBMLX):
 $(BUILD_DIR):
 	mkdir -p $@
 
+debug:
+	@$(MAKE) debug=1
+
+leak:
+	@$(MAKE) leaks=1
+
 clean:
 	rm -rf $(BUILD_DIR)
 	@$(MAKE) $@ -C $(LIBFT_PATH) > /dev/null 2>&1
@@ -283,4 +302,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: debug leak all clean fclean re

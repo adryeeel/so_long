@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_death.c                                  :+:      :+:    :+:   */
+/*   ft_generate_multi.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 20:02:49 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/13 00:15:35 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/27 01:49:15 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/28 00:29:51 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_death(t_error err)
+void ft_generate_multi(char **message, char *phrase)
 {
-	ft_putendl_fd("Unable to render avatar's death animation", STDERR_FILENO);
+	char *msg;
+	char *join_a;
+	char *join_b;
 
-	if (err == ERR_RENDEATH_PARAM)
-		ft_puterr_ximg(ERR_XIMG_PARAM);
+	msg = ft_strmapi(phrase, ft_str_filter);
+	join_a = ft_strjoin(msg, ".\n");
+	join_b = ft_strjoin(*message, join_a);
 
-	if (err == ERR_RENDEATH_CREATE)
-		ft_puterr_ximg(ERR_XIMG_CREATE);
+	free(msg);
+	free(join_a);
+	free(*message);
 
-	if (err == ERR_RENDEATH_DATA)
-		ft_puterr_ximg(ERR_XIMG_DATA);
-
-	if (err == ERR_RENDEATH_FILEPATH)
-		ft_puterr_ximg(ERR_XIMG_FILEPATH);
+	*message = join_b;
 }

@@ -6,13 +6,13 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:20:32 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/08 00:04:50 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:08:46 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_enqueue_points(t_map map, t_queue *points)
+t_error ft_enqueue_points(t_map map, t_queue *points)
 {
 	int x;
 	size_t y;
@@ -27,12 +27,8 @@ void ft_enqueue_points(t_map map, t_queue *points)
 		while (++x < (int)map.width)
 		{
 			point = ft_calloc(1, sizeof(t_coord));
-
 			if (!point)
-			{
-				ft_points_free(*points);
-				return;
-			}
+				return (ERR_MAP_PATH_ALLOC);
 
 			point->x = x;
 			point->y = y;
@@ -47,6 +43,7 @@ void ft_enqueue_points(t_map map, t_queue *points)
 			free(point);
 		}
 	}
+	return (OK);
 }
 
 t_error ft_check_path(t_map map)
@@ -56,34 +53,27 @@ t_error ft_check_path(t_map map)
 	t_coord *pos;
 	t_queue points;
 
-	ft_enqueue_points(map, &points);
 	start = ft_map_search(map, START_POINT, (t_coord){1, 1});
+
+	err = ft_enqueue_points(map, &points);
+	if (err)
+		return (ft_points_free(points, NULL), err);
 
 	while (points.length > 0)
 	{
 		pos = ft_dequeue(&points);
 		err = ft_map_bfs(map, start, *pos);
 
-		if (err && err != ERR_MAP_PATH)
-			return (err);
+		if (err && !ft_error_is(err, ERR_MAP_PATH))
+			return (ft_points_free(points, pos), err);
 
 		if (err && map.grid[pos->y][pos->x] == EXIT_POINT)
-		{
-			err = ERR_MAP_PATH_EXIT;
-			break;
-		}
+			return (ft_points_free(points, pos), ERR_MAP_PATH_EXIT);
 
 		if (err && map.grid[pos->y][pos->x] == COLLECTIBLE)
-		{
-			err = ERR_MAP_PATH_COLL;
-			break;
-		}
+			return (ft_points_free(points, pos), ERR_MAP_PATH_COLL);
+
 		free(pos);
-	}
-	if (err)
-	{
-		free(pos);
-		ft_points_free(points);
 	}
 	return (err);
 }

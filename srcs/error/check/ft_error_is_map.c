@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_coll.c                                   :+:      :+:    :+:   */
+/*   ft_error_is_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/29 20:02:49 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/30 01:50:07 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/29 19:18:33 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/29 19:19:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_coll(t_error err)
+#define MAP_READ	"read"
+#define MAP_ALLOC	"alloc"
+
+bool ft_error_is_map(char *err_cause)
 {
-	ft_putendl_fd("Unable to render map collectible(s)", STDERR_FILENO);
+	if (ft_error_is(err_cause, MAP_READ))
+		return (true);
 
-	if (err == ERR_RENDCOLL_PARAM)
-		ft_puterr_ximg(ERR_XIMG_PARAM);
+	if (ft_error_is(err_cause, MAP_ALLOC))
+		return (true);
 
-	if (err == ERR_RENDCOLL_CREATE)
-		ft_puterr_ximg(ERR_XIMG_CREATE);
-
-	if (err == ERR_RENDCOLL_DATA)
-		ft_puterr_ximg(ERR_XIMG_DATA);
-
-	if (err == ERR_RENDCOLL_FILEPATH)
-		ft_puterr_ximg(ERR_XIMG_FILEPATH);
+	return (false);
 }

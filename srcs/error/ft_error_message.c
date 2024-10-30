@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_print.c                                   :+:      :+:    :+:   */
+/*   ft_error_message.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:11:08 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/30 02:11:52 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/21 17:57:12 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/25 13:47:40 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void ft_error_print(t_error err)
+static bool ft_strarr_init(t_error err, t_strarr *strings)
+{
+	strings->data = ft_split(err, '_');
+
+	if (!strings->data)
+		return (false);
+
+	strings->length = ft_strarr_length(strings->data);
+	return (true);
+}
+
+char *ft_error_message(t_error err)
 {
 	char *message;
+	t_strarr keywords;
 
-	ft_putendl_fd("Error", STDERR_FILENO);
+	if (!err)
+		return (NULL);
 
-	if (ft_error_is(err, ERR_ARGS))
-		return (ft_putendl_fd(ERR_ARGS, STDERR_FILENO), (void)0);
+	if (!ft_strarr_init(err, &keywords))
+		return (NULL);
 
-	message = ft_error_message(err);
+	message = ft_error_generate(keywords);
 	if (!message)
-		return (perror(ERR_UNKNOWN), (void)0);
+		return (NULL);
 
-	ft_putstr_fd(message, STDERR_FILENO);
-	free(message);
-	ft_error_free(err);
+	ft_strarr_free(keywords);
+	return (message);
 }

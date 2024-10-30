@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr_space.c                                  :+:      :+:    :+:   */
+/*   ft_error_is.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 16:32:07 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/09/29 02:14:35 by arocha-b         ###   ########.fr       */
+/*   Created: 2024/10/23 23:12:46 by arocha-b          #+#    #+#             */
+/*   Updated: 2024/10/29 19:14:24 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_puterr_space(t_error err)
+bool ft_error_is(t_error err_a, t_error err_b)
 {
-	ft_putendl_fd("Unable to render the game's background", STDERR_FILENO);
+	if (!err_a && !err_b)
+		return (true);
 
-	if (err == ERR_RENDBG_PARAM)
-		ft_puterr_ximg(ERR_XIMG_PARAM);
+	if (!err_a && err_b)
+		return (false);
 
-	if (err == ERR_RENDBG_CREATE)
-		ft_puterr_ximg(ERR_XIMG_CREATE);
+	if (!err_b && err_a)
+		return (false);
 
-	if (err == ERR_RENDBG_DATA)
-		ft_puterr_ximg(ERR_XIMG_DATA);
-
-	if (err == ERR_RENDBG_FILEPATH)
-		ft_puterr_ximg(ERR_XIMG_FILEPATH);
+	return (ft_strncmp(err_a, err_b, ft_strlen(err_a)) == 0);
 }
