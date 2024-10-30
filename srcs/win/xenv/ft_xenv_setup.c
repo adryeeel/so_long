@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:30:48 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/26 00:25:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/30 03:09:12 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,16 @@ t_error ft_xenv_setup(t_xenv *x, t_map map)
 {
 	t_error err;
 
-	x->window = NULL;
-	x->allow_move = true;
 	x->display = mlx_init();
+	if (!x->display)
+		return (ERR_XSRV_INIT);
 
+	x->window = NULL;
 	x->coll.id = NULL;
 	x->scene.id = NULL;
 	x->number.id = NULL;
 	x->patrol.id = NULL;
-
-	if (!x->display)
-		return (ERR_XSRV_INIT);
+	x->allow_move = true;
 
 	err = ft_sprite_setup(x, map);
 	if (err)
