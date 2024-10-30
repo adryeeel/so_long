@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:11:08 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/29 19:29:04 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/30 02:11:52 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void ft_error_print(t_error err)
 
 	message = ft_error_message(err);
 	if (!message)
-		return (ft_putendl_fd(ERR_UNKNOWN, STDERR_FILENO), (void)0);
+		return (perror(ERR_UNKNOWN), (void)0);
 
 	ft_putstr_fd(message, STDERR_FILENO);
 	free(message);
