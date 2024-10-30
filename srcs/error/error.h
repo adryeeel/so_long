@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/29 19:28:28 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/10/30 02:12:00 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 typedef char *t_error;
 
 #define OK NULL
-#define ERR_UNKNOWN				"Unable to identify the specific cause."
+#define ERR_UNKNOWN				"Failed to generate the error details" // ✅
 
 /* Bad arguments number */
-#define ERR_ARGS				"Invalid number of arguments."
+#define ERR_ARGS				"Invalid number of arguments." // ✅
 
 /* X Server Errors */
 #define ERR_XSRV				"xsrv"
