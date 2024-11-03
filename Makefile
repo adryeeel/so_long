@@ -154,8 +154,7 @@ MOVE_OBJS = $(addprefix $(BUILD_DIR)/,$(MOVE:.c=.o))
 
 # Game — Map handling sources
 
-MAP =	ft_map_bfs.c \
-		ft_map_free.c \
+MAP =	ft_map_free.c \
 		ft_map_push.c \
 		ft_map_read.c \
 		ft_map_check.c \
@@ -181,6 +180,24 @@ MAPC =	ft_check_ext.c \
 
 MAPC_PATH = $(MAP_PATH)/check
 MAPC_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPC:.c=.o))
+
+# Game — Map pathway validation sources
+
+MAPBFS =	ft_bfs_path.c \
+			ft_bfs_goal.c \
+			ft_bfs_edges.c \
+			ft_bfs_setup.c \
+			ft_bfs_isgoal.c \
+			ft_bfs_cleanup.c \
+			ft_bfs_process.c \
+			ft_points_free.c \
+			ft_bfs_isvalid.c \
+			ft_visited_free.c \
+			ft_points_setup.c \
+			ft_visited_setup.c \
+
+MAPBFS_PATH = $(MAP_PATH)/bfs
+MAPBFS_OBJS = $(addprefix $(BUILD_DIR)/,$(MAPBFS:.c=.o))
 
 # Miscellaneous sources
 
@@ -210,7 +227,7 @@ all: $(NAME)
 
 # Program Build
 
-$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(EGEN_OBJS) $(ECHECK_OBJS) $(WIN_OBJS) $(HOOK_OBJS) $(KEY_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
+$(NAME): $(MAIN_OBJS) $(ERROR_OBJS) $(EGEN_OBJS) $(ECHECK_OBJS) $(WIN_OBJS) $(HOOK_OBJS) $(KEY_OBJS) $(DRAW_OBJS) $(XENV_OBJS) $(XIMG_OBJS) $(GAME_OBJS) $(MOVE_OBJS) $(MAP_OBJS) $(MAPC_OBJS) $(MAPBFS_OBJS) $(MATRIX_OBJS) $(MISC_OBJS) | $(LIBS)
 	$(CC) $(CFLAGS) $^ $(LIBS_LINK) -o $@
 
 # Main Build
@@ -228,7 +245,6 @@ $(BUILD_DIR)/%.o: $(EGEN_PATH)/%.c | $(BUILD_DIR)
 
 $(BUILD_DIR)/%.o: $(ECHECK_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
-
 
 # Window Management Build
 
@@ -264,7 +280,10 @@ $(BUILD_DIR)/%.o: $(MAP_PATH)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/%.o: $(MAPC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Helpers Build
+$(BUILD_DIR)/%.o: $(MAPBFS_PATH)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Helper Functions Build
 
 $(BUILD_DIR)/%.o: $(MISC_PATH)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
