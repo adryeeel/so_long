@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:48:22 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/29 20:42:49 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/01 00:35:02 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int **ft_dirs_setup(void);
 void ft_matrix_free(int **matrix);
 int **ft_matrix_alloc(size_t x, size_t y);
 char ft_str_filter(unsigned int index, char c);
-void ft_points_free(t_queue points, t_coord *pos);
 t_error ft_error_draw_final(t_error err, char *text_path);
 
 #endif
