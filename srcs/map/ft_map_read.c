@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 00:33:56 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/29 19:33:50 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/07 23:57:28 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,17 @@ t_error ft_map_read(char **grid[], char *map_path)
 	t_error err;
 
 	map_fd = 0;
+
 	err = ft_read_setup(grid, &map_fd, map_path);
 	if (err)
 		return (err);
 
 	line = ft_readl(map_fd);
-	if (!line)
-	{
-		free(*grid);
-		close(map_fd);
-		return (ERR_MAP_ISEMPTY);
-	}
-
 	while (line)
 	{
 		ft_strtrim_nl(&line);
-		ft_map_push(grid, line);
+		if (*line)
+			ft_map_push(grid, line);
 		free(line);
 		line = ft_readl(map_fd);
 	}
