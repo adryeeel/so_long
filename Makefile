@@ -176,6 +176,7 @@ MAPC =	ft_check_ext.c \
 		ft_check_comp.c \
 		ft_check_isreg.c \
 		ft_check_isrect.c \
+		ft_check_isempty.c \
 		ft_check_surrounded.c \
 
 MAPC_PATH = $(MAP_PATH)/check
