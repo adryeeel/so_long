@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/11/01 04:57:10 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/07 23:48:42 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ bool ft_check_isreg(t_map map);
 bool ft_check_isrect(t_map map);
 t_error ft_check_path(t_map map);
 t_error ft_check_comp(t_map map);
+bool ft_check_isempty(t_map map);
 bool ft_check_surrounded(t_map map);
 t_error ft_check_ext(char *map_path);
 
