@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 19:06:09 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:18:10 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ft_move_up(t_game *g)
 
 	g->moves++;
 
-	if (g->map.grid[y][x] == PATROL)
+	if (g->map.grid[y][x] == ENEMY)
 	{
 		g->avatar.died = true;
 		return;

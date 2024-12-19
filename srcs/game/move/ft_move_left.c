@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:04:50 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/20 19:05:21 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:17:54 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void ft_move_left(t_game *g)
 
 	g->moves++;
 
-	if (g->map.grid[y][x] == PATROL)
+	if (g->map.grid[y][x] == ENEMY)
 	{
 		g->avatar.died = true;
 		return;
 	}
 
-	if (g->map.grid[y][x] == EXIT_POINT) // ! Fix map path verification to consider exti points as wall when are collectibles in the map. An exit point cannot block the avatar's to reach the collectible, if so, is impossible to win the game.
+	if (g->map.grid[y][x] == EXIT_POINT)
 	{
 		if (ft_check_won(g->map))
 			g->won = true;
