@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 14:25:35 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/11/08 17:33:16 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/12/19 03:48:48 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_error ft_game_setup(t_game *g, char *map_path)
 	if (err)
 		return (err);
 
-	err = ft_enemies_setup(&g->enemies, map);
+	err = ft_enemy_setup(&g->enemies, map);
 	if (err)
 		return (err);
 
