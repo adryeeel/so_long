@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 00:08:36 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/11/07 23:48:42 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:16:41 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_mapc
 	UNKNOWN = 0,
 	WALL = '1',
 	SPACE = '0',
-	PATROL = 'L',
+	ENEMY = 'L',
 	EXIT_POINT = 'E',
 	START_POINT = 'P',
 	COLLECTED = 'c',
@@ -74,6 +74,7 @@ bool ft_map_iscomp(t_mapc comp);
 void ft_map_setup(t_map *map, char *grid[]);
 bool ft_map_push(char **grid[], char *line);
 
+void ft_map_patrol(t_map map);
 t_error ft_map_check(t_map map);
 t_coord ft_map_search_seq(t_map map, t_mapc comp);
 t_error ft_map_read(char **grid[], char *map_path);
