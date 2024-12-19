@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:23:24 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/13 22:24:47 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:18:31 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_error ft_draw_frame(t_xenv x, t_map map, t_mapc comp, size_t frame_n)
 	t_coord coord;
 	t_ximg frameset;
 
-	if (comp == PATROL)
+	if (comp == ENEMY)
 		frameset = x.patrol;
 
 	if (comp == COLLECTIBLE)
