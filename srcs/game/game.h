@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:02:43 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/21 18:45:54 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/12/19 03:30:28 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_game
 	t_map map;
 	size_t moves;
 	t_avatar avatar;
+	t_coord *enemies;
 } t_game;
 
 /* Game */
@@ -41,7 +42,9 @@ typedef struct s_game
 void ft_game_free(t_game game);
 t_error ft_game_start(char *map_path);
 void ft_game_restart(t_xenv *x, t_game *g);
+void ft_avatar_setup(t_avatar *av, t_map map);
 t_error ft_game_setup(t_game *g, char *map_path);
+t_error ft_enemy_setup(t_coord **enemies, t_map map);
 
 /* Game — Avatar's Movement */
 
