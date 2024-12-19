@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:50:27 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/07 23:52:55 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:18:07 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool ft_map_iscomp(t_mapc comp)
 	if (comp == SPACE)
 		return (true);
 
-	if (comp == PATROL)
+	if (comp == ENEMY)
 		return (true);
 
 	if (comp == COLLECTIBLE)
