@@ -6,7 +6,7 @@
 /*   By: arocha-b <arocha-b@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:00:03 by arocha-b          #+#    #+#             */
-/*   Updated: 2024/10/30 02:14:43 by arocha-b         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:32:23 by arocha-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef char *t_error;
 #define ERR_MAP_ISEMPTY			"map_setup_:-Is-empty"
 #define ERR_MAP_ISDIR			"map_setup_:-Is-directory"
 #define ERR_MAP_EXT				"map_setup_:-Bad-file-extension"
+#define ERR_MAP_ENEMY			"map_setup_:-Failed-to-setup-enemy-patrol"
 
 /* Map Path Errors */
 #define ERR_MAP_PATH			"map_path"
@@ -114,11 +115,11 @@ typedef char *t_error;
 #define ERR_RENDEXIT_FILEPATH	"rend_game's-exit_filepath"
 
 /* Enemy Patrol Render Errors */
-#define ERR_RENDPATROL			"rend_game's-patrol"
-#define ERR_RENDPATROL_DATA		"rend_game's-patrol_data"
-#define ERR_RENDPATROL_PARAM	"rend_game's-patrol_param"
-#define ERR_RENDPATROL_CREATE	"rend_game's-patrol_create"
-#define ERR_RENDPATROL_FILEPATH	"rend_game's-patrol_filepath"
+#define ERR_RENDENEMY			"rend_game's-enemy"
+#define ERR_RENDENEMY_DATA		"rend_game's-enemy_data"
+#define ERR_RENDENEMY_PARAM		"rend_game's-enemy_param"
+#define ERR_RENDENEMY_CREATE	"rend_game's-enemy_create"
+#define ERR_RENDENEMY_FILEPATH	"rend_game's-enemy_filepath"
 
 /* Counter Number Render Errors */
 #define ERR_RENDCOUNT			"rend_game's-counter"
