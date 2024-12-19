@@ -137,9 +137,9 @@ XIMG_OBJS = $(addprefix $(BUILD_DIR)/,$(XIMG:.c=.o))
 GAME =	ft_game_free.c \
 		ft_game_start.c \
 		ft_game_setup.c \
+		ft_enemy_setup.c \
 		ft_game_restart.c \
 		ft_avatar_setup.c \
-		ft_enemies_setup.c \
 
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
