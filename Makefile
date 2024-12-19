@@ -138,6 +138,8 @@ GAME =	ft_game_free.c \
 		ft_game_start.c \
 		ft_game_setup.c \
 		ft_game_restart.c \
+		ft_avatar_setup.c \
+		ft_enemies_setup.c \
 
 GAME_PATH = $(MAIN_PATH)/game
 GAME_OBJS = $(addprefix $(BUILD_DIR)/,$(GAME:.c=.o))
@@ -159,6 +161,7 @@ MAP =	ft_map_free.c \
 		ft_map_read.c \
 		ft_map_check.c \
 		ft_map_setup.c \
+		ft_map_patrol.c \
 		ft_map_search.c \
 		ft_map_iscomp.c \
 		ft_map_process.c \
